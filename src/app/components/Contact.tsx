@@ -11,8 +11,8 @@ export default function Contact() {
     {
       icon: Github,
       label: "GITHUB",
-      value: "github.com/coleman-rose",
-      href: "https://github.com/coleman-rose"
+      value: "github.com/colemanswe",
+      href: "https://github.com/colemanswe"
     },
     {
       icon: Linkedin,
@@ -21,15 +21,9 @@ export default function Contact() {
       href: "https://linkedin.com/in/coleman-rose"
     },
     {
-      icon: Phone,
-      label: "PHONE",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567"
-    },
-    {
       icon: MapPin,
       label: "LOCATION",
-      value: "AVAILABLE REMOTELY",
+      value: "HELSINKI, FINLAND 🇫🇮",
       href: null
     }
   ]
@@ -85,7 +79,7 @@ export default function Contact() {
           </div>
           
           <div className="text-center mt-12">
-            <a href="mailto:coleman.rose@example.com" className="brutal-button text-lg">
+            <a href="mailto:colemanrose.new@gmail.com" className="brutal-button text-lg">
               SEND MESSAGE
             </a>
           </div>
