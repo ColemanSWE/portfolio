@@ -1,0 +1,247 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  --brutal-black: #000000;
+  --brutal-white: #ffffff;
+  --brutal-yellow: #ffff00;
+  --brutal-red: #ff0000;
+  --brutal-blue: #0000ff;
+  --brutal-green: #00ff00;
+  --brutal-pink: #ff00ff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--brutal-white);
+  color: var(--brutal-black);
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+.brutal-border {
+  border: 4px solid var(--brutal-black);
+  box-shadow: 8px 8px 0px var(--brutal-black);
+}
+
+.brutal-button {
+  @apply brutal-border;
+  background: var(--brutal-yellow);
+  padding: 12px 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.2s cubic-bezier(0.76, 0, 0.24, 1);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.brutal-button:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px var(--brutal-black);
+}
+
+.brutal-button:active {
+  transform: translate(0px, 0px);
+  box-shadow: 4px 4px 0px var(--brutal-black);
+}
+
+.brutal-button.secondary {
+  background: var(--brutal-pink);
+}
+
+.brutal-text {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.glitch {
+  position: relative;
+  font-size: 4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--brutal-black);
+  animation: glitch 2s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  animation: glitch-1 0.3s infinite;
+  color: var(--brutal-red);
+  z-index: -1;
+}
+
+.glitch::after {
+  animation: glitch-2 0.3s infinite;
+  color: var(--brutal-blue);
+  z-index: -2;
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(2px, -2px); }
+  40% { transform: translate(-2px, 2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(2px, 2px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, -2px); }
+  40% { transform: translate(2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(-2px, 2px); }
+}
+
+.ticker {
+  background: var(--brutal-black);
+  color: var(--brutal-white);
+  padding: 12px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.ticker-content {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.ticker-text {
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 14px;
+  animation: ticker-scroll 20s linear infinite;
+}
+
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--brutal-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeOut 0.5s ease-in-out 2s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.brutal-card {
+  @apply brutal-border;
+  background: var(--brutal-white);
+  padding: 24px;
+  margin: 16px 0;
+  position: relative;
+}
+
+.brutal-card::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -12px;
+  bottom: -12px;
+  background: var(--brutal-yellow);
+  z-index: -1;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 100px;
+  height: 8px;
+  background: var(--brutal-red);
+}
+
+.tech-tag {
+  @apply brutal-border;
+  background: var(--brutal-green);
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 4px;
+  display: inline-block;
+}
+
+.brutal-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 20px 20px;
+  background: 
+    linear-gradient(45deg, transparent 49%, var(--brutal-black) 49%, var(--brutal-black) 51%, transparent 51%),
+    linear-gradient(-45deg, transparent 49%, var(--brutal-black) 49%, var(--brutal-black) 51%, transparent 51%);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+} 
