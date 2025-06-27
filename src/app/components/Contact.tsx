@@ -11,7 +11,7 @@ export default function Contact() {
     {
       icon: Github,
       label: "GITHUB",
-      value: "github.com/colemanswe",
+                                                                value: "github.com/colemanswe",
       href: "https://github.com/colemanswe"
     },
     {

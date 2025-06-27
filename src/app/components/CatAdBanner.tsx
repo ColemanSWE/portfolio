@@ -1,0 +1,121 @@
+'use client'
+
+import { useState, useRef, useEffect } from 'react'
+
+export default function CatAdBanner() {
+  const [position, setPosition] = useState({ x: 200, y: 800 })
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
+  const bannerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (isDragging) {
+        setPosition({
+          x: e.clientX - dragOffset.x,
+          y: e.clientY - dragOffset.y + window.scrollY
+        })
+      }
+    }
+
+    const handleMouseUp = () => {
+      setIsDragging(false)
+    }
+
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove)
+      document.addEventListener('mouseup', handleMouseUp)
+    }
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseup', handleMouseUp)
+    }
+  }, [isDragging, dragOffset])
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    const rect = bannerRef.current?.getBoundingClientRect()
+    if (rect) {
+      setDragOffset({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+      })
+      setIsDragging(true)
+    }
+  }
+
+  return (
+    <div
+      ref={bannerRef}
+      className="absolute z-50 cursor-move select-none"
+      style={{
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+        width: '720px',
+        height: '400px',
+        background: 'white',
+        border: '3px solid #0066cc',
+        boxShadow: '2px 2px 8px rgba(0,0,0,0.3)'
+      }}
+      onMouseDown={handleMouseDown}
+    >
+      <div className="h-full p-3 relative">
+        <div className="absolute top-1 right-1 w-4 h-4 bg-gray-200 border border-gray-400 flex items-center justify-center text-xs font-bold hover:bg-gray-300 cursor-pointer">
+          ×
+        </div>
+        
+        <div className="flex flex-col h-full">
+          <div 
+            className="text-red-600 font-bold text-2xl mb-4 text-center"
+            style={{ fontFamily: 'Arial, sans-serif' }}
+          >
+            ⭐ LULU'S TESTIMONIAL ⭐
+          </div>
+          
+          <div className="flex items-center gap-6 flex-1">
+            <div className="flex flex-col gap-4">
+              <img 
+                src="/lulu/IMG_0790.jpg"
+                alt="Lulu the cat"
+                className="w-32 h-32 object-cover border-2 border-gray-400 shadow-lg"
+              />
+              <img 
+                src="/lulu/IMG_1215.jpg"
+                alt="Lulu the cat"
+                className="w-32 h-32 object-cover border-2 border-gray-400 shadow-lg"
+              />
+            </div>
+            
+            <div className="flex-1 flex flex-col justify-center">
+              <div 
+                className="text-blue-800 text-lg leading-relaxed mb-6"
+                style={{ fontFamily: 'Times New Roman, serif' }}
+              >
+                "Pappa codes better than he gives belly rubs!<br/>
+                He deserves treats... I mean, a job!"<br/>
+                <span className="text-red-500 font-bold text-xl">HIRE HIM NOW - Lulu 🐾</span>
+              </div>
+              <a 
+                href="#contact"
+                className="inline-block bg-gradient-to-b from-yellow-300 to-yellow-500 border-2 border-yellow-600 px-8 py-4 text-lg font-bold text-black hover:from-yellow-400 hover:to-yellow-600 transition-all cursor-pointer no-underline self-start"
+                onClick={(e) => e.stopPropagation()}
+                style={{ 
+                  fontFamily: 'Arial, sans-serif',
+                  textShadow: '1px 1px 0px rgba(255,255,255,0.8)'
+                }}
+              >
+                HIRE PAPPA! 
+              </a>
+            </div>
+          </div>
+          
+          <div className="text-center text-xs text-gray-600 mt-2">
+            ★ Endorsed by Professional Cat ★
+          </div>
+        </div>
+        
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-blue-500 to-red-500"></div>
+      </div>
+    </div>
+  )
+} 

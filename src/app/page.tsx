@@ -9,6 +9,7 @@ import LoadingScreen from './components/LoadingScreen'
 import DraggableBanner from './components/DraggableBanner'
 import AchievementNotification from './components/AchievementNotification'
 import Minimap from './components/Minimap'
+import CatAdBanner from './components/CatAdBanner'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <LoadingScreen />
       <Ticker />
       <DraggableBanner />
+      <CatAdBanner />
       <AchievementNotification />
       <Minimap />
       <main>
