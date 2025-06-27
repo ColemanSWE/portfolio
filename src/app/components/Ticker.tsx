@@ -13,6 +13,7 @@ export default function Ticker() {
     'SYSTEM DESIGN',
     'GIT',
     'GITHUB',
+    'THREE.JS'
   ]
 
   const tickerText = tickerItems.join(' • ')

@@ -1,15 +1,13 @@
 export default function Experience() {
   const experiences = [
     {
-      title: "SENIOR SOFTWARE ENGINEER",
-      company: "ENTERPRISE SYSTEMS",
+      title: "SENIOR FRONTEND ENGINEER",
+      company: "LIMBER AS",
       duration: "[CURRENT]",
       description: [
-        "ARCHITECTING SCALABLE WEB APPLICATIONS USING REACT, TYPESCRIPT, AND NODE.JS",
-        "IMPLEMENTING MICROSERVICES ARCHITECTURE WITH AWS INFRASTRUCTURE",
-        "OPTIMIZING DATABASE PERFORMANCE WITH POSTGRESQL"
+        "ARCHITECTING SCALABLE WEB APPLICATIONS USING LIT, TYPESCRIPT, AND VANILLA CSS.",
       ],
-      technologies: ["REACT", "TYPESCRIPT", "NODE.JS", "AWS", "POSTGRESQL"]
+      technologies: ["LIT", "TYPESCRIPT", "VANILLA CSS"]
     },
     {
       title: "FULL STACK DEVELOPER",
