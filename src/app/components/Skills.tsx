@@ -1,16 +1,17 @@
 export default function Skills() {
   const skills = {
     FRONTEND: [
-      "REACT", "TYPESCRIPT", "JAVASCRIPT", "HTML5", "CSS3", "TAILWIND", "NEXT.JS"
+      "REACT", "TYPESCRIPT", "JAVASCRIPT", "NEXT.JS", "REDUX", "HTML5", "CSS3", 
+      "TAILWIND", "MATERIAL UI", "ANT DESIGN", "BOOTSTRAP", "LIT.JS", "THREE.JS"
     ],
     BACKEND: [
-      "NODE.JS", "EXPRESS", "PYTHON", "REST APIS", "GRAPHQL", "MICROSERVICES"
+      "NODE.JS", "NEST.JS", "PYTHON", "RUBY ON RAILS", "GRAPHQL", "REST APIS"
     ],
-    DATABASE: [
-      "POSTGRESQL", "MONGODB", "REDIS", "MYSQL"
+    TESTING: [
+      "JEST", "CYPRESS", "REACT TESTING LIBRARY"
     ],
-    INFRASTRUCTURE: [
-      "AWS", "DOCKER", "KUBERNETES", "CI/CD", "TERRAFORM"
+    TOOLS: [
+      "GIT", "GITHUB ACTIONS", "AWS", "CI/CD", "CONTENTFUL CMS", "BROWSER APIS"
     ]
   }
 
