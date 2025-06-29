@@ -80,11 +80,15 @@ export default function CatAdBanner() {
               <Image 
                 src="/lulu/IMG_0790.jpg"
                 alt="Lulu the cat"
+                width={160}
+                height={160}
                 className="w-40 h-40 object-cover border-2 border-gray-400 shadow-lg"
               />
               <Image 
                 src="/lulu/IMG_1215.jpg"
                 alt="Lulu the cat"
+                width={160}
+                height={160}
                 className="w-40 h-40 object-cover border-2 border-gray-400 shadow-lg"
               />
             </div>
