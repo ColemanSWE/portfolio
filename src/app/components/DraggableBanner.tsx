@@ -60,7 +60,7 @@ export default function DraggableBanner() {
   return (
     <div
       ref={bannerRef}
-      className="fixed z-50 brutal-border cursor-move select-none"
+      className="absolute z-50 brutal-border cursor-move select-none"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,

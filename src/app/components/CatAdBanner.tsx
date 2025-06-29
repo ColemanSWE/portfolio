@@ -80,7 +80,7 @@ export default function CatAdBanner() {
   return (
     <div
       ref={bannerRef}
-      className="absolute z-0 cursor-move select-none w-80 h-48 md:w-96 md:h-56 lg:w-[500px] lg:h-72 xl:w-[600px] xl:h-80"
+      className="absolute z-20 cursor-move select-none w-80 h-48 md:w-96 md:h-56 lg:w-[500px] lg:h-72 xl:w-[600px] xl:h-80"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,

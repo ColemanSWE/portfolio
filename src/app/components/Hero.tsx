@@ -29,7 +29,7 @@ export default function Hero() {
 
 
   return (
-    <section className="hero-section" ref={containerRef}>
+    <section className="hero-section relative" ref={containerRef}>
       <div className="container mx-auto px-4">
         
         {/* Desktop-only animated background images */}
@@ -38,7 +38,7 @@ export default function Hero() {
           alt="I love programming animated gif" 
           width={200} 
           height={150} 
-          className="hidden lg:block fixed z-10 pointer-events-none" 
+          className="hidden lg:block absolute z-10 pointer-events-none" 
           style={{right: '5%', top: '15%', maxWidth: '180px'}} 
         />
         <Image 
@@ -46,7 +46,7 @@ export default function Hero() {
           alt="Technology smiley gif" 
           width={150} 
           height={150} 
-          className="hidden lg:block fixed z-10 pointer-events-none" 
+          className="hidden lg:block absolute z-10 pointer-events-none" 
           style={{right: '2%', top: '50%', maxWidth: '140px'}} 
         />
         <Image 
@@ -54,7 +54,7 @@ export default function Hero() {
           alt="Computer animated gif" 
           width={120} 
           height={90} 
-          className="hidden xl:block fixed z-10 pointer-events-none" 
+          className="hidden xl:block absolute z-10 pointer-events-none" 
           style={{left: '3%', top: '25%', maxWidth: '120px'}} 
         />
         <Image 
@@ -62,7 +62,7 @@ export default function Hero() {
           alt="Virus warning image" 
           width={100} 
           height={100} 
-          className="hidden xl:block fixed z-10 pointer-events-none" 
+          className="hidden xl:block absolute z-10 pointer-events-none" 
           style={{left: '8%', bottom: '20%', maxWidth: '100px'}} 
         />
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">

@@ -62,14 +62,14 @@ export default function Contact() {
                   {contact.href ? (
                     <a 
                       href={contact.href}
-                      className="brutal-text text-sm hover:underline"
+                      className="brutal-text text-sm hover:underline break-all"
                       target={contact.href.startsWith('http') ? '_blank' : undefined}
                       rel={contact.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     >
                       {contact.value}
                     </a>
                   ) : (
-                    <div className="brutal-text text-sm">
+                    <div className="brutal-text text-sm break-all">
                       {contact.value}
                     </div>
                   )}
