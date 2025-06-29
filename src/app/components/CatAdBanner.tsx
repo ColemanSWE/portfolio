@@ -4,17 +4,31 @@ import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 
 export default function CatAdBanner() {
-  const [position, setPosition] = useState({ x: 200, y: 800 })
+  const [position, setPosition] = useState({ x: 50, y: 800 })
   const [isDragging, setIsDragging] = useState(false)
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
   const bannerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // Set safe initial position on client side
+    const safeX = Math.min(200, window.innerWidth - 400)
+    if (safeX > 0) {
+      setPosition(prev => ({ ...prev, x: safeX }))
+    }
+  }, [])
+
+  useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (isDragging) {
+        const bannerWidth = bannerRef.current?.offsetWidth || 400
+        const bannerHeight = bannerRef.current?.offsetHeight || 300
+        
+        const newX = Math.max(0, Math.min(e.clientX - dragOffset.x, window.innerWidth - bannerWidth))
+        const newY = Math.max(0, e.clientY - dragOffset.y + window.scrollY)
+        
         setPosition({
-          x: e.clientX - dragOffset.x,
-          y: e.clientY - dragOffset.y + window.scrollY
+          x: newX,
+          y: newY
         })
       }
     }

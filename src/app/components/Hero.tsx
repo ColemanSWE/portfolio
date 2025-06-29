@@ -32,13 +32,13 @@ export default function Hero() {
     <section className="hero-section" ref={containerRef}>
       <div className="container mx-auto px-4">
         
-      <Image 
+             <Image 
         src="/images/iLoveProgramming.gif" 
         alt="I love programming animated gif" 
         width={200} 
         height={150} 
         className="hidden md:block" 
-        style={{position: 'absolute', right: '20%', top: '10%', zIndex: -1}} 
+        style={{position: 'absolute', right: '5%', top: '10%', zIndex: -1, maxWidth: '200px'}} 
       />
       <Image 
         src="/images/technology-smiley.gif" 
@@ -46,7 +46,7 @@ export default function Hero() {
         width={150} 
         height={150} 
         className="hidden lg:block" 
-        style={{position: 'absolute', right: '0%', top: '10%', zIndex: -1}} 
+        style={{position: 'absolute', right: '2%', top: '30%', zIndex: -1, maxWidth: '150px'}} 
       />
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="flex-shrink-0">

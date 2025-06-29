@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useRef } from 'react'
+import { Suspense, useRef, useState, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, useFBX } from '@react-three/drei'
 import * as THREE from 'three'
@@ -23,13 +23,30 @@ function ComputerModel() {
 }
 
 export default function Computer3D() {
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window)
+    }
+    
+    checkIfMobile()
+    window.addEventListener('resize', checkIfMobile)
+    
+    return () => window.removeEventListener('resize', checkIfMobile)
+  }, [])
+
   return (
-    <div className="w-96 h-96 relative" style={{
-      background: 'transparent',
-      backgroundSize: '20px 20px',
-      backgroundPosition: '0 0, 10px 10px',
-      cursor: 'pointer'
-    }}>
+    <div 
+      className="w-64 h-64 md:w-96 md:h-96 relative" 
+      style={{
+        background: 'transparent',
+        backgroundSize: '20px 20px',
+        backgroundPosition: '0 0, 10px 10px',
+        cursor: isMobile ? 'default' : 'pointer',
+        touchAction: isMobile ? 'pan-y' : 'auto'
+      }}
+    >
       <Canvas
         camera={{ position: [0, 0, 200], fov: 50 }}
         style={{ background: 'transparent' }}
@@ -49,13 +66,15 @@ export default function Computer3D() {
           <ComputerModel />
         </Suspense>
         
-        <OrbitControls 
-          enableZoom={false}
-          enablePan={false}
-          autoRotate={false}
-          enableDamping={true}
-          dampingFactor={0.1}
-        />
+        {!isMobile && (
+          <OrbitControls 
+            enableZoom={false}
+            enablePan={false}
+            autoRotate={false}
+            enableDamping={true}
+            dampingFactor={0.1}
+          />
+        )}
       </Canvas>
     </div>
   )
