@@ -22,6 +22,24 @@ export default function Hero() {
   const layer1Rotate = useTransform(scrollYProgress, [0, 0.5], [0, -3])
   const layer2Rotate = useTransform(scrollYProgress, [0, 0.5], [0, 1])
   const layer3Rotate = useTransform(scrollYProgress, [0, 0.5], [0, 3])
+  
+  // Reduce red glow on initial load
+  const redGlowOpacity = useTransform(scrollYProgress, [0, 0.2], [0.3, 1])
+  
+  // Random particles
+  const particles = Array.from({ length: 8 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100 - 50, // -50 to 50
+    y: Math.random() * 100 - 50,
+    size: Math.random() * 4 + 2, // 2 to 6
+    delay: Math.random() * 0.5,
+  }))
+  
+  const particleTransforms = particles.map(particle => ({
+    x: useTransform(scrollYProgress, [0, 0.5], [0, particle.x]),
+    y: useTransform(scrollYProgress, [0, 0.5], [0, particle.y]),
+    rotate: useTransform(scrollYProgress, [0, 0.5], [0, Math.random() * 360 - 180]),
+  }))
 
   return (
     <section className="hero-section" ref={containerRef}>
@@ -37,6 +55,25 @@ export default function Hero() {
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
             {/* 3D Layered Name Effect */}
             <div className="relative mb-4">
+              {/* Random particles */}
+              {particles.map((particle, index) => (
+                <motion.div
+                  key={particle.id}
+                  className="absolute select-none pointer-events-none"
+                  style={{
+                    x: particleTransforms[index].x,
+                    y: particleTransforms[index].y,
+                    rotate: particleTransforms[index].rotate,
+                    width: `${particle.size}px`,
+                    height: `${particle.size}px`,
+                    backgroundColor: Math.random() > 0.5 ? '#ff0000' : '#000000',
+                    borderRadius: Math.random() > 0.7 ? '50%' : '0%',
+                    opacity: 0.6,
+                    zIndex: 0
+                  }}
+                />
+              ))}
+              
               {/* Background shadow layer */}
               <motion.div
                 className="absolute inset-0 text-8xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
@@ -47,7 +84,8 @@ export default function Hero() {
                   color: '#000000',
                   filter: 'blur(1px)',
                   opacity: 0.8,
-                  zIndex: 1
+                  zIndex: 1,
+                  fontFamily: 'JetBrains Mono, monospace'
                 }}
               >
                 COLEMAN
@@ -62,8 +100,10 @@ export default function Hero() {
                   rotate: layer2Rotate,
                   color: '#ff0000',
                   textShadow: '2px 2px 0px #000000, -2px -2px 0px #000000',
-                  filter: 'drop-shadow(0 0 8px #ff0000)',
-                  zIndex: 2
+                  filter: `drop-shadow(0 0 8px #ff0000)`,
+                  opacity: redGlowOpacity,
+                  zIndex: 2,
+                  fontFamily: 'JetBrains Mono, monospace'
                 }}
               >
                 COLEMAN
@@ -77,7 +117,8 @@ export default function Hero() {
                   x: layer1X,
                   rotate: layer1Rotate,
                   textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
-                  zIndex: 3
+                  zIndex: 3,
+                  fontFamily: 'JetBrains Mono, monospace'
                 }}
               >
                 COLEMAN
@@ -85,6 +126,25 @@ export default function Hero() {
             </div>
 
             <div className="relative mb-8">
+              {/* Random particles for ROSE */}
+              {particles.map((particle, index) => (
+                <motion.div
+                  key={`rose-${particle.id}`}
+                  className="absolute select-none pointer-events-none"
+                  style={{
+                    x: particleTransforms[index].x,
+                    y: particleTransforms[index].y,
+                    rotate: particleTransforms[index].rotate,
+                    width: `${particle.size}px`,
+                    height: `${particle.size}px`,
+                    backgroundColor: Math.random() > 0.5 ? '#ff0000' : '#000000',
+                    borderRadius: Math.random() > 0.7 ? '50%' : '0%',
+                    opacity: 0.4,
+                    zIndex: 0
+                  }}
+                />
+              ))}
+              
               {/* Background shadow layer */}
               <motion.div
                 className="absolute inset-0 text-8xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
@@ -95,7 +155,8 @@ export default function Hero() {
                   color: '#000000',
                   filter: 'blur(1px)',
                   opacity: 0.8,
-                  zIndex: 1
+                  zIndex: 1,
+                  fontFamily: 'JetBrains Mono, monospace'
                 }}
               >
                 ROSE
@@ -110,8 +171,10 @@ export default function Hero() {
                   rotate: layer2Rotate,
                   color: '#ff0000',
                   textShadow: '2px 2px 0px #000000, -2px -2px 0px #000000',
-                  filter: 'drop-shadow(0 0 8px #ff0000)',
-                  zIndex: 2
+                  filter: `drop-shadow(0 0 8px #ff0000)`,
+                  opacity: redGlowOpacity,
+                  zIndex: 2,
+                  fontFamily: 'JetBrains Mono, monospace'
                 }}
               >
                 ROSE
@@ -125,7 +188,8 @@ export default function Hero() {
                   x: layer1X,
                   rotate: layer1Rotate,
                   textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
-                  zIndex: 3
+                  zIndex: 3,
+                  fontFamily: 'JetBrains Mono, monospace'
                 }}
               >
                 ROSE
