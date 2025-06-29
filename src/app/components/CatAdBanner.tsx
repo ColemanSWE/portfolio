@@ -4,25 +4,40 @@ import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 
 export default function CatAdBanner() {
-  const [position, setPosition] = useState({ x: 50, y: 800 })
+  const [position, setPosition] = useState({ x: 50, y: 100 })
   const [isDragging, setIsDragging] = useState(false)
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
   const bannerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Set safe initial position on client side
-    const bannerWidth = Math.min(500, window.innerWidth * 0.85)
+    // Set safe initial position on client side with responsive banner sizes
+    const getBannerWidth = () => {
+      if (window.innerWidth >= 1280) return 600 // xl
+      if (window.innerWidth >= 1024) return 500 // lg  
+      if (window.innerWidth >= 768) return 384 // md
+      return 320 // default
+    }
+    
+    const bannerWidth = getBannerWidth()
     const safeX = Math.min(200, window.innerWidth - bannerWidth - 20)
     if (safeX > 0) {
-      setPosition(prev => ({ ...prev, x: Math.max(10, safeX) }))
+      setPosition({ x: Math.max(10, safeX), y: 100 })
     }
   }, [])
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (isDragging) {
-        const bannerWidth = bannerRef.current?.offsetWidth || Math.min(500, window.innerWidth * 0.85)
-        const bannerHeight = bannerRef.current?.offsetHeight || Math.min(300, window.innerHeight * 0.5)
+        const getBannerDimensions = () => {
+          if (window.innerWidth >= 1280) return { width: 600, height: 320 } // xl
+          if (window.innerWidth >= 1024) return { width: 500, height: 288 } // lg  
+          if (window.innerWidth >= 768) return { width: 384, height: 224 } // md
+          return { width: 320, height: 192 } // default
+        }
+        
+        const dimensions = getBannerDimensions()
+        const bannerWidth = bannerRef.current?.offsetWidth || dimensions.width
+        const bannerHeight = bannerRef.current?.offsetHeight || dimensions.height
         
         const newX = Math.max(10, Math.min(e.clientX - dragOffset.x, window.innerWidth - bannerWidth - 10))
         const newY = Math.max(10, e.clientY - dragOffset.y + window.scrollY)
@@ -65,16 +80,13 @@ export default function CatAdBanner() {
   return (
     <div
       ref={bannerRef}
-      className="absolute z-0 cursor-move select-none"
+      className="absolute z-0 cursor-move select-none w-80 h-48 md:w-96 md:h-56 lg:w-[500px] lg:h-72 xl:w-[600px] xl:h-80"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
-        width: 'min(500px, 85vw)',
-        height: 'min(300px, 50vh)',
         background: 'white',
         border: '2px solid #0066cc',
-        boxShadow: '2px 2px 8px rgba(0,0,0,0.3)',
-        fontSize: 'clamp(0.7rem, 1.5vw, 0.9rem)'
+        boxShadow: '2px 2px 8px rgba(0,0,0,0.3)'
       }}
       onMouseDown={handleMouseDown}
     >
@@ -85,42 +97,42 @@ export default function CatAdBanner() {
         
         <div className="flex flex-col h-full">
           <div 
-            className="text-red-600 font-bold text-lg md:text-2xl mb-2 md:mb-4 text-center"
+            className="text-red-600 font-bold text-xs md:text-sm lg:text-base xl:text-lg mb-1 text-center flex-shrink-0"
             style={{ fontFamily: 'Arial, sans-serif' }}
           >
             ⭐ LULU&apos;S TESTIMONIAL ⭐
           </div>
           
-          <div className="flex flex-col md:flex-row items-center gap-3 md:gap-6 flex-1">
-            <div className="flex flex-row md:flex-col gap-2 md:gap-4">
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-3 lg:gap-4 flex-1 min-h-0">
+            <div className="flex flex-row md:flex-col gap-1 md:gap-2 flex-shrink-0">
               <Image 
                 src="/lulu/IMG_0790.jpg"
                 alt="Lulu the cat"
                 width={160}
                 height={160}
-                className="w-20 h-20 md:w-40 md:h-40 object-cover border-2 border-gray-400 shadow-lg"
+                className="w-10 h-10 sm:w-12 sm:h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 object-cover border border-gray-400 shadow-lg"
               />
               <Image 
                 src="/lulu/IMG_1215.jpg"
                 alt="Lulu the cat"
                 width={160}
                 height={160}
-                className="w-20 h-20 md:w-40 md:h-40 object-cover border-2 border-gray-400 shadow-lg"
+                className="w-10 h-10 sm:w-12 sm:h-12 md:w-20 md:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 object-cover border border-gray-400 shadow-lg"
               />
             </div>
             
-            <div className="flex-1 flex flex-col justify-center">
+            <div className="flex-1 flex flex-col justify-center min-w-0 overflow-hidden">
               <div 
-                className="text-blue-800 text-sm md:text-lg leading-relaxed mb-3 md:mb-6"
+                className="text-blue-800 text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg leading-tight mb-1 md:mb-2"
                 style={{ fontFamily: 'Times New Roman, serif' }}
               >
                 &quot;Pappa codes better than he gives belly rubs!<br/>
                 He deserves treats... I mean, a job!&quot;<br/>
-                <span className="text-red-500 font-bold text-base md:text-xl">HIRE HIM NOW - Lulu 🐾</span>
+                <span className="text-red-500 font-bold text-xs md:text-sm lg:text-base xl:text-lg">HIRE HIM NOW - Lulu 🐾</span>
               </div>
               <a 
                 href="#contact"
-                className="inline-block bg-gradient-to-b from-yellow-300 to-yellow-500 border-2 border-yellow-600 px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg font-bold text-black hover:from-yellow-400 hover:to-yellow-600 transition-all cursor-pointer no-underline self-start"
+                className="inline-block bg-gradient-to-b from-yellow-300 to-yellow-500 border-2 border-yellow-600 px-2 md:px-3 lg:px-4 xl:px-5 py-1 md:py-1.5 lg:py-2 text-xs md:text-sm lg:text-base xl:text-lg font-bold text-black hover:from-yellow-400 hover:to-yellow-600 transition-all cursor-pointer no-underline self-start"
                 onClick={(e) => e.stopPropagation()}
                 style={{ 
                   fontFamily: 'Arial, sans-serif',
@@ -132,7 +144,7 @@ export default function CatAdBanner() {
             </div>
           </div>
           
-          <div className="text-center text-xs text-gray-600 mt-2">
+          <div className="text-center text-xs lg:text-sm text-gray-600 mt-1 flex-shrink-0">
             ★ Endorsed by Professional Cat ★
           </div>
         </div>

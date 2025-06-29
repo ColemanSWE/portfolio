@@ -7,7 +7,7 @@ import Contact from './components/Contact'
 import Ticker from './components/Ticker'
 import LoadingScreen from './components/LoadingScreen'
 import DraggableBanner from './components/DraggableBanner'
-import AchievementNotification from './components/AchievementNotification'
+
 import Minimap from './components/Minimap'
 import CatAdBanner from './components/CatAdBanner'
 
@@ -16,10 +16,15 @@ export default function Home() {
     <>
       <LoadingScreen />
       <Ticker />
-      <DraggableBanner />
-      <CatAdBanner />
-      <AchievementNotification />
-      <Minimap />
+      <div className="hidden lg:block">
+        <DraggableBanner />
+      </div>
+      <div className="hidden lg:block">
+        <CatAdBanner />
+      </div>
+      <div className="hidden lg:block">
+        <Minimap />
+      </div>
       <main>
         <Hero />
         <About />
