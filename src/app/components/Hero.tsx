@@ -9,19 +9,19 @@ export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start start", "end start"]
   })
 
-  // Transform values for different layers
-  const layer1Y = useTransform(scrollYProgress, [0, 1], [0, -100])
-  const layer2Y = useTransform(scrollYProgress, [0, 1], [0, -50])
-  const layer3Y = useTransform(scrollYProgress, [0, 1], [0, 50])
-  const layer1X = useTransform(scrollYProgress, [0, 1], [0, -30])
-  const layer2X = useTransform(scrollYProgress, [0, 1], [0, 15])
-  const layer3X = useTransform(scrollYProgress, [0, 1], [0, 30])
-  const layer1Rotate = useTransform(scrollYProgress, [0, 1], [0, -5])
-  const layer2Rotate = useTransform(scrollYProgress, [0, 1], [0, 2])
-  const layer3Rotate = useTransform(scrollYProgress, [0, 1], [0, 5])
+  // Transform values for different layers - they start aligned and separate as you scroll
+  const layer1Y = useTransform(scrollYProgress, [0, 0.5], [0, -80])
+  const layer2Y = useTransform(scrollYProgress, [0, 0.5], [0, -40])
+  const layer3Y = useTransform(scrollYProgress, [0, 0.5], [0, 40])
+  const layer1X = useTransform(scrollYProgress, [0, 0.5], [0, -20])
+  const layer2X = useTransform(scrollYProgress, [0, 0.5], [0, 10])
+  const layer3X = useTransform(scrollYProgress, [0, 0.5], [0, 20])
+  const layer1Rotate = useTransform(scrollYProgress, [0, 0.5], [0, -3])
+  const layer2Rotate = useTransform(scrollYProgress, [0, 0.5], [0, 1])
+  const layer3Rotate = useTransform(scrollYProgress, [0, 0.5], [0, 3])
 
   return (
     <section className="hero-section" ref={containerRef}>
@@ -37,42 +37,39 @@ export default function Hero() {
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
             {/* 3D Layered Name Effect */}
             <div className="relative mb-4">
-              {/* Background particles/noise layer */}
+              {/* Background shadow layer */}
               <motion.div
                 className="absolute inset-0 text-8xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
                 style={{
                   y: layer3Y,
                   x: layer3X,
                   rotate: layer3Rotate,
-                  background: 'linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  filter: 'blur(2px)',
-                  opacity: 0.7,
+                  color: '#000000',
+                  filter: 'blur(1px)',
+                  opacity: 0.8,
                   zIndex: 1
                 }}
               >
                 COLEMAN
               </motion.div>
               
-              {/* Middle graffiti layer */}
+              {/* Middle red layer */}
               <motion.div
                 className="absolute inset-0 text-8xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
                 style={{
                   y: layer2Y,
                   x: layer2X,
                   rotate: layer2Rotate,
-                  color: '#ff0080',
-                  textShadow: '3px 3px 0px #00ff80, -3px -3px 0px #8000ff',
-                  filter: 'drop-shadow(0 0 10px #ff0080)',
+                  color: '#ff0000',
+                  textShadow: '2px 2px 0px #000000, -2px -2px 0px #000000',
+                  filter: 'drop-shadow(0 0 8px #ff0000)',
                   zIndex: 2
                 }}
               >
                 COLEMAN
               </motion.div>
               
-              {/* Front clean layer */}
+              {/* Front white layer */}
               <motion.h1
                 className="relative text-8xl lg:text-9xl font-black tracking-wider text-white z-10"
                 style={{
@@ -88,42 +85,39 @@ export default function Hero() {
             </div>
 
             <div className="relative mb-8">
-              {/* Background particles/noise layer */}
+              {/* Background shadow layer */}
               <motion.div
                 className="absolute inset-0 text-8xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
                 style={{
                   y: layer3Y,
                   x: layer3X,
                   rotate: layer3Rotate,
-                  background: 'linear-gradient(45deg, #00ff00, #ff0040, #0080ff, #ff8000)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  filter: 'blur(2px)',
-                  opacity: 0.7,
+                  color: '#000000',
+                  filter: 'blur(1px)',
+                  opacity: 0.8,
                   zIndex: 1
                 }}
               >
                 ROSE
               </motion.div>
               
-              {/* Middle graffiti layer */}
+              {/* Middle red layer */}
               <motion.div
                 className="absolute inset-0 text-8xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
                 style={{
                   y: layer2Y,
                   x: layer2X,
                   rotate: layer2Rotate,
-                  color: '#00ff40',
-                  textShadow: '3px 3px 0px #ff4000, -3px -3px 0px #4000ff',
-                  filter: 'drop-shadow(0 0 10px #00ff40)',
+                  color: '#ff0000',
+                  textShadow: '2px 2px 0px #000000, -2px -2px 0px #000000',
+                  filter: 'drop-shadow(0 0 8px #ff0000)',
                   zIndex: 2
                 }}
               >
                 ROSE
               </motion.div>
               
-              {/* Front clean layer */}
+              {/* Front white layer */}
               <motion.h1
                 className="relative text-8xl lg:text-9xl font-black tracking-wider text-white z-10"
                 style={{
