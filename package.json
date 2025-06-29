@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:strict": "next lint --strict",
+    "lint:fix": "next lint --fix",
+    "build:check": "next build && echo '✅ Build successful - ready to deploy!'"
   },
   "dependencies": {
     "@react-three/drei": "^9.88.13",
