@@ -3,16 +3,16 @@ import { ExternalLink, Github } from 'lucide-react'
 export default function Projects() {
   const projects = [
     {
-      title: "E-COMMERCE PLATFORM",
-      description: "FULL-STACK E-COMMERCE SOLUTION WITH MICROSERVICES ARCHITECTURE",
-      technologies: ["REACT", "NODE.JS", "POSTGRESQL", "AWS"],
+      title: "PORTFOLIO WEBSITE",
+      description: "MODERN PORTFOLIO WITH 3D ANIMATIONS AND SCROLL-TRIGGERED EFFECTS",
+      technologies: ["NEXT.JS", "TYPESCRIPT", "TAILWIND", "FRAMER MOTION"],
       features: [
-        "REAL-TIME INVENTORY MANAGEMENT",
-        "PAYMENT GATEWAY INTEGRATION", 
-        "ADMIN DASHBOARD WITH ANALYTICS"
+        "3D TEXT SCROLL ANIMATIONS",
+        "RESPONSIVE DESIGN SYSTEM",
+        "AUTOMATED CI/CD DEPLOYMENT"
       ],
-      github: "https://github.com/coleman-rose/ecommerce-platform",
-      live: "https://ecommerce-demo.coleman-rose.dev",
+      github: "https://github.com/ColemanSWE/portfolio",
+      live: "https://colemanro.se",
       status: "PRODUCTION"
     },
     {
