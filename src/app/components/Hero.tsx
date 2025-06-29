@@ -39,7 +39,7 @@ export default function Hero() {
           width={200} 
           height={150} 
           className="hidden lg:block fixed z-10 pointer-events-none" 
-          style={{right: '5%', top: '15%', maxWidth: '180px', opacity: 0.9}} 
+          style={{right: '5%', top: '15%', maxWidth: '180px'}} 
         />
         <Image 
           src="/images/technology-smiley.gif" 
@@ -47,23 +47,23 @@ export default function Hero() {
           width={150} 
           height={150} 
           className="hidden lg:block fixed z-10 pointer-events-none" 
-          style={{right: '2%', top: '50%', maxWidth: '140px', opacity: 0.8}} 
+          style={{right: '2%', top: '50%', maxWidth: '140px'}} 
         />
         <Image 
-          src="/images/iLoveProgramming.gif" 
-          alt="I love programming animated gif" 
+          src="/images/computer.gif" 
+          alt="Computer animated gif" 
           width={120} 
           height={90} 
           className="hidden xl:block fixed z-10 pointer-events-none" 
-          style={{left: '3%', top: '25%', maxWidth: '120px', opacity: 0.7}} 
+          style={{left: '3%', top: '25%', maxWidth: '120px'}} 
         />
         <Image 
-          src="/images/technology-smiley.gif" 
-          alt="Technology smiley gif" 
+          src="/images/viruswarning.jpg" 
+          alt="Virus warning image" 
           width={100} 
           height={100} 
           className="hidden xl:block fixed z-10 pointer-events-none" 
-          style={{left: '8%', bottom: '20%', maxWidth: '100px', opacity: 0.6}} 
+          style={{left: '8%', bottom: '20%', maxWidth: '100px'}} 
         />
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="flex-shrink-0">
