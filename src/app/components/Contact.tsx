@@ -5,13 +5,13 @@ export default function Contact() {
     {
       icon: Mail,
       label: "EMAIL",
-      value: "coleman.rose@example.com",
-      href: "mailto:coleman.rose@example.com"
+      value: "colemanrose.new@gmail.com",
+      href: "mailto:colemanrose.new@gmail.com"
     },
     {
       icon: Github,
       label: "GITHUB",
-                                                                value: "github.com/colemanswe",
+      value: "github.com/colemanswe",
       href: "https://github.com/colemanswe"
     },
     {
