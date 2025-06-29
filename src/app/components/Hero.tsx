@@ -6,6 +6,9 @@ export default function Hero() {
   return (
     <section className="hero-section">
       <div className="container mx-auto px-4">
+        
+      <img src="/images/iLoveProgramming.gif" alt="I love programming animated gif" style={{position: 'absolute', right: '20%', top: '10%'}} />
+      <img src="/images/technology-smiley.gif" alt="Technology listen gif" style={{position: 'absolute', right: '0%', top: '10%'}} />
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="flex-shrink-0">
             <Computer3D />
@@ -20,14 +23,8 @@ export default function Hero() {
             </h1>
             
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12">
-              <span className="brutal-border bg-yellow-400 px-6 py-3 font-bold text-lg tracking-widest">
-                SENIOR
-              </span>
-              <span className="brutal-border bg-pink-400 px-6 py-3 font-bold text-lg tracking-widest">
-                SOFTWARE
-              </span>
-              <span className="brutal-border bg-green-400 px-6 py-3 font-bold text-lg tracking-widest">
-                ENGINEER
+              <span className="w-full brutal-border bg-green-400 px-6 py-3 font-bold text-lg tracking-widest">
+                SENIOR SOFTWARE ENGINEER
               </span>
             </div>
 

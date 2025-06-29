@@ -44,6 +44,8 @@ export default function CatAdBanner() {
     }
   }
 
+  // TODO: Addd duplication/trailing. Reduce z-index for trail etc so it appears behind text
+
   return (
     <div
       ref={bannerRef}
@@ -52,7 +54,7 @@ export default function CatAdBanner() {
         left: `${position.x}px`,
         top: `${position.y}px`,
         width: '720px',
-        height: '400px',
+        height: '450px',
         background: 'white',
         border: '3px solid #0066cc',
         boxShadow: '2px 2px 8px rgba(0,0,0,0.3)'
@@ -77,12 +79,12 @@ export default function CatAdBanner() {
               <img 
                 src="/lulu/IMG_0790.jpg"
                 alt="Lulu the cat"
-                className="w-32 h-32 object-cover border-2 border-gray-400 shadow-lg"
+                className="w-40 h-40 object-cover border-2 border-gray-400 shadow-lg"
               />
               <img 
                 src="/lulu/IMG_1215.jpg"
                 alt="Lulu the cat"
-                className="w-32 h-32 object-cover border-2 border-gray-400 shadow-lg"
+                className="w-40 h-40 object-cover border-2 border-gray-400 shadow-lg"
               />
             </div>
             
