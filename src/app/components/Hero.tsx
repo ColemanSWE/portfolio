@@ -26,19 +26,42 @@ export default function Hero() {
   // Reduce red glow on initial load
   const redGlowOpacity = useTransform(scrollYProgress, [0, 0.2], [0.3, 1])
   
-  // Random particles
-  const particles = Array.from({ length: 12 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 400 - 200, // -200 to 200 (much wider spread)
-    y: Math.random() * 300 - 150, // -150 to 150 (taller spread)
-    size: Math.random() * 6 + 2, // 2 to 8
-    delay: Math.random() * 0.5,
+  // Random particles for COLEMAN
+  const colemanParticles = Array.from({ length: 8 }, (_, i) => ({
+    id: `coleman-${i}`,
+    initialX: (Math.random() - 0.5) * 60, // Start spread within 60px of center
+    initialY: (Math.random() - 0.5) * 60,
+    finalX: Math.random() * 400 - 200, // Final spread -200 to 200
+    finalY: Math.random() * 300 - 150, // Final spread -150 to 150
+    size: Math.random() * 6 + 2,
+    color: Math.random() > 0.5 ? '#ff0000' : '#000000',
+    shape: Math.random() > 0.7 ? '50%' : '0%',
+    rotation: Math.random() * 360 - 180,
   }))
   
-  const particleTransforms = particles.map(particle => ({
-    x: useTransform(scrollYProgress, [0, 0.5], [0, particle.x]),
-    y: useTransform(scrollYProgress, [0, 0.5], [0, particle.y]),
-    rotate: useTransform(scrollYProgress, [0, 0.5], [0, Math.random() * 360 - 180]),
+  // Random particles for ROSE
+  const roseParticles = Array.from({ length: 8 }, (_, i) => ({
+    id: `rose-${i}`,
+    initialX: (Math.random() - 0.5) * 60,
+    initialY: (Math.random() - 0.5) * 60,
+    finalX: Math.random() * 400 - 200,
+    finalY: Math.random() * 300 - 150,
+    size: Math.random() * 6 + 2,
+    color: Math.random() > 0.5 ? '#ff0000' : '#000000',
+    shape: Math.random() > 0.7 ? '50%' : '0%',
+    rotation: Math.random() * 360 - 180,
+  }))
+  
+  const colemanParticleTransforms = colemanParticles.map(particle => ({
+    x: useTransform(scrollYProgress, [0, 0.5], [particle.initialX, particle.finalX]),
+    y: useTransform(scrollYProgress, [0, 0.5], [particle.initialY, particle.finalY]),
+    rotate: useTransform(scrollYProgress, [0, 0.5], [0, particle.rotation]),
+  }))
+  
+  const roseParticleTransforms = roseParticles.map(particle => ({
+    x: useTransform(scrollYProgress, [0, 0.5], [particle.initialX, particle.finalX]),
+    y: useTransform(scrollYProgress, [0, 0.5], [particle.initialY, particle.finalY]),
+    rotate: useTransform(scrollYProgress, [0, 0.5], [0, particle.rotation]),
   }))
 
   return (
@@ -55,8 +78,8 @@ export default function Hero() {
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
             {/* 3D Layered Name Effect */}
             <div className="relative mb-4">
-              {/* Random particles */}
-              {particles.map((particle, index) => (
+              {/* Random particles for COLEMAN */}
+              {colemanParticles.map((particle, index) => (
                 <motion.div
                   key={particle.id}
                   className="absolute select-none pointer-events-none"
@@ -65,13 +88,13 @@ export default function Hero() {
                     left: '50%',
                     marginTop: `-${particle.size/2}px`,
                     marginLeft: `-${particle.size/2}px`,
-                    x: particleTransforms[index].x,
-                    y: particleTransforms[index].y,
-                    rotate: particleTransforms[index].rotate,
+                    x: colemanParticleTransforms[index].x,
+                    y: colemanParticleTransforms[index].y,
+                    rotate: colemanParticleTransforms[index].rotate,
                     width: `${particle.size}px`,
                     height: `${particle.size}px`,
-                    backgroundColor: Math.random() > 0.5 ? '#ff0000' : '#000000',
-                    borderRadius: Math.random() > 0.7 ? '50%' : '0%',
+                    backgroundColor: particle.color,
+                    borderRadius: particle.shape,
                     opacity: 0.6,
                     zIndex: 0
                   }}
@@ -131,22 +154,22 @@ export default function Hero() {
 
             <div className="relative mb-8">
               {/* Random particles for ROSE */}
-              {particles.map((particle, index) => (
+              {roseParticles.map((particle, index) => (
                 <motion.div
-                  key={`rose-${particle.id}`}
+                  key={particle.id}
                   className="absolute select-none pointer-events-none"
                   style={{
                     top: '50%',
                     left: '50%',
                     marginTop: `-${particle.size/2}px`,
                     marginLeft: `-${particle.size/2}px`,
-                    x: particleTransforms[index].x,
-                    y: particleTransforms[index].y,
-                    rotate: particleTransforms[index].rotate,
+                    x: roseParticleTransforms[index].x,
+                    y: roseParticleTransforms[index].y,
+                    rotate: roseParticleTransforms[index].rotate,
                     width: `${particle.size}px`,
                     height: `${particle.size}px`,
-                    backgroundColor: Math.random() > 0.5 ? '#ff0000' : '#000000',
-                    borderRadius: Math.random() > 0.7 ? '50%' : '0%',
+                    backgroundColor: particle.color,
+                    borderRadius: particle.shape,
                     opacity: 0.4,
                     zIndex: 0
                   }}
