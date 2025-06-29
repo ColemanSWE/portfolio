@@ -16,17 +16,17 @@ export default function Projects() {
       status: "PRODUCTION"
     },
     {
-      title: "TASK MANAGEMENT SYSTEM",
-      description: "COLLABORATIVE PROJECT MANAGEMENT TOOL WITH REAL-TIME UPDATES",
-      technologies: ["TYPESCRIPT", "REACT", "SOCKET.IO", "MONGODB"],
+      title: "HSL LIVE TRACKER",
+      description: "REAL-TIME HELSINKI PUBLIC TRANSPORT TRACKER WITH INTERACTIVE MAP",
+      technologies: ["TYPESCRIPT", "LEAFLET", "MQTT", "SCSS"],
       features: [
-        "REAL-TIME COLLABORATION",
-        "DRAG-AND-DROP INTERFACE",
-        "ADVANCED FILTERING & SEARCH"
+        "LIVE VEHICLE TRACKING VIA MQTT",
+        "INTERACTIVE MAP VISUALIZATION",
+        "ROUTE & VEHICLE TYPE FILTERING"
       ],
-      github: "https://github.com/coleman-rose/task-manager",
-      live: "https://tasks.coleman-rose.dev",
-      status: "BETA"
+      github: "https://github.com/ColemanSWE/hsl-live-tracker",
+      live: "https://colemanswe.github.io/hsl-live-tracker/",
+      status: "PRODUCTION"
     },
     {
       title: "API GATEWAY SERVICE",
