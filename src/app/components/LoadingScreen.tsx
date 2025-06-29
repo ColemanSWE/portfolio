@@ -23,8 +23,8 @@ export default function LoadingScreen() {
   return (
     <div className={`loading-screen ${!isLoading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
       <div className="flex flex-col items-center justify-center">
-        <div className="glitch" data-text="LOADING PORTFOLIO...">
-          LOADING PORTFOLIO...
+        <div className="glitch" data-text="LOADING REASONS TO HIRE ME...">
+          LOADING REASONS TO HIRE ME...
         </div>
         <div className="flex space-x-2 mt-8">
           {[...Array(5)].map((_, i) => (

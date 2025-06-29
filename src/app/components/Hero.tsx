@@ -32,22 +32,39 @@ export default function Hero() {
     <section className="hero-section" ref={containerRef}>
       <div className="container mx-auto px-4">
         
-             <Image 
-        src="/images/iLoveProgramming.gif" 
-        alt="I love programming animated gif" 
-        width={200} 
-        height={150} 
-        className="hidden md:block" 
-        style={{position: 'absolute', right: '5%', top: '10%', zIndex: -1, maxWidth: '200px'}} 
-      />
-      <Image 
-        src="/images/technology-smiley.gif" 
-        alt="Technology listen gif" 
-        width={150} 
-        height={150} 
-        className="hidden lg:block" 
-        style={{position: 'absolute', right: '2%', top: '30%', zIndex: -1, maxWidth: '150px'}} 
-      />
+        {/* Desktop-only animated background images */}
+        <Image 
+          src="/images/iLoveProgramming.gif" 
+          alt="I love programming animated gif" 
+          width={200} 
+          height={150} 
+          className="hidden lg:block fixed z-10 pointer-events-none" 
+          style={{right: '5%', top: '15%', maxWidth: '180px', opacity: 0.9}} 
+        />
+        <Image 
+          src="/images/technology-smiley.gif" 
+          alt="Technology smiley gif" 
+          width={150} 
+          height={150} 
+          className="hidden lg:block fixed z-10 pointer-events-none" 
+          style={{right: '2%', top: '50%', maxWidth: '140px', opacity: 0.8}} 
+        />
+        <Image 
+          src="/images/iLoveProgramming.gif" 
+          alt="I love programming animated gif" 
+          width={120} 
+          height={90} 
+          className="hidden xl:block fixed z-10 pointer-events-none" 
+          style={{left: '3%', top: '25%', maxWidth: '120px', opacity: 0.7}} 
+        />
+        <Image 
+          src="/images/technology-smiley.gif" 
+          alt="Technology smiley gif" 
+          width={100} 
+          height={100} 
+          className="hidden xl:block fixed z-10 pointer-events-none" 
+          style={{left: '8%', bottom: '20%', maxWidth: '100px', opacity: 0.6}} 
+        />
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="flex-shrink-0">
             <Computer3D />
