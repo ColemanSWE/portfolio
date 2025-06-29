@@ -3,21 +3,30 @@
 import { useState, useRef, useEffect } from 'react'
 
 export default function DraggableBanner() {
-  const [position, setPosition] = useState({ x: 50, y: 600 })
+  const [position, setPosition] = useState({ x: 50, y: 500 })
   const [isDragging, setIsDragging] = useState(false)
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
   const bannerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    setPosition({ x: 50, y: window.innerHeight - 120 })
+    // Ensure banner is visible on screen
+    const bannerHeight = 80
+    const safeY = Math.max(100, Math.min(500, window.innerHeight - bannerHeight - 50))
+    setPosition({ x: 50, y: safeY })
   }, [])
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (isDragging) {
+        const bannerWidth = bannerRef.current?.offsetWidth || Math.min(400, window.innerWidth * 0.9)
+        const bannerHeight = bannerRef.current?.offsetHeight || Math.min(80, window.innerHeight * 0.12)
+        
+        const newX = Math.max(10, Math.min(e.clientX - dragOffset.x, window.innerWidth - bannerWidth - 10))
+        const newY = Math.max(10, Math.min(e.clientY - dragOffset.y, window.innerHeight - bannerHeight - 10))
+        
         setPosition({
-          x: e.clientX - dragOffset.x,
-          y: e.clientY - dragOffset.y
+          x: newX,
+          y: newY
         })
       }
     }
@@ -55,9 +64,10 @@ export default function DraggableBanner() {
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
-        width: '400px',
-        height: '80px',
-        backgroundColor: 'var(--brutal-yellow)'
+        width: 'min(400px, 90vw)',
+        height: 'min(80px, 12vh)',
+        backgroundColor: 'var(--brutal-yellow)',
+        fontSize: 'clamp(0.7rem, 2vw, 0.9rem)'
       }}
       onMouseDown={handleMouseDown}
     >

@@ -11,20 +11,21 @@ export default function CatAdBanner() {
 
   useEffect(() => {
     // Set safe initial position on client side
-    const safeX = Math.min(200, window.innerWidth - 400)
+    const bannerWidth = Math.min(500, window.innerWidth * 0.85)
+    const safeX = Math.min(200, window.innerWidth - bannerWidth - 20)
     if (safeX > 0) {
-      setPosition(prev => ({ ...prev, x: safeX }))
+      setPosition(prev => ({ ...prev, x: Math.max(10, safeX) }))
     }
   }, [])
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (isDragging) {
-        const bannerWidth = bannerRef.current?.offsetWidth || 400
-        const bannerHeight = bannerRef.current?.offsetHeight || 300
+        const bannerWidth = bannerRef.current?.offsetWidth || Math.min(500, window.innerWidth * 0.85)
+        const bannerHeight = bannerRef.current?.offsetHeight || Math.min(300, window.innerHeight * 0.5)
         
-        const newX = Math.max(0, Math.min(e.clientX - dragOffset.x, window.innerWidth - bannerWidth))
-        const newY = Math.max(0, e.clientY - dragOffset.y + window.scrollY)
+        const newX = Math.max(10, Math.min(e.clientX - dragOffset.x, window.innerWidth - bannerWidth - 10))
+        const newY = Math.max(10, e.clientY - dragOffset.y + window.scrollY)
         
         setPosition({
           x: newX,
@@ -68,11 +69,12 @@ export default function CatAdBanner() {
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
-        width: 'min(720px, 90vw)',
-        height: 'min(450px, 60vh)',
+        width: 'min(500px, 85vw)',
+        height: 'min(300px, 50vh)',
         background: 'white',
-        border: '3px solid #0066cc',
-        boxShadow: '2px 2px 8px rgba(0,0,0,0.3)'
+        border: '2px solid #0066cc',
+        boxShadow: '2px 2px 8px rgba(0,0,0,0.3)',
+        fontSize: 'clamp(0.7rem, 1.5vw, 0.9rem)'
       }}
       onMouseDown={handleMouseDown}
     >
