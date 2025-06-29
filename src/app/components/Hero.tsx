@@ -32,8 +32,22 @@ export default function Hero() {
     <section className="hero-section" ref={containerRef}>
       <div className="container mx-auto px-4">
         
-      <Image src="/images/iLoveProgramming.gif" alt="I love programming animated gif" width={200} height={150} style={{position: 'absolute', right: '20%', top: '10%'}} />
-      <Image src="/images/technology-smiley.gif" alt="Technology listen gif" width={150} height={150} style={{position: 'absolute', right: '0%', top: '10%'}} />
+      <Image 
+        src="/images/iLoveProgramming.gif" 
+        alt="I love programming animated gif" 
+        width={200} 
+        height={150} 
+        className="hidden md:block" 
+        style={{position: 'absolute', right: '20%', top: '10%', zIndex: -1}} 
+      />
+      <Image 
+        src="/images/technology-smiley.gif" 
+        alt="Technology listen gif" 
+        width={150} 
+        height={150} 
+        className="hidden lg:block" 
+        style={{position: 'absolute', right: '0%', top: '10%', zIndex: -1}} 
+      />
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="flex-shrink-0">
             <Computer3D />
@@ -44,7 +58,7 @@ export default function Hero() {
             <div className="relative mb-4">
               {/* Background shadow layer */}
               <motion.div
-                className="absolute inset-0 text-8xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
+                className="absolute inset-0 text-5xl md:text-7xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
                 style={{
                   y: layer3Y,
                   x: layer3X,
@@ -61,7 +75,7 @@ export default function Hero() {
               
               {/* Middle red layer */}
               <motion.div
-                className="absolute inset-0 text-8xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
+                className="absolute inset-0 text-5xl md:text-7xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
                 style={{
                   y: layer2Y,
                   x: layer2X,
@@ -79,13 +93,13 @@ export default function Hero() {
               
               {/* Front white layer */}
               <motion.h1
-                className="relative text-8xl lg:text-9xl font-black tracking-wider text-white z-10"
+                className="relative text-5xl md:text-7xl lg:text-9xl font-black tracking-wider text-white z-10"
                 style={{
                   y: layer1Y,
                   x: layer1X,
                   rotate: layer1Rotate,
                   textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
-                  zIndex: 3,
+                  zIndex: 10,
                   fontFamily: 'JetBrains Mono, monospace'
                 }}
               >
@@ -96,7 +110,7 @@ export default function Hero() {
             <div className="relative mb-8">
               {/* Background shadow layer */}
               <motion.div
-                className="absolute inset-0 text-8xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
+                className="absolute inset-0 text-5xl md:text-7xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
                 style={{
                   y: layer3Y,
                   x: layer3X,
@@ -113,7 +127,7 @@ export default function Hero() {
               
               {/* Middle red layer */}
               <motion.div
-                className="absolute inset-0 text-8xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
+                className="absolute inset-0 text-5xl md:text-7xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
                 style={{
                   y: layer2Y,
                   x: layer2X,
@@ -131,13 +145,13 @@ export default function Hero() {
               
               {/* Front white layer */}
               <motion.h1
-                className="relative text-8xl lg:text-9xl font-black tracking-wider text-white z-10"
+                className="relative text-5xl md:text-7xl lg:text-9xl font-black tracking-wider text-white z-10"
                 style={{
                   y: layer1Y,
                   x: layer1X,
                   rotate: layer1Rotate,
                   textShadow: '2px 2px 4px rgba(0,0,0,0.8)',
-                  zIndex: 3,
+                  zIndex: 10,
                   fontFamily: 'JetBrains Mono, monospace'
                 }}
               >

@@ -50,12 +50,12 @@ export default function CatAdBanner() {
   return (
     <div
       ref={bannerRef}
-      className="absolute z-50 cursor-move select-none"
+      className="absolute z-0 cursor-move select-none"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
-        width: '720px',
-        height: '450px',
+        width: 'min(720px, 90vw)',
+        height: 'min(450px, 60vh)',
         background: 'white',
         border: '3px solid #0066cc',
         boxShadow: '2px 2px 8px rgba(0,0,0,0.3)'
@@ -69,42 +69,42 @@ export default function CatAdBanner() {
         
         <div className="flex flex-col h-full">
           <div 
-            className="text-red-600 font-bold text-2xl mb-4 text-center"
+            className="text-red-600 font-bold text-lg md:text-2xl mb-2 md:mb-4 text-center"
             style={{ fontFamily: 'Arial, sans-serif' }}
           >
             ⭐ LULU&apos;S TESTIMONIAL ⭐
           </div>
           
-          <div className="flex items-center gap-6 flex-1">
-            <div className="flex flex-col gap-4">
+          <div className="flex flex-col md:flex-row items-center gap-3 md:gap-6 flex-1">
+            <div className="flex flex-row md:flex-col gap-2 md:gap-4">
               <Image 
                 src="/lulu/IMG_0790.jpg"
                 alt="Lulu the cat"
                 width={160}
                 height={160}
-                className="w-40 h-40 object-cover border-2 border-gray-400 shadow-lg"
+                className="w-20 h-20 md:w-40 md:h-40 object-cover border-2 border-gray-400 shadow-lg"
               />
               <Image 
                 src="/lulu/IMG_1215.jpg"
                 alt="Lulu the cat"
                 width={160}
                 height={160}
-                className="w-40 h-40 object-cover border-2 border-gray-400 shadow-lg"
+                className="w-20 h-20 md:w-40 md:h-40 object-cover border-2 border-gray-400 shadow-lg"
               />
             </div>
             
             <div className="flex-1 flex flex-col justify-center">
               <div 
-                className="text-blue-800 text-lg leading-relaxed mb-6"
+                className="text-blue-800 text-sm md:text-lg leading-relaxed mb-3 md:mb-6"
                 style={{ fontFamily: 'Times New Roman, serif' }}
               >
                 &quot;Pappa codes better than he gives belly rubs!<br/>
                 He deserves treats... I mean, a job!&quot;<br/>
-                <span className="text-red-500 font-bold text-xl">HIRE HIM NOW - Lulu 🐾</span>
+                <span className="text-red-500 font-bold text-base md:text-xl">HIRE HIM NOW - Lulu 🐾</span>
               </div>
               <a 
                 href="#contact"
-                className="inline-block bg-gradient-to-b from-yellow-300 to-yellow-500 border-2 border-yellow-600 px-8 py-4 text-lg font-bold text-black hover:from-yellow-400 hover:to-yellow-600 transition-all cursor-pointer no-underline self-start"
+                className="inline-block bg-gradient-to-b from-yellow-300 to-yellow-500 border-2 border-yellow-600 px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg font-bold text-black hover:from-yellow-400 hover:to-yellow-600 transition-all cursor-pointer no-underline self-start"
                 onClick={(e) => e.stopPropagation()}
                 style={{ 
                   fontFamily: 'Arial, sans-serif',
