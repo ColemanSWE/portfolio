@@ -61,6 +61,10 @@ export default function Hero() {
                   key={particle.id}
                   className="absolute select-none pointer-events-none"
                   style={{
+                    top: '50%',
+                    left: '50%',
+                    marginTop: `-${particle.size/2}px`,
+                    marginLeft: `-${particle.size/2}px`,
                     x: particleTransforms[index].x,
                     y: particleTransforms[index].y,
                     rotate: particleTransforms[index].rotate,
@@ -132,6 +136,10 @@ export default function Hero() {
                   key={`rose-${particle.id}`}
                   className="absolute select-none pointer-events-none"
                   style={{
+                    top: '50%',
+                    left: '50%',
+                    marginTop: `-${particle.size/2}px`,
+                    marginLeft: `-${particle.size/2}px`,
                     x: particleTransforms[index].x,
                     y: particleTransforms[index].y,
                     rotate: particleTransforms[index].rotate,
