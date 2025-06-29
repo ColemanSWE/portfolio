@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Computer3D from './Computer3D'
 
 export default function Hero() {
@@ -7,8 +8,8 @@ export default function Hero() {
     <section className="hero-section">
       <div className="container mx-auto px-4">
         
-      <img src="/images/iLoveProgramming.gif" alt="I love programming animated gif" style={{position: 'absolute', right: '20%', top: '10%'}} />
-      <img src="/images/technology-smiley.gif" alt="Technology listen gif" style={{position: 'absolute', right: '0%', top: '10%'}} />
+      <Image src="/images/iLoveProgramming.gif" alt="I love programming animated gif" style={{position: 'absolute', right: '20%', top: '10%'}} />
+      <Image src="/images/technology-smiley.gif" alt="Technology listen gif" style={{position: 'absolute', right: '0%', top: '10%'}} />
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           <div className="flex-shrink-0">
             <Computer3D />

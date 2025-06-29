@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
+import Image from 'next/image'
 
 export default function CatAdBanner() {
   const [position, setPosition] = useState({ x: 200, y: 800 })
@@ -71,17 +72,17 @@ export default function CatAdBanner() {
             className="text-red-600 font-bold text-2xl mb-4 text-center"
             style={{ fontFamily: 'Arial, sans-serif' }}
           >
-            ⭐ LULU'S TESTIMONIAL ⭐
+            ⭐ LULU&apos;S TESTIMONIAL ⭐
           </div>
           
           <div className="flex items-center gap-6 flex-1">
             <div className="flex flex-col gap-4">
-              <img 
+              <Image 
                 src="/lulu/IMG_0790.jpg"
                 alt="Lulu the cat"
                 className="w-40 h-40 object-cover border-2 border-gray-400 shadow-lg"
               />
-              <img 
+              <Image 
                 src="/lulu/IMG_1215.jpg"
                 alt="Lulu the cat"
                 className="w-40 h-40 object-cover border-2 border-gray-400 shadow-lg"
@@ -93,8 +94,8 @@ export default function CatAdBanner() {
                 className="text-blue-800 text-lg leading-relaxed mb-6"
                 style={{ fontFamily: 'Times New Roman, serif' }}
               >
-                "Pappa codes better than he gives belly rubs!<br/>
-                He deserves treats... I mean, a job!"<br/>
+                &quot;Pappa codes better than he gives belly rubs!<br/>
+                He deserves treats... I mean, a job!&quot;<br/>
                 <span className="text-red-500 font-bold text-xl">HIRE HIM NOW - Lulu 🐾</span>
               </div>
               <a 

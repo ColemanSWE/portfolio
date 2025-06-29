@@ -188,7 +188,7 @@ export default function AchievementNotification() {
       window.removeEventListener('scroll', handleScroll)
       if (scrollTimeout) clearTimeout(scrollTimeout)
     }
-  }, [])
+  }, [unlockAchievement])
 
 
 
