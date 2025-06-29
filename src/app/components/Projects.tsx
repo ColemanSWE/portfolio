@@ -29,15 +29,15 @@ export default function Projects() {
       status: "PRODUCTION"
     },
     {
-      title: "API GATEWAY SERVICE",
-      description: "MICROSERVICES API GATEWAY WITH RATE LIMITING & AUTHENTICATION",
-      technologies: ["NODE.JS", "REDIS", "DOCKER", "KUBERNETES"],
+      title: "SPOTIFY 3D ART GALLERY",
+      description: "3D VIRTUAL GALLERY DISPLAYING USER'S TOP SPOTIFY ALBUMS AS TEXTURED ASSETS",
+      technologies: ["REACT", "THREE.JS", "NODE.JS", "SPOTIFY API"],
       features: [
-        "RATE LIMITING & THROTTLING",
-        "JWT AUTHENTICATION",
-        "REQUEST/RESPONSE LOGGING"
+        "SPOTIFY OAUTH INTEGRATION",
+        "3D ALBUM VISUALIZATION",
+        "ALBUM COVER TEXTURES"
       ],
-      github: "https://github.com/coleman-rose/api-gateway",
+      github: "https://github.com/ColemanSWE/spotify-art-gallery",
       live: null,
       status: "DEVELOPMENT"
     }
