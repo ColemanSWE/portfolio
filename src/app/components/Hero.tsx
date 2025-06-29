@@ -27,11 +27,11 @@ export default function Hero() {
   const redGlowOpacity = useTransform(scrollYProgress, [0, 0.2], [0.3, 1])
   
   // Random particles
-  const particles = Array.from({ length: 8 }, (_, i) => ({
+  const particles = Array.from({ length: 12 }, (_, i) => ({
     id: i,
-    x: Math.random() * 100 - 50, // -50 to 50
-    y: Math.random() * 100 - 50,
-    size: Math.random() * 4 + 2, // 2 to 6
+    x: Math.random() * 400 - 200, // -200 to 200 (much wider spread)
+    y: Math.random() * 300 - 150, // -150 to 150 (taller spread)
+    size: Math.random() * 6 + 2, // 2 to 8
     delay: Math.random() * 0.5,
   }))
   
