@@ -59,17 +59,17 @@ export default function Projects() {
           DEPLOYED SYSTEMS
         </h2>
         
-        <div className="brutal-grid max-w-6xl mx-auto">
+        <div className="portfolio-grid max-w-6xl mx-auto">
           {projects.map((project, index) => (
-            <div key={index} className="brutal-card">
+            <div key={index} className="portfolio-card">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-xl font-bold tracking-wide">{project.title}</h3>
-                <span className={`brutal-border ${getStatusColor(project.status)} px-3 py-1 text-sm font-bold`}>
+                <span className={`portfolio-border ${getStatusColor(project.status)} px-3 py-1 text-sm font-bold`}>
                   {project.status}
                 </span>
               </div>
               
-              <p className="brutal-text text-sm mb-6">
+              <p className="portfolio-text text-sm mb-6">
                 {project.description}
               </p>
               
@@ -95,7 +95,7 @@ export default function Projects() {
               <div className="flex gap-4">
                 <a 
                   href={project.github} 
-                  className="brutal-button text-sm flex items-center gap-2"
+                  className="portfolio-button text-sm flex items-center gap-2"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -105,7 +105,7 @@ export default function Projects() {
                 {project.live && (
                   <a 
                     href={project.live} 
-                    className="brutal-button secondary text-sm flex items-center gap-2"
+                    className="portfolio-button secondary text-sm flex items-center gap-2"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

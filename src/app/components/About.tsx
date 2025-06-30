@@ -6,19 +6,19 @@ export default function About() {
           SYSTEM OPERATOR
         </h2>
         
-        <div className="brutal-grid max-w-6xl mx-auto">
-          <div className="brutal-card">
-            <div className="brutal-text mb-6">
+        <div className="portfolio-grid max-w-6xl mx-auto">
+          <div className="portfolio-card">
+            <div className="portfolio-text mb-6">
               SENIOR SOFTWARE ENGINEER WITH EXTENSIVE EXPERIENCE IN FULL-STACK DEVELOPMENT. 
               SPECIALIST IN REACT, TYPESCRIPT, AND NODE.JS ARCHITECTURES.
             </div>
-            <div className="brutal-text">
+            <div className="portfolio-text">
               ARCHITECT OF SCALABLE SYSTEMS. BUILDER OF DIGITAL INFRASTRUCTURE. 
               SOLVER OF COMPLEX PROBLEMS.
             </div>
           </div>
           
-          <div className="brutal-card">
+          <div className="portfolio-card">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
                 <div className="text-4xl font-bold mb-2">5+</div>

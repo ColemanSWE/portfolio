@@ -5,13 +5,13 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
-  --brutal-black: #000000;
-  --brutal-white: #ffffff;
-  --brutal-yellow: #ffff00;
-  --brutal-red: #ff0000;
-  --brutal-blue: #0000ff;
-  --brutal-green: #00ff00;
-  --brutal-pink: #ff00ff;
+  --portfolio-black: #000000;
+  --portfolio-white: #ffffff;
+  --portfolio-yellow: #ffff00;
+  --portfolio-red: #ff0000;
+  --portfolio-blue: #0000ff;
+  --portfolio-green: #00ff00;
+  --portfolio-pink: #ff00ff;
 }
 
 * {
@@ -22,8 +22,8 @@
 
 html, body {
   font-family: 'JetBrains Mono', monospace;
-  background: var(--brutal-white);
-  color: var(--brutal-black);
+  background: var(--portfolio-white);
+  color: var(--portfolio-black);
   overflow-x: hidden;
   cursor: crosshair;
   max-width: 100vw;
@@ -44,18 +44,18 @@ body {
   max-width: 100vw;
 }
 
-.brutal-border {
-  border: 4px solid var(--brutal-black);
-  box-shadow: 8px 8px 0px var(--brutal-black);
+.portfolio-border {
+  border: 4px solid var(--portfolio-black);
+  box-shadow: 8px 8px 0px var(--portfolio-black);
 }
 
-.brutal-border-none-shadow {
-  border: 4px solid var(--brutal-black);
+.portfolio-border-shadow-none {
+  border: 4px solid var(--portfolio-black);
 }
 
-.brutal-button {
-  @apply brutal-border;
-  background: var(--brutal-yellow);
+.portfolio-button {
+  @apply portfolio-border;
+  background: var(--portfolio-yellow);
   padding: 12px 24px;
   font-weight: 700;
   text-transform: uppercase;
@@ -66,21 +66,21 @@ body {
   display: inline-block;
 }
 
-.brutal-button:hover {
+.portfolio-button:hover {
   transform: translate(-4px, -4px);
-  box-shadow: 12px 12px 0px var(--brutal-black);
+  box-shadow: 12px 12px 0px var(--portfolio-black);
 }
 
-.brutal-button:active {
+.portfolio-button:active {
   transform: translate(0px, 0px);
-  box-shadow: 4px 4px 0px var(--brutal-black);
+  box-shadow: 4px 4px 0px var(--portfolio-black);
 }
 
-.brutal-button.secondary {
-  background: var(--brutal-pink);
+.portfolio-button.secondary {
+  background: var(--portfolio-pink);
 }
 
-.brutal-text {
+.portfolio-text {
   font-size: 1.2rem;
   line-height: 1.4;
   font-weight: 700;
@@ -94,7 +94,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: var(--brutal-white);
+  color: var(--portfolio-white);
   animation: glitch 2s infinite;
   text-align: center;
   padding: 0 1rem;
@@ -126,13 +126,13 @@ body {
 
 .glitch::before {
   animation: glitch-1 0.3s infinite;
-  color: var(--brutal-red);
+  color: var(--portfolio-red);
   z-index: -1;
 }
 
 .glitch::after {
   animation: glitch-2 0.3s infinite;
-  color: var(--brutal-blue);
+  color: var(--portfolio-blue);
   z-index: -2;
 }
 
@@ -161,8 +161,8 @@ body {
 }
 
 .ticker {
-  background: var(--brutal-black);
-  color: var(--brutal-white);
+  background: var(--portfolio-black);
+  color: var(--portfolio-white);
   padding: 12px 0;
   white-space: nowrap;
   overflow: hidden;
@@ -202,7 +202,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--brutal-black);
+  background: var(--portfolio-black);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -216,22 +216,22 @@ body {
   }
 }
 
-.brutal-card {
-  @apply brutal-border;
-  background: var(--brutal-white);
+.portfolio-card {
+  @apply portfolio-border;
+  background: var(--portfolio-white);
   padding: 24px;
   margin: 16px 0;
   position: relative;
 }
 
-.brutal-card::before {
+.portfolio-card::before {
   content: '';
   position: absolute;
   top: -4px;
   left: -4px;
   right: -12px;
   bottom: -12px;
-  background: var(--brutal-yellow);
+  background: var(--portfolio-yellow);
   z-index: -1;
 }
 
@@ -251,12 +251,12 @@ body {
   left: 0;
   width: 100px;
   height: 8px;
-  background: var(--brutal-red);
+  background: var(--portfolio-red);
 }
 
 .tech-tag {
-  @apply brutal-border;
-  background: var(--brutal-green);
+  @apply portfolio-border;
+  background: var(--portfolio-green);
   padding: 8px 16px;
   font-size: 0.875rem;
   font-weight: 700;
@@ -266,7 +266,7 @@ body {
   display: inline-block;
 }
 
-.brutal-grid {
+.portfolio-grid {
   display: grid;
   gap: 24px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -280,8 +280,8 @@ body {
   text-align: center;
   padding: 80px 20px 20px;
   background: 
-    linear-gradient(45deg, transparent 49%, var(--brutal-black) 49%, var(--brutal-black) 51%, transparent 51%),
-    linear-gradient(-45deg, transparent 49%, var(--brutal-black) 49%, var(--brutal-black) 51%, transparent 51%);
+    linear-gradient(45deg, transparent 49%, var(--portfolio-black) 49%, var(--portfolio-black) 51%, transparent 51%),
+    linear-gradient(-45deg, transparent 49%, var(--portfolio-black) 49%, var(--portfolio-black) 51%, transparent 51%);
   background-size: 20px 20px;
   background-position: 0 0, 10px 10px;
 } 

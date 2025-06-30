@@ -10,12 +10,11 @@ export default function CatAdBanner() {
   const bannerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Set safe initial position on client side with responsive banner sizes
     const getBannerWidth = () => {
-      if (window.innerWidth >= 1280) return 600 // xl
-      if (window.innerWidth >= 1024) return 500 // lg  
-      if (window.innerWidth >= 768) return 384 // md
-      return 320 // default
+      if (window.innerWidth >= 1280) return 600
+      if (window.innerWidth >= 1024) return 500
+      if (window.innerWidth >= 768) return 384
+      return 320
     }
     
     const bannerWidth = getBannerWidth()
@@ -29,15 +28,14 @@ export default function CatAdBanner() {
     const handleMouseMove = (e: MouseEvent) => {
       if (isDragging) {
         const getBannerDimensions = () => {
-          if (window.innerWidth >= 1280) return { width: 600, height: 320 } // xl
-          if (window.innerWidth >= 1024) return { width: 500, height: 288 } // lg  
-          if (window.innerWidth >= 768) return { width: 384, height: 224 } // md
-          return { width: 320, height: 192 } // default
+          if (window.innerWidth >= 1280) return { width: 600, height: 320 }
+          if (window.innerWidth >= 1024) return { width: 500, height: 288 }
+          if (window.innerWidth >= 768) return { width: 384, height: 224 }
+          return { width: 320, height: 192 }
         }
         
         const dimensions = getBannerDimensions()
         const bannerWidth = bannerRef.current?.offsetWidth || dimensions.width
-        const bannerHeight = bannerRef.current?.offsetHeight || dimensions.height
         
         const newX = Math.max(10, Math.min(e.clientX - dragOffset.x, window.innerWidth - bannerWidth - 10))
         const newY = Math.max(10, e.clientY - dragOffset.y + window.scrollY)
@@ -74,8 +72,6 @@ export default function CatAdBanner() {
       setIsDragging(true)
     }
   }
-
-  // TODO: Addd duplication/trailing. Reduce z-index for trail etc so it appears behind text
 
   return (
     <div

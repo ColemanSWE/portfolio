@@ -90,10 +90,10 @@ export default function Experience() {
         
         <div className="max-w-4xl mx-auto space-y-8">
           {visibleExperiences.map((exp, index) => (
-            <div key={index} className="brutal-card">
+            <div key={index} className="portfolio-card">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="text-2xl font-bold tracking-wide">{exp.title}</h3>
-                <span className="brutal-border bg-red-400 px-3 py-1 text-sm font-bold">
+                <span className="portfolio-border bg-red-400 px-3 py-1 text-sm font-bold">
                   {exp.duration}
                 </span>
               </div>
@@ -104,7 +104,7 @@ export default function Experience() {
               
               <div className="space-y-2 mb-6">
                 {exp.description.map((desc, i) => (
-                  <p key={i} className="brutal-text text-sm">
+                  <p key={i} className="portfolio-text text-sm">
                     {desc}
                   </p>
                 ))}
@@ -124,7 +124,7 @@ export default function Experience() {
             <div className="text-center mt-12">
               <button
                 onClick={() => setShowAll(!showAll)}
-                className="brutal-border bg-yellow-400 px-6 py-3 text-lg font-bold hover:bg-yellow-500 transition-colors cursor-pointer"
+                className="portfolio-border bg-yellow-400 px-6 py-3 text-lg font-bold hover:bg-yellow-500 transition-colors cursor-pointer"
               >
                 {showAll ? 'SHOW LESS ▲' : `SHOW MORE (${experiences.length - 3} MORE POSITIONS) ▼`}
               </button>

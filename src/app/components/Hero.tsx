@@ -12,7 +12,6 @@ export default function Hero() {
     offset: ["start start", "end start"]
   })
 
-  // Transform values for different layers - they start aligned and separate as you scroll
   const layer1Y = useTransform(scrollYProgress, [0, 0.5], [0, -80])
   const layer2Y = useTransform(scrollYProgress, [0, 0.5], [0, -40])
   const layer3Y = useTransform(scrollYProgress, [0, 0.5], [0, 40])
@@ -23,7 +22,6 @@ export default function Hero() {
   const layer2Rotate = useTransform(scrollYProgress, [0, 0.5], [0, 1])
   const layer3Rotate = useTransform(scrollYProgress, [0, 0.5], [0, 3])
   
-  // Reduce red glow on initial load
   const redGlowOpacity = useTransform(scrollYProgress, [0, 0.2], [0.3, 1])
   
 
@@ -177,16 +175,16 @@ export default function Hero() {
             </div>
             
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12">
-              <span className="w-full brutal-border bg-green-400 px-6 py-3 font-bold text-lg tracking-widest">
+              <span className="w-full portfolio-border bg-green-400 px-6 py-3 font-bold text-lg tracking-widest">
                 SENIOR SOFTWARE ENGINEER
               </span>
             </div>
 
             <div className="flex flex-wrap justify-center lg:justify-start gap-6">
-              <a href="#contact" className="brutal-button">
+              <a href="#contact" className="portfolio-button">
                 INITIATE CONTACT
               </a>
-              <a href="#projects" className="brutal-button secondary">
+              <a href="#projects" className="portfolio-button secondary">
                 VIEW WORK
               </a>
             </div>

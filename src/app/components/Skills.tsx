@@ -22,9 +22,9 @@ export default function Skills() {
           TECHNICAL ARSENAL
         </h2>
         
-        <div className="brutal-grid max-w-6xl mx-auto">
+        <div className="portfolio-grid max-w-6xl mx-auto">
           {Object.entries(skills).map(([category, skillList], index) => (
-            <div key={index} className="brutal-card">
+            <div key={index} className="portfolio-card">
               <h3 className="text-2xl font-bold mb-6 tracking-wide text-center">
                 {category}
               </h3>

@@ -9,7 +9,6 @@ export default function LoadingScreen() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false)
-      // Give the fade animation time to complete before unmounting
       setTimeout(() => {
         setIsVisible(false)
       }, 500)

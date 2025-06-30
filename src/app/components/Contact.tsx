@@ -36,23 +36,23 @@ export default function Contact() {
         </h2>
         
         <div className="max-w-4xl mx-auto">
-          <div className="brutal-card text-center mb-12">
-            <div className="brutal-text mb-6">
+          <div className="portfolio-card text-center mb-12">
+            <div className="portfolio-text mb-6">
               READY TO ARCHITECT YOUR NEXT DIGITAL SOLUTION?
             </div>
-            <div className="brutal-text text-sm">
+            <div className="portfolio-text text-sm">
               AVAILABLE FOR FULL-TIME POSITIONS, CONTRACT WORK, AND CONSULTANCY.
               SPECIALIZING IN REACT ECOSYSTEMS AND SCALABLE BACKEND ARCHITECTURES.
             </div>
           </div>
           
-          <div className="brutal-grid">
+          <div className="portfolio-grid">
             {contacts.map((contact, index) => {
               const IconComponent = contact.icon
               return (
-                <div key={index} className="brutal-card text-center">
+                <div key={index} className="portfolio-card text-center">
                   <div className="flex justify-center mb-4">
-                    <div className="brutal-border bg-blue-400 p-4">
+                    <div className="portfolio-border bg-blue-400 p-4">
                       <IconComponent size={32} />
                     </div>
                   </div>
@@ -62,14 +62,14 @@ export default function Contact() {
                   {contact.href ? (
                     <a 
                       href={contact.href}
-                      className="brutal-text text-sm hover:underline break-all"
+                      className="portfolio-text text-sm hover:underline break-all"
                       target={contact.href.startsWith('http') ? '_blank' : undefined}
                       rel={contact.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     >
                       {contact.value}
                     </a>
                   ) : (
-                    <div className="brutal-text text-sm break-all">
+                    <div className="portfolio-text text-sm break-all">
                       {contact.value}
                     </div>
                   )}
@@ -79,7 +79,7 @@ export default function Contact() {
           </div>
           
           <div className="text-center mt-12">
-            <a href="mailto:colemanrose.new@gmail.com" className="brutal-button text-lg">
+            <a href="mailto:colemanrose.new@gmail.com" className="portfolio-button text-lg">
               SEND MESSAGE
             </a>
           </div>

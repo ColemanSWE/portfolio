@@ -47,12 +47,12 @@ export default function Minimap() {
       }
 
       const indexToSectionMap: { [key: number]: string } = {
-        0: 'hero',       // Hero -> SPAWN
-        1: 'about',      // About -> ABOUT
-        2: 'experience', // Experience -> WORK
-        3: 'skills',     // Skills -> SKILLS
-        4: 'projects',   // Projects -> PROJECTS
-        5: 'contact'     // Contact -> COMM
+        0: 'hero',
+        1: 'about',
+        2: 'experience',
+        3: 'skills',
+        4: 'projects',
+        5: 'contact'
       }
       
       let foundSection = false
@@ -67,20 +67,17 @@ export default function Minimap() {
         }
       }
 
-      // If no section was found in the viewport, check if we're at the bottom
       if (!foundSection) {
-        // Check if we're near the bottom of the page
         const windowHeight = window.innerHeight
         const documentHeight = document.documentElement.scrollHeight
         const scrollTop = window.scrollY
-        const bottomThreshold = documentHeight - windowHeight - 100 // 100px from bottom
+        const bottomThreshold = documentHeight - windowHeight - 100
         
         if (scrollTop >= bottomThreshold || scrollProgress > 90) {
           current = 'contact'
         }
       }
 
-      // Final fallback: if scroll progress is high, force contact
       if (scrollProgress > 90) {
         current = 'contact'
       }
@@ -89,7 +86,7 @@ export default function Minimap() {
     }
 
     window.addEventListener('scroll', handleScroll)
-    handleScroll() // Initial call
+    handleScroll()
 
     return () => window.removeEventListener('scroll', handleScroll)
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -99,14 +96,13 @@ export default function Minimap() {
     const mainElement = document.querySelector('main')
     if (!mainElement) return
 
-    // Map section IDs to actual DOM indices
     const sectionToIndexMap: { [key: string]: number } = {
-      'hero': 0,       // SPAWN -> Hero component
-      'about': 1,      // ABOUT -> About component
-      'experience': 2, // WORK -> Experience component
-      'skills': 3,     // SKILLS -> Skills component
-      'projects': 4,   // PROJECTS -> Projects component
-      'contact': 5     // COMM -> Contact component
+      'hero': 0,
+      'about': 1,
+      'experience': 2,
+      'skills': 3,
+      'projects': 4,
+      'contact': 5
     }
     
     const targetIndex = sectionToIndexMap[sectionId]
@@ -117,7 +113,7 @@ export default function Minimap() {
 
   return (
     <div className="fixed bottom-4 right-4 z-40">
-      <div className="brutal-border bg-black p-3 w-48">
+      <div className="portfolio-border bg-black p-3 w-48">
         <div className="flex items-center justify-between mb-2">
           <div className="text-green-400 font-bold text-xs tracking-wider">
             MINIMAP
@@ -127,7 +123,7 @@ export default function Minimap() {
           </div>
         </div>
 
-        <div className="brutal-border bg-gray-800 h-2 mb-3 relative">
+        <div className="portfolio-border bg-gray-800 h-2 mb-3 relative">
           <div 
             className="bg-green-400 h-full transition-all duration-300"
             style={{ width: `${scrollProgress}%` }}
@@ -144,7 +140,7 @@ export default function Minimap() {
               onClick={() => scrollToSection(section.id)}
             >
               <div 
-                className={`w-3 h-3 brutal-border-none-shadow ${section.color} ${
+                className={`w-3 h-3 portfolio-border-shadow-none ${section.color} ${
                   currentSection === section.id ? 'animate-pulse' : ''
                 }`}
               />

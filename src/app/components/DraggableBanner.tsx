@@ -9,7 +9,6 @@ export default function DraggableBanner() {
   const bannerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    // Ensure banner is visible on screen
     const bannerHeight = 80
     const safeY = Math.max(100, Math.min(500, window.innerHeight - bannerHeight - 50))
     setPosition({ x: 50, y: safeY })
@@ -60,13 +59,13 @@ export default function DraggableBanner() {
   return (
     <div
       ref={bannerRef}
-      className="absolute z-50 brutal-border cursor-move select-none"
+      className="absolute z-50 portfolio-border cursor-move select-none"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
         width: 'min(400px, 90vw)',
         height: 'min(80px, 12vh)',
-        backgroundColor: 'var(--brutal-yellow)',
+        backgroundColor: 'var(--portfolio-yellow)',
         fontSize: 'clamp(0.7rem, 2vw, 0.9rem)'
       }}
       onMouseDown={handleMouseDown}
@@ -82,14 +81,14 @@ export default function DraggableBanner() {
         </div>
         <a 
           href="#contact" 
-          className="brutal-border-none-shadow bg-red-400 px-2 py-1 text-xs font-bold hover:bg-red-500 transition-colors cursor-pointer no-underline"
+          className="portfolio-border-shadow-none bg-red-400 px-2 py-1 text-xs font-bold hover:bg-red-500 transition-colors cursor-pointer no-underline"
           onClick={(e) => e.stopPropagation()}
         >
           CLICK ME
         </a>
       </div>
       
-      <div className="absolute -top-1 -right-1 brutal-border-none-shadow bg-white w-6 h-6 flex items-center justify-center text-xs font-bold hover:bg-gray-100 cursor-pointer">
+      <div className="absolute -top-1 -right-1 portfolio-border-shadow-none bg-white w-6 h-6 flex items-center justify-center text-xs font-bold hover:bg-gray-100 cursor-pointer">
         ×
       </div>
     </div>
