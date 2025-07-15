@@ -5,8 +5,8 @@ export default function Contact() {
     {
       icon: Mail,
       label: "EMAIL",
-      value: "colemanrose.new@gmail.com",
-      href: "mailto:colemanrose.new@gmail.com"
+      value: "info@colemanro.se",
+      href: "mailto:info@colemanro.se"
     },
     {
       icon: Github,
@@ -79,7 +79,7 @@ export default function Contact() {
           </div>
           
           <div className="text-center mt-12">
-            <a href="mailto:colemanrose.new@gmail.com" className="portfolio-button text-lg">
+            <a href="mailto:info@colemanro.se" className="portfolio-button text-lg">
               SEND MESSAGE
             </a>
           </div>

@@ -165,7 +165,7 @@ export async function getPortfolioData(): Promise<PortfolioData> {
       ]
     },
     contact: {
-      email: "colemanrose.new@gmail.com",
+      email: "info@colemanro.se",
       github: "https://github.com/colemanswe",
       linkedin: "https://linkedin.com/in/coleman-rose",
       location: "HELSINKI, FINLAND 🇫🇮"
