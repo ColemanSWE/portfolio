@@ -5,7 +5,6 @@ import Skills from './components/Skills'
 import ProjectsServer from './components/ProjectsServer'
 import Contact from './components/Contact'
 import Ticker from './components/Ticker'
-import LoadingScreen from './components/LoadingScreen'
 import DraggableBanner from './components/DraggableBanner'
 import Minimap from './components/Minimap'
 import CatAdBanner from './components/CatAdBanner'
@@ -13,7 +12,6 @@ import CatAdBanner from './components/CatAdBanner'
 export default function Home() {
   return (
     <>
-      <LoadingScreen />
       <Ticker />
       <div className="hidden lg:block">
         <DraggableBanner />

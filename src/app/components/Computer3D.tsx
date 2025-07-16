@@ -5,9 +5,15 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, useFBX } from '@react-three/drei'
 import * as THREE from 'three'
 
-function ComputerModel() {
+function ComputerModel({ onLoad }: { onLoad: () => void }) {
   const meshRef = useRef<THREE.Group>(null)
   const scene = useFBX('/3d/comp.fbx')
+  
+  useEffect(() => {
+    if (scene) {
+      onLoad()
+    }
+  }, [scene, onLoad])
   
   useFrame((state) => {
     if (meshRef.current) {
@@ -24,6 +30,7 @@ function ComputerModel() {
 
 export default function Computer3D() {
   const [isMobile, setIsMobile] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -36,6 +43,10 @@ export default function Computer3D() {
     return () => window.removeEventListener('resize', checkIfMobile)
   }, [])
 
+  const handleModelLoad = () => {
+    setIsLoading(false)
+  }
+
   return (
     <div 
       className="w-64 h-64 md:w-96 md:h-96 relative" 
@@ -47,6 +58,21 @@ export default function Computer3D() {
         touchAction: isMobile ? 'pan-y' : 'auto'
       }}
     >
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="portfolio-border bg-yellow-400 p-6 animate-pulse">
+            <div className="flex flex-col items-center space-y-3">
+              <div className="portfolio-border bg-black w-12 h-12 flex items-center justify-center">
+                <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              </div>
+              <p className="font-bold text-sm tracking-wider uppercase">
+                LOADING 3D MODEL...
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+      
       <Canvas
         camera={{ position: [0, 0, 200], fov: 50 }}
         style={{ background: 'transparent' }}
@@ -63,7 +89,7 @@ export default function Computer3D() {
         <pointLight position={[5, -5, 5]} intensity={0.8} color="#ffffff" />
         
         <Suspense fallback={null}>
-          <ComputerModel />
+          <ComputerModel onLoad={handleModelLoad} />
         </Suspense>
         
         {!isMobile && (
