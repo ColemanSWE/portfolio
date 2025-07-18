@@ -1,4 +1,9 @@
+'use client'
+
 import { Mail, Github, Linkedin, MapPin } from 'lucide-react'
+import { useStaggeredReveal } from '../../hooks/useScrollReveal'
+import { PortfolioCard, PortfolioGrid, Section } from '../../components/ui/PortfolioCard'
+import { PortfolioButton } from '../../components/ui/PortfolioButton'
 
 export default function Contact() {
   const contacts = [
@@ -28,63 +33,71 @@ export default function Contact() {
     }
   ]
 
+  const { containerRef, visibleItems } = useStaggeredReveal(contacts.length + 1, 200)
+
   return (
-    <section id="contact" className="py-20 px-4 bg-white">
-      <div className="container mx-auto">
-        <h2 className="section-title text-center mb-16">
-          ESTABLISH CONNECTION
-        </h2>
-        
-        <div className="max-w-4xl mx-auto">
-          <div className="portfolio-card text-center mb-12">
-            <div className="portfolio-text mb-6">
-              READY TO ARCHITECT YOUR NEXT DIGITAL SOLUTION?
+    <Section id="contact" title="ESTABLISH CONNECTION" bgColor="rainbow-subtle">
+      <div className="max-w-4xl mx-auto">
+        <div 
+          ref={containerRef as React.RefObject<HTMLDivElement>}
+          className="max-w-4xl mx-auto"
+        >
+          <PortfolioCard 
+            className={`text-center mb-12 scroll-reveal ${visibleItems[0] ? 'revealed' : ''}`}
+          >
+            <div className="space-y-6">
+              <div className="text-xl font-bold tracking-wide text-white leading-relaxed">
+                READY TO ARCHITECT YOUR NEXT DIGITAL SOLUTION?
+              </div>
+              <div className="text-lg font-bold tracking-wide text-gray-300 leading-relaxed">
+                AVAILABLE FOR FULL-TIME POSITIONS, CONTRACT WORK, AND CONSULTANCY.
+                SPECIALIZING IN REACT ECOSYSTEMS AND SCALABLE BACKEND ARCHITECTURES.
+              </div>
             </div>
-            <div className="portfolio-text text-sm">
-              AVAILABLE FOR FULL-TIME POSITIONS, CONTRACT WORK, AND CONSULTANCY.
-              SPECIALIZING IN REACT ECOSYSTEMS AND SCALABLE BACKEND ARCHITECTURES.
-            </div>
-          </div>
+          </PortfolioCard>
           
-          <div className="portfolio-grid">
+          <PortfolioGrid>
             {contacts.map((contact, index) => {
               const IconComponent = contact.icon
               return (
-                <div key={index} className="portfolio-card text-center">
-                  <div className="flex justify-center mb-4">
-                    <div className="portfolio-border bg-blue-400 p-4">
-                      <IconComponent size={32} />
+                <PortfolioCard 
+                  key={index} 
+                  className={`text-center scroll-reveal ${visibleItems[index + 1] ? 'revealed' : ''}`}
+                >
+                  <div className="flex justify-center mb-6">
+                    <div className="glass-morphism-bright p-6 rounded-full">
+                      <IconComponent size={32} className="text-cyan-400" />
                     </div>
                   </div>
-                  <div className="font-bold mb-2 tracking-wide">
+                  <div className="font-bold mb-4 tracking-wide text-white text-lg">
                     {contact.label}
                   </div>
                   {contact.href ? (
                     <a 
                       href={contact.href}
-                      className="portfolio-text text-sm hover:underline break-all"
+                      className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 break-all font-medium"
                       target={contact.href.startsWith('http') ? '_blank' : undefined}
                       rel={contact.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     >
                       {contact.value}
                     </a>
                   ) : (
-                    <div className="portfolio-text text-sm break-all">
+                    <div className="text-gray-300 break-all font-medium">
                       {contact.value}
                     </div>
                   )}
-                </div>
+                </PortfolioCard>
               )
             })}
-          </div>
+          </PortfolioGrid>
           
           <div className="text-center mt-12">
-            <a href="mailto:info@colemanro.se" className="portfolio-button text-lg">
+            <PortfolioButton href="mailto:info@colemanro.se" variant="primary" size="lg">
               SEND MESSAGE
-            </a>
+            </PortfolioButton>
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   )
 } 

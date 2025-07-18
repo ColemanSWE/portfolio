@@ -59,36 +59,35 @@ export default function DraggableBanner() {
   return (
     <div
       ref={bannerRef}
-      className="absolute z-50 portfolio-border cursor-move select-none"
+      className="absolute z-50 glass-morphism-bright cursor-move select-none border border-cyan-400/30"
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
         width: 'min(400px, 90vw)',
         height: 'min(80px, 12vh)',
-        backgroundColor: 'var(--portfolio-yellow)',
         fontSize: 'clamp(0.7rem, 2vw, 0.9rem)'
       }}
       onMouseDown={handleMouseDown}
     >
       <div className="flex items-center justify-between h-full px-4">
         <div className="flex-1">
-                      <div className="font-bold text-xs mb-1 tracking-wider w-full">
-              ★ SPONSORED CONTENT ★
-            </div>
-          <div className="font-bold text-sm tracking-wide">
+          <div className="font-bold text-xs mb-1 tracking-wider w-full text-cyan-400">
+            ★ SPONSORED CONTENT ★
+          </div>
+          <div className="font-bold text-sm tracking-wide text-white">
             HIRE ME NOW!
           </div>
         </div>
         <a 
           href="#contact" 
-          className="portfolio-border-shadow-none bg-red-400 px-2 py-1 text-xs font-bold hover:bg-red-500 transition-colors cursor-pointer no-underline"
+          className="glass-morphism px-3 py-1 text-xs font-bold text-white border border-cyan-400/50 hover:bg-cyan-400/20 transition-colors cursor-pointer no-underline"
           onClick={(e) => e.stopPropagation()}
         >
           CLICK ME
         </a>
       </div>
       
-      <div className="absolute -top-1 -right-1 portfolio-border-shadow-none bg-white w-6 h-6 flex items-center justify-center text-xs font-bold hover:bg-gray-100 cursor-pointer">
+      <div className="absolute -top-1 -right-1 glass-morphism w-6 h-6 flex items-center justify-center text-xs font-bold hover:bg-white/20 cursor-pointer text-white border border-white/20">
         ×
       </div>
     </div>

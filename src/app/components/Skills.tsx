@@ -1,3 +1,9 @@
+'use client'
+
+import { useStaggeredReveal } from '../../hooks/useScrollReveal'
+import { PortfolioCard, PortfolioGrid, Section } from '../../components/ui/PortfolioCard'
+import { TechTag } from '../../components/ui/PortfolioButton'
+
 export default function Skills() {
   const skills = {
     FRONTEND: [
@@ -15,30 +21,34 @@ export default function Skills() {
     ]
   }
 
+  const { containerRef, visibleItems } = useStaggeredReveal(Object.keys(skills).length, 200)
+
   return (
-    <section id="skills" className="py-20 px-4 bg-white">
-      <div className="container mx-auto">
-        <h2 className="section-title text-center mb-16">
-          TECHNICAL ARSENAL
-        </h2>
-        
-        <div className="portfolio-grid max-w-6xl mx-auto">
+    <Section id="skills" title="TECHNICAL ARSENAL" bgColor="rainbow-subtle">
+      <div 
+        ref={containerRef as React.RefObject<HTMLDivElement>}
+        className="max-w-6xl mx-auto"
+      >
+        <PortfolioGrid maxWidth="6xl">
           {Object.entries(skills).map(([category, skillList], index) => (
-            <div key={index} className="portfolio-card">
-              <h3 className="text-2xl font-bold mb-6 tracking-wide text-center">
+            <PortfolioCard 
+              key={index}
+              className={`scroll-reveal ${visibleItems[index] ? 'revealed' : ''}`}
+            >
+              <h3 className="text-2xl font-bold mb-8 tracking-wide text-center bg-gradient-to-r from-cyan-400 to-pink-400 bg-clip-text text-transparent">
                 {category}
               </h3>
-              <div className="flex flex-wrap gap-2 justify-center">
+              <div className="flex flex-wrap gap-3 justify-center">
                 {skillList.map((skill, i) => (
-                  <span key={i} className="tech-tag">
+                  <TechTag key={i} className="hover:scale-105 transition-transform duration-200">
                     {skill}
-                  </span>
+                  </TechTag>
                 ))}
               </div>
-            </div>
+            </PortfolioCard>
           ))}
-        </div>
+        </PortfolioGrid>
       </div>
-    </section>
+    </Section>
   )
 } 

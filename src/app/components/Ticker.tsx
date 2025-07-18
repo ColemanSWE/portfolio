@@ -13,15 +13,19 @@ export default function Ticker() {
     'SYSTEM DESIGN',
     'GIT',
     'GITHUB',
-    'THREE.JS'
+    'THREE.JS',
   ]
 
   const tickerText = tickerItems.join(' • ')
 
+  const fullTickerText = `${tickerText} • ${tickerText} • ${tickerText}`
+
   return (
-    <div className="ticker">
-      <div className="ticker-content">
-        <span className="ticker-text">{tickerText} • {tickerText} • {tickerText}</span>
+    <div className="dynamic-ticker">
+      <div className="dynamic-ticker-content">
+        <span className="dynamic-ticker-text" data-text={fullTickerText}>
+          {fullTickerText}
+        </span>
       </div>
     </div>
   )

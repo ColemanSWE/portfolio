@@ -8,34 +8,34 @@ export default async function ProjectsServer() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'PRODUCTION': return 'bg-green-400'
-      case 'BETA': return 'bg-yellow-400'
-      case 'DEVELOPMENT': return 'bg-red-400'
-      default: return 'bg-gray-400'
+      case 'PRODUCTION': return 'bg-green-400 text-black'
+      case 'BETA': return 'bg-yellow-400 text-black'
+      case 'DEVELOPMENT': return 'bg-red-400 text-white'
+      default: return 'bg-gray-400 text-white'
     }
   }
 
   return (
-    <Section id="projects" title="DEPLOYED SYSTEMS" bgColor="gray-50">
+    <Section id="projects" title="DEPLOYED SYSTEMS" bgColor="rainbow-grid">
       <PortfolioGrid maxWidth="6xl">
         {projects.map((project, index) => (
           <PortfolioCard key={index}>
             <div className="flex justify-between items-start mb-4">
-              <h3 className="text-xl font-bold tracking-wide">{project.title}</h3>
-              <span className={`portfolio-border ${getStatusColor(project.status)} px-3 py-1 text-sm font-bold`}>
+              <h3 className="text-xl font-bold tracking-wide text-white">{project.title}</h3>
+              <div className={`glass-morphism-bright px-4 py-2 text-sm font-bold border border-white/20 ${getStatusColor(project.status)}`}>
                 {project.status}
-              </span>
+              </div>
             </div>
             
-            <p className="portfolio-text text-sm mb-6">
+            <p className="text-gray-300 font-medium leading-relaxed mb-6">
               {project.description}
             </p>
             
             <div className="mb-6">
-              <h4 className="font-bold mb-2 tracking-wide">KEY FEATURES:</h4>
-              <ul className="space-y-1">
+              <h4 className="font-bold mb-3 tracking-wide text-white">KEY FEATURES:</h4>
+              <ul className="space-y-2">
                 {project.features.map((feature, i) => (
-                  <li key={i} className="text-sm font-bold">
+                  <li key={i} className="text-sm font-medium text-gray-300">
                     → {feature}
                   </li>
                 ))}
@@ -49,26 +49,28 @@ export default async function ProjectsServer() {
             </div>
             
             <div className="flex gap-4">
-              <PortfolioButton 
-                href={project.github}
-                icon={Github}
-                size="sm"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                CODE
-              </PortfolioButton>
-              
-              {project.live && (
+              {project.github && (
                 <PortfolioButton 
-                  href={project.live}
+                  href={project.github}
                   variant="secondary"
-                  icon={ExternalLink}
                   size="sm"
+                  icon={Github}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  LIVE
+                  CODE
+                </PortfolioButton>
+              )}
+              {project.live && (
+                <PortfolioButton 
+                  href={project.live}
+                  variant="primary"
+                  size="sm"
+                  icon={ExternalLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LIVE DEMO
                 </PortfolioButton>
               )}
             </div>

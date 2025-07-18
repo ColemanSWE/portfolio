@@ -6,7 +6,7 @@ export default async function ExperienceServer() {
   const { experiences } = await getPortfolioData()
   
   return (
-    <Section id="experience" title="OPERATIONAL HISTORY" bgColor="gray-50">
+    <Section id="experience" title="OPERATIONAL HISTORY" bgColor="rainbow-grid">
       <ExperienceClient experiences={experiences} />
     </Section>
   )

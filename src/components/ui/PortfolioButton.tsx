@@ -1,10 +1,10 @@
-import { ReactNode } from 'react'
+import { ReactNode, MouseEventHandler } from 'react'
 import { LucideIcon } from 'lucide-react'
 
 interface PortfolioButtonProps {
   children: ReactNode
   href?: string
-  onClick?: (e?: React.MouseEvent) => void
+  onClick?: MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>
   variant?: 'primary' | 'secondary'
   size?: 'sm' | 'md' | 'lg'
   icon?: LucideIcon
@@ -26,12 +26,12 @@ export function PortfolioButton({
   rel,
   type = 'button'
 }: PortfolioButtonProps) {
-  const baseClasses = 'portfolio-button'
-  const variantClasses = variant === 'secondary' ? 'secondary' : ''
+  const baseClasses = 'glass-button'
+  const variantClasses = variant === 'secondary' ? 'secondary' : 'primary'
   const sizeClasses = {
-    sm: 'text-sm',
-    md: 'text-base',
-    lg: 'text-lg'
+    sm: 'text-sm px-4 py-2',
+    md: 'text-base px-6 py-3',
+    lg: 'text-lg px-8 py-4'
   }[size]
   
   const buttonClasses = `${baseClasses} ${variantClasses} ${sizeClasses} ${className}`
@@ -75,7 +75,7 @@ interface TechTagProps {
 
 export function TechTag({ children, className = '' }: TechTagProps) {
   return (
-    <span className={`tech-tag ${className}`}>
+    <span className={`modern-tech-tag ${className}`}>
       {children}
     </span>
   )
