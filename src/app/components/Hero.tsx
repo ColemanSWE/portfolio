@@ -60,7 +60,7 @@ export default function Hero() {
              zIndex: 12, 
              position: 'absolute', 
              top: '80%', 
-             left: '70%',
+             left: '30%',
              fontFamily: 'Esoterica, serif',
              fontSize: '50px',
              color: 'white',
