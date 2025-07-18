@@ -76,7 +76,7 @@ async function ExperienceData() {
 
 export default function StreamingExperience() {
   return (
-    <Section id="experience-streaming" title="OPERATIONAL HISTORY (STREAMING)" bgColor="gray-50">
+    <Section id="experience-streaming" title="OPERATIONAL HISTORY (STREAMING)" bgColor="dark">
       <Suspense fallback={<ExperienceLoading />}>
         <ExperienceData />
       </Suspense>
