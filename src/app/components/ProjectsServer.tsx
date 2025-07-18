@@ -8,8 +8,8 @@ export default async function ProjectsServer() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'PRODUCTION': return 'bg-green-400 text-black'
-      case 'BETA': return 'bg-yellow-400 text-black'
+      case 'PRODUCTION': return 'bg-green-400 text-white'
+      case 'BETA': return 'bg-yellow-400 text-white'
       case 'DEVELOPMENT': return 'bg-red-400 text-white'
       default: return 'bg-gray-400 text-white'
     }
