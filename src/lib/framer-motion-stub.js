@@ -46,36 +46,43 @@ const processStyle = (style = {}) => {
 }
 
 // Stub motion components that render as regular elements
+const MotionDiv = React.forwardRef((props, ref) => {
+  const { children, style, className, ...otherProps } = props
+  return React.createElement('div', {
+    ref,
+    className,
+    style: processStyle(style),
+    ...otherProps
+  }, children)
+})
+MotionDiv.displayName = 'MotionDiv'
+
+const MotionH1 = React.forwardRef((props, ref) => {
+  const { children, style, className, ...otherProps } = props
+  return React.createElement('h1', {
+    ref,
+    className,
+    style: processStyle(style),
+    ...otherProps
+  }, children)
+})
+MotionH1.displayName = 'MotionH1'
+
+const MotionSection = React.forwardRef((props, ref) => {
+  const { children, style, className, ...otherProps } = props
+  return React.createElement('section', {
+    ref,
+    className,
+    style: processStyle(style),
+    ...otherProps
+  }, children)
+})
+MotionSection.displayName = 'MotionSection'
+
 const motion = {
-  div: React.forwardRef((props, ref) => {
-    const { children, style, className, ...otherProps } = props
-    return React.createElement('div', {
-      ref,
-      className,
-      style: processStyle(style),
-      ...otherProps
-    }, children)
-  }),
-  
-  h1: React.forwardRef((props, ref) => {
-    const { children, style, className, ...otherProps } = props
-    return React.createElement('h1', {
-      ref,
-      className,
-      style: processStyle(style),
-      ...otherProps
-    }, children)
-  }),
-  
-  section: React.forwardRef((props, ref) => {
-    const { children, style, className, ...otherProps } = props
-    return React.createElement('section', {
-      ref,
-      className,
-      style: processStyle(style),
-      ...otherProps
-    }, children)
-  })
+  div: MotionDiv,
+  h1: MotionH1,
+  section: MotionSection
 }
 
 // Stub hooks that return static motion values with .get() method
