@@ -219,6 +219,12 @@ body {
   transform: translateY(0);
 }
 
+/* Ticker scroll animation */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
 .modern-section-title {
   font-size: clamp(2rem, 5vw, 4rem);
   font-weight: 700;
