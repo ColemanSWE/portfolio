@@ -3,61 +3,97 @@
 
 const React = require('react')
 
-// Stub motion components that just render as regular divs
+// Helper to safely handle style properties to avoid hydration mismatches
+const processStyle = (style = {}) => {
+  // Keep all properties but convert motion values to static values
+  const processedStyle = { ...style }
+  
+  // Convert motion values to their current static values
+  if (style.y && typeof style.y === 'object' && style.y.get) {
+    processedStyle.transform = `translateY(${style.y.get()}px)`
+    delete processedStyle.y
+  } else if (typeof style.y === 'number') {
+    processedStyle.transform = `translateY(${style.y}px)`
+    delete processedStyle.y
+  }
+  
+  if (style.x && typeof style.x === 'object' && style.x.get) {
+    const existing = processedStyle.transform || ''
+    processedStyle.transform = `${existing} translateX(${style.x.get()}px)`.trim()
+    delete processedStyle.x
+  } else if (typeof style.x === 'number') {
+    const existing = processedStyle.transform || ''
+    processedStyle.transform = `${existing} translateX(${style.x}px)`.trim()
+    delete processedStyle.x
+  }
+  
+  if (style.rotate && typeof style.rotate === 'object' && style.rotate.get) {
+    const existing = processedStyle.transform || ''
+    processedStyle.transform = `${existing} rotate(${style.rotate.get()}deg)`.trim()
+    delete processedStyle.rotate
+  } else if (typeof style.rotate === 'number') {
+    const existing = processedStyle.transform || ''
+    processedStyle.transform = `${existing} rotate(${style.rotate}deg)`.trim()
+    delete processedStyle.rotate
+  }
+  
+  // Handle opacity motion values
+  if (style.opacity && typeof style.opacity === 'object' && style.opacity.get) {
+    processedStyle.opacity = style.opacity.get()
+  }
+  
+  return processedStyle
+}
+
+// Stub motion components that render as regular elements
 const motion = {
   div: React.forwardRef((props, ref) => {
-    const { children, style = {}, className, ...otherProps } = props
-    // Extract only the static styles, ignore animation properties
-    const staticStyle = {
-      ...style,
-      // Remove animation-related properties
-      y: undefined,
-      x: undefined,
-      rotate: undefined,
-      opacity: style.opacity || 1, // Keep opacity for visibility
-    }
+    const { children, style, className, ...otherProps } = props
     return React.createElement('div', {
       ref,
       className,
-      style: staticStyle,
+      style: processStyle(style),
       ...otherProps
     }, children)
   }),
   
   h1: React.forwardRef((props, ref) => {
-    const { children, style = {}, className, ...otherProps } = props
-    const staticStyle = {
-      ...style,
-      y: undefined,
-      x: undefined,
-      rotate: undefined,
-      opacity: style.opacity || 1,
-    }
+    const { children, style, className, ...otherProps } = props
     return React.createElement('h1', {
       ref,
       className,
-      style: staticStyle,
+      style: processStyle(style),
       ...otherProps
     }, children)
   }),
   
   section: React.forwardRef((props, ref) => {
-    const { children, style = {}, className, ...otherProps } = props
+    const { children, style, className, ...otherProps } = props
     return React.createElement('section', {
       ref,
       className,
-      style,
+      style: processStyle(style),
       ...otherProps
     }, children)
   })
 }
 
-// Stub hooks that return static values
-const useScroll = () => ({
-  scrollYProgress: { get: () => 0 }
+// Stub hooks that return static motion values with .get() method
+const createMotionValue = (value) => ({
+  get: () => value,
+  set: () => {},
+  on: () => () => {},
+  destroy: () => {}
 })
 
-const useTransform = () => 0
+const useScroll = () => ({
+  scrollYProgress: createMotionValue(0)
+})
+
+const useTransform = (input, inputRange, outputRange) => {
+  // Return a motion value that always returns 0 (static)
+  return createMotionValue(0)
+}
 
 const AnimatePresence = ({ children }) => children
 

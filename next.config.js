@@ -10,6 +10,9 @@ const nextConfig = {
     esmExternals: true,
   },
   
+  // Enable source maps in development
+  productionBrowserSourceMaps: false,
+  
   // Optimize images and static assets
   images: {
     formats: ['image/webp', 'image/avif'],
@@ -72,6 +75,11 @@ const nextConfig = {
   
   // Webpack optimizations
   webpack: (config, { isServer, dev }) => {
+    // Enable source maps in development
+    if (dev && !isServer) {
+      config.devtool = 'eval-source-map'
+    }
+    
     // Font optimization
     config.module.rules.push({
       test: /\.(woff|woff2|eot|ttf|otf)$/,

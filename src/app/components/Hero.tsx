@@ -29,12 +29,12 @@ export default function Hero() {
     return (
     <section className="hero-section relative min-h-screen flex items-center" ref={containerRef}>
              <div style={{zIndex: 12, position: 'absolute', top: '10%', left: '50%'}}>
-         <pre style={{
-           fontSize: '8px',
-           color: '#00ff00',
-           whiteSpace: 'pre',
-           textShadow: '0 0 5px rgba(0, 255, 0, 0.8)'
-         }}>
+                   <pre style={{
+            fontSize: '14px', // Minimum legible size to fix warning
+            color: '#00ff00',
+            whiteSpace: 'pre',
+            textShadow: '0 0 5px rgba(0, 255, 0, 0.8)'
+          }}>
 {`                       .,,uod8B8bou,,.
                ..,uod8BBBBBBBBBBBBBBBBRPFT?l!i:.
           ,=m8BBBBBBBBBBBBBBBRPFT?!||||||||||||||
@@ -75,8 +75,9 @@ export default function Hero() {
           src="/images/iLoveProgramming.gif" 
           alt="I love programming animated gif" 
           width={200} 
-          height={150} 
-          className="hidden lg:block z-5 absolute floating-slow opacity-80 pointer-events-none"
+          height={150}
+          loading="lazy"
+          className="hidden lg:block z-5 absolute opacity-80 pointer-events-none"
           style={{right: '5%', top: '15%',zIndex: 10, maxWidth: '180px'}}
         />
         
@@ -84,8 +85,9 @@ export default function Hero() {
           src="/images/esoteric.gif" 
           alt="Esoteric gif" 
           width={400} 
-          height={400} 
-          className="hidden md:block z-5 absolute floating-medium opacity-80 pointer-events-none" 
+          height={400}
+          loading="lazy"
+          className="hidden md:block z-5 absolute opacity-80 pointer-events-none" 
           style={{left: '38%', top: '40%',zIndex: 10}}
         />
         
@@ -93,8 +95,9 @@ export default function Hero() {
           src="/images/technology-smiley.gif" 
           alt="Technology smiley gif" 
           width={150} 
-          height={150} 
-          className="hidden lg:block z-5  absolute floating-fast opacity-80 pointer-events-none" 
+          height={150}
+          loading="lazy"
+          className="hidden lg:block z-5  absolute opacity-80 pointer-events-none" 
           style={{right: '15%', bottom: '30%',zIndex: 10, maxWidth: '120px'}}
         />
         
@@ -102,8 +105,9 @@ export default function Hero() {
           src="/images/computer.gif" 
           alt="Computer animated gif" 
           width={120} 
-          height={90} 
-          className="hidden md:block z-5 absolute floating-slow opacity-80 pointer-events-none" 
+          height={90}
+          loading="lazy"
+          className="hidden md:block z-5 absolute opacity-80 pointer-events-none" 
           style={{left: '10%', bottom: '35%',zIndex: 10, maxWidth: '100px'}}
         />
         
@@ -111,8 +115,9 @@ export default function Hero() {
           src="/images/viruswarning.jpg" 
           alt="Virus warning image" 
           width={100} 
-          height={100} 
-          className="hidden xl:block z-5 absolute floating-medium opacity-80 pointer-events-none" 
+          height={100}
+          loading="lazy"
+          className="hidden xl:block z-5 absolute opacity-80 pointer-events-none" 
           style={{left: '2%', bottom: '5%',zIndex: 10, maxWidth: '200px'}}
         />
       </div>
@@ -206,20 +211,21 @@ export default function Hero() {
                 COLEMAN
               </motion.div>
               
-              {/* Front white layer */}
-              <motion.h1
-                className="relative text-5xl md:text-7xl lg:text-9xl font-black tracking-wider text-white z-10"
-                style={{
-                  y: layer1Y,
-                  x: layer1X,
-                  rotate: layer1Rotate,
-                  textShadow: '0 0 40px rgba(255, 255, 255, 0.5)',
-                  zIndex: 10,
-                  fontFamily: 'Corepix, monospace'
-                }}
-              >
-                COLEMAN
-              </motion.h1>
+                             {/* Front white layer */}
+               <motion.h1
+                 className="relative text-5xl md:text-7xl lg:text-9xl font-black tracking-wider text-white z-10"
+                 style={{
+                   y: layer1Y,
+                   x: layer1X,
+                   rotate: layer1Rotate,
+                   textShadow: '0 0 40px rgba(255, 255, 255, 0.5)',
+                   zIndex: 10,
+                   fontFamily: 'Corepix, monospace',
+                   fontSize: 'clamp(3rem, 8vw, 9rem)' // Fix H1 font-size warning
+                 }}
+               >
+                 COLEMAN
+               </motion.h1>
             </div>
 
             <div className="relative mb-8">
@@ -260,20 +266,21 @@ export default function Hero() {
                 ROSE
               </motion.div>
               
-              {/* Front white layer */}
-              <motion.h1
-                className="relative text-5xl md:text-7xl lg:text-9xl font-black tracking-wider text-white z-10"
-                style={{
-                  y: layer1Y,
-                  x: layer1X,
-                  rotate: layer1Rotate,
-                  textShadow: '0 0 40px rgba(255, 255, 255, 0.5)',
-                  zIndex: 10,
-                  fontFamily: 'Corepix, monospace'
-                }}
-              >
-                ROSE
-              </motion.h1>
+                             {/* Front white layer */}
+               <motion.h1
+                 className="relative text-5xl md:text-7xl lg:text-9xl font-black tracking-wider text-white z-10"
+                 style={{
+                   y: layer1Y,
+                   x: layer1X,
+                   rotate: layer1Rotate,
+                   textShadow: '0 0 40px rgba(255, 255, 255, 0.5)',
+                   zIndex: 10,
+                   fontFamily: 'Corepix, monospace',
+                   fontSize: 'clamp(3rem, 8vw, 9rem)' // Fix H1 font-size warning
+                 }}
+               >
+                 ROSE
+               </motion.h1>
             </div>
             
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12">
