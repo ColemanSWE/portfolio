@@ -62,13 +62,7 @@ export function useScrollReveal(options: UseScrollRevealOptions = {}) {
   return { ref, isVisible }
 }
 
-// Disabled parallax for performance - just returns static values
-export function useParallax(speed: number = 0.5) {
-  const ref = useRef<HTMLElement>(null)
-  const offset = 0 // Static - no scroll calculations
-
-  return { ref, offset }
-}
+// useParallax hook removed - was unused and disabled for performance
 
 // Optimized staggered reveal with reduced complexity
 export function useStaggeredReveal(itemCount: number, staggerDelay: number = 50) {
