@@ -29,7 +29,7 @@ export function PortfolioButton({
   const baseClasses = 'glass-button'
   const variantClasses = variant === 'secondary' ? 'secondary' : 'primary'
   const sizeClasses = {
-    sm: 'text-sm px-4 py-2',
+    sm: 'text-base px-4 py-2',
     md: 'text-base px-6 py-3',
     lg: 'text-lg px-8 py-4'
   }[size]

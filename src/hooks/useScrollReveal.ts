@@ -9,10 +9,11 @@ interface UseScrollRevealOptions {
   once?: boolean
 }
 
+// Simplified scroll reveal that's much lighter
 export function useScrollReveal(options: UseScrollRevealOptions = {}) {
   const {
-    threshold = 0.01,
-    rootMargin = '0px 0px 200px 0px',
+    threshold = 0.1,
+    rootMargin = '0px 0px 100px 0px', // Reduced for better performance
     delay = 0,
     once = true
   } = options
@@ -24,12 +25,19 @@ export function useScrollReveal(options: UseScrollRevealOptions = {}) {
     const element = ref.current
     if (!element) return
 
+    // Use requestIdleCallback for better performance if available
+    const scheduleCallback = (callback: () => void) => {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(callback)
+      } else {
+        setTimeout(callback, delay)
+      }
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
-            setIsVisible(true)
-          }, delay)
+          scheduleCallback(() => setIsVisible(true))
           
           if (once) {
             observer.unobserve(element)
@@ -54,30 +62,16 @@ export function useScrollReveal(options: UseScrollRevealOptions = {}) {
   return { ref, isVisible }
 }
 
+// Disabled parallax for performance - just returns static values
 export function useParallax(speed: number = 0.5) {
   const ref = useRef<HTMLElement>(null)
-  const [offset, setOffset] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!ref.current) return
-      
-      const element = ref.current
-      const rect = element.getBoundingClientRect()
-      const scrolled = window.scrollY
-      const rate = scrolled * speed
-      
-      setOffset(rate)
-    }
-
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [speed])
+  const offset = 0 // Static - no scroll calculations
 
   return { ref, offset }
 }
 
-export function useStaggeredReveal(itemCount: number, staggerDelay: number = 100) {
+// Optimized staggered reveal with reduced complexity
+export function useStaggeredReveal(itemCount: number, staggerDelay: number = 50) {
   const [visibleItems, setVisibleItems] = useState<boolean[]>(new Array(itemCount).fill(false))
   const containerRef = useRef<HTMLElement>(null)
 
@@ -88,21 +82,17 @@ export function useStaggeredReveal(itemCount: number, staggerDelay: number = 100
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          for (let i = 0; i < itemCount; i++) {
-            setTimeout(() => {
-              setVisibleItems(prev => {
-                const newArray = [...prev]
-                newArray[i] = true
-                return newArray
-              })
-            }, i * staggerDelay)
-          }
+          // Batch update all items at once for better performance
+          requestAnimationFrame(() => {
+            const newArray = new Array(itemCount).fill(true)
+            setVisibleItems(newArray)
+          })
           observer.unobserve(container)
         }
       },
       {
-        threshold: 0.01,
-        rootMargin: '0px 0px 200px 0px',
+        threshold: 0.05, // Lower threshold for faster triggers
+        rootMargin: '0px 0px 50px 0px', // Reduced margin
       }
     )
 

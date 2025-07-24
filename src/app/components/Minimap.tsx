@@ -23,90 +23,43 @@ export default function Minimap() {
   ]
 
   useEffect(() => {
+    let ticking = false
+
     const handleScroll = () => {
-      const scrollTop = window.scrollY
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight
-      const progress = (scrollTop / docHeight) * 100
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollTop = window.scrollY
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight
+          const progress = Math.min((scrollTop / docHeight) * 100, 100)
 
-      setScrollProgress(progress)
+          setScrollProgress(progress)
 
-      const mainElement = document.querySelector('main')
-      if (!mainElement) return
+          // Simplified section detection
+          let current = 'hero'
+          if (progress > 80) current = 'contact'
+          else if (progress > 65) current = 'projects'
+          else if (progress > 50) current = 'skills'
+          else if (progress > 35) current = 'experience'
+          else if (progress > 20) current = 'about'
 
-      const allSections = mainElement.children
-      let current = 'hero'
-
-      const heroSection = document.querySelector('.hero-section')
-      if (heroSection) {
-        const heroRect = heroSection.getBoundingClientRect()
-        if (heroRect.bottom > window.innerHeight / 2) {
-          current = 'hero'
           setCurrentSection(current)
-          return
-        }
+          ticking = false
+        })
+        ticking = true
       }
-
-      const indexToSectionMap: { [key: number]: string } = {
-        0: 'hero',
-        1: 'about',
-        2: 'experience',
-        3: 'skills',
-        4: 'projects',
-        5: 'contact'
-      }
-      
-      let foundSection = false
-      for (let i = 0; i < allSections.length; i++) {
-        const section = allSections[i]
-        const rect = section.getBoundingClientRect()
-        
-        if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
-          current = indexToSectionMap[i] || 'hero'
-          foundSection = true
-          break
-        }
-      }
-
-      if (!foundSection) {
-        const windowHeight = window.innerHeight
-        const documentHeight = document.documentElement.scrollHeight
-        const scrollTop = window.scrollY
-        const bottomThreshold = documentHeight - windowHeight - 100
-        
-        if (scrollTop >= bottomThreshold || scrollProgress > 90) {
-          current = 'contact'
-        }
-      }
-
-      if (scrollProgress > 90) {
-        current = 'contact'
-      }
-
-      setCurrentSection(current)
     }
 
-    window.addEventListener('scroll', handleScroll)
-    handleScroll()
+    // Throttled scroll listener
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll() // Initial call
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const scrollToSection = (sectionId: string) => {
-    const mainElement = document.querySelector('main')
-    if (!mainElement) return
-
-    const sectionToIndexMap: { [key: string]: number } = {
-      'hero': 0,
-      'about': 1,
-      'experience': 2,
-      'skills': 3,
-      'projects': 4,
-      'contact': 5
-    }
-    
-    const targetIndex = sectionToIndexMap[sectionId]
-    if (targetIndex !== undefined && mainElement.children[targetIndex]) {
-      mainElement.children[targetIndex].scrollIntoView({ behavior: 'smooth' })
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
@@ -114,10 +67,10 @@ export default function Minimap() {
     <div className="fixed bottom-4 right-4 z-40">
       <div className="glass-morphism-bright p-4 w-52 border border-white/20">
         <div className="flex items-center justify-between mb-3">
-          <div className="text-cyan-400 font-bold text-xs tracking-wider">
+          <div className="text-cyan-400 font-bold text-sm tracking-wider">
             MINIMAP
           </div>
-          <div className="text-cyan-400 text-xs">
+          <div className="text-cyan-400 text-sm">
             {Math.round(scrollProgress)}%
           </div>
         </div>
@@ -133,7 +86,7 @@ export default function Minimap() {
           {sections.map((section) => (
             <div
               key={section.id}
-              className={`flex items-center gap-3 text-xs cursor-pointer hover:bg-white/10 p-2 rounded transition-colors ${
+              className={`flex items-center gap-3 text-sm cursor-pointer hover:bg-white/10 p-2 rounded transition-colors ${
                 currentSection === section.id ? 'bg-white/5' : ''
               }`}
               onClick={() => scrollToSection(section.id)}
@@ -156,7 +109,7 @@ export default function Minimap() {
         </div>
 
         <div className="mt-4 pt-3 border-t border-white/10">
-          <div className="flex justify-between text-xs text-cyan-400">
+          <div className="flex justify-between text-sm text-cyan-400">
             <span>ENEMIES: 0</span>
             <span>PING: 12ms</span>
           </div>

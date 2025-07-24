@@ -87,13 +87,13 @@ export default function CatAdBanner() {
       onMouseDown={handleMouseDown}
     >
       <div className="h-full p-3 relative">
-        <div className="absolute top-1 right-1 w-4 h-4 bg-gray-200 border border-gray-400 flex items-center justify-center text-xs font-bold hover:bg-gray-300 cursor-pointer">
+        <div className="absolute top-1 right-1 w-4 h-4 bg-gray-200 border border-gray-400 flex items-center justify-center text-sm font-bold hover:bg-gray-300 cursor-pointer">
           ×
         </div>
         
         <div className="flex flex-col h-full">
           <div 
-            className="text-red-600 font-bold text-xs md:text-sm lg:text-base xl:text-lg mb-1 text-center flex-shrink-0"
+            className="text-red-600 font-bold text-sm md:text-base lg:text-lg xl:text-xl mb-1 text-center flex-shrink-0"
             style={{ fontFamily: 'Arial, sans-serif' }}
           >
             ⭐ LULU&apos;S TESTIMONIAL ⭐
@@ -119,16 +119,16 @@ export default function CatAdBanner() {
             
             <div className="flex-1 flex flex-col justify-center min-w-0 overflow-hidden">
               <div 
-                className="text-blue-800 text-xs sm:text-xs md:text-sm lg:text-base xl:text-lg leading-tight mb-1 md:mb-2"
+                className="text-blue-800 text-sm sm:text-sm md:text-base lg:text-lg xl:text-xl leading-tight mb-1 md:mb-2"
                 style={{ fontFamily: 'Times New Roman, serif' }}
               >
                 &quot;Pappa codes better than he gives belly rubs!<br/>
                 He deserves treats... I mean, a job!&quot;<br/>
-                <span className="text-red-500 font-bold text-xs md:text-sm lg:text-base xl:text-lg">HIRE HIM NOW - Lulu 🐾</span>
+                <span className="text-red-500 font-bold text-sm md:text-base lg:text-lg xl:text-xl">HIRE HIM NOW - Lulu 🐾</span>
               </div>
               <a 
                 href="#contact"
-                className="inline-block bg-gradient-to-b from-yellow-300 to-yellow-500 border-2 border-yellow-600 px-2 md:px-3 lg:px-4 xl:px-5 py-1 md:py-1.5 lg:py-2 text-xs md:text-sm lg:text-base xl:text-lg font-bold text-black hover:from-yellow-400 hover:to-yellow-600 transition-all cursor-pointer no-underline self-start"
+                className="inline-block bg-gradient-to-b from-yellow-300 to-yellow-500 border-2 border-yellow-600 px-2 md:px-3 lg:px-4 xl:px-5 py-1 md:py-1.5 lg:py-2 text-sm md:text-base lg:text-lg xl:text-xl font-bold text-black hover:from-yellow-400 hover:to-yellow-600 transition-all cursor-pointer no-underline self-start"
                 onClick={(e) => e.stopPropagation()}
                 style={{ 
                   fontFamily: 'Arial, sans-serif',
@@ -140,7 +140,7 @@ export default function CatAdBanner() {
             </div>
           </div>
           
-          <div className="text-center text-xs lg:text-sm text-gray-600 mt-1 flex-shrink-0">
+          <div className="text-center text-sm lg:text-base text-gray-600 mt-1 flex-shrink-0">
             ★ Endorsed by Professional Cat ★
           </div>
         </div>

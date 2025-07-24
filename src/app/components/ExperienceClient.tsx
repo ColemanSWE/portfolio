@@ -16,7 +16,7 @@ export default function ExperienceClient({ experiences }: { experiences: Experie
           <PortfolioCard key={index}>
             <div className="flex justify-between items-start mb-4">
               <h3 className="text-2xl font-bold tracking-wide text-white">{exp.title}</h3>
-              <div className="glass-morphism-bright px-4 py-2 text-sm font-bold text-cyan-400 border border-cyan-400/30">
+              <div className="glass-morphism-bright px-4 py-2 text-base font-bold text-cyan-400 border border-cyan-400/30">
                 {exp.duration}
               </div>
             </div>

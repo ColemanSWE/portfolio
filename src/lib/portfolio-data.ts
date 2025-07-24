@@ -31,7 +31,7 @@ export interface PortfolioData {
 }
 
 export async function getPortfolioData(): Promise<PortfolioData> {
-  await new Promise(resolve => setTimeout(resolve, 100))
+  // Remove artificial delay for better performance
   
   return {
     experiences: [

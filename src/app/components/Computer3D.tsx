@@ -9,66 +9,24 @@ function ComputerModel({ onLoad }: { onLoad: () => void }) {
   const meshRef = useRef<THREE.Group>(null)
   const scene = useFBX('/3d/comp.fbx')
   
+  // Simplified effect - removed material modifications for better performance
   useEffect(() => {
     if (scene) {
-      // Traverse the scene to find and modify the screen material
-      scene.traverse((child) => {
-        if (child instanceof THREE.Mesh) {
-          const name = child.name.toLowerCase()
-          
-          // Target the "Comp" mesh specifically since it contains the screen
-          if (name === 'comp' && child.material && Array.isArray(child.material)) {
-            child.material.forEach((material, index) => {
-              // Check if this material might be the screen
-              // The screen is likely "Mat.001" or has a blue-ish tint
-              if (material.name === 'Mat.001' || 
-                  (material.color && material.color.b > 0.5 && material.color.b > material.color.r)) {
-                modifyScreenMaterial(material)
-              }
-            })
-          }
-          
-          // Also check single material objects
-          if (child.material && !Array.isArray(child.material)) {
-            const material = child.material
-            if (material.name === 'Mat.001' || 
-                (material.color && material.color.b > 0.5 && material.color.b > material.color.r)) {
-              modifyScreenMaterial(material)
-            }
-          }
-        }
-      })
-      
       onLoad()
     }
   }, [scene, onLoad])
-  
-  // Helper function to modify screen material properties
-  const modifyScreenMaterial = (material: THREE.Material) => {
-    if (material instanceof THREE.MeshBasicMaterial || 
-        material instanceof THREE.MeshLambertMaterial || 
-        material instanceof THREE.MeshPhongMaterial ||
-        material instanceof THREE.MeshStandardMaterial) {
-      
-      // Option 1: Remove blue tint by setting color to white/neutral
-      material.color = new THREE.Color(1.0, 1.0, 1.0) // White
-      
-      // Option 2: Make it transparent as well
-      material.transparent = true
-      material.opacity = 0.9 // Adjust this value (0 = fully transparent, 1 = fully opaque)
-      
-      material.needsUpdate = true
-    }
-  }
-  
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += 0.01
+
+  // Minimal animation - only rotate every 10th frame
+  let frameCount = 0
+  useFrame(() => {
+    frameCount++
+    if (frameCount % 10 === 0 && meshRef.current) {
+      meshRef.current.rotation.y += 0.002 // Very slow rotation
     }
   })
 
   return (
-    <group ref={meshRef} scale={[0.2, 0.2, 0.2]} position={[0, 0, 0]}>
+    <group ref={meshRef} scale={[0.15, 0.15, 0.15]} position={[0, 0, 0]}>
       <primitive object={scene} />
     </group>
   )
@@ -77,6 +35,7 @@ function ComputerModel({ onLoad }: { onLoad: () => void }) {
 export default function Computer3D() {
   const [isMobile, setIsMobile] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [shouldRender3D, setShouldRender3D] = useState(false)
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -86,11 +45,37 @@ export default function Computer3D() {
     checkIfMobile()
     window.addEventListener('resize', checkIfMobile)
     
-    return () => window.removeEventListener('resize', checkIfMobile)
+    // Delay 3D rendering to improve initial load
+    const timer = setTimeout(() => {
+      setShouldRender3D(true)
+    }, 1000)
+    
+    return () => {
+      window.removeEventListener('resize', checkIfMobile)
+      clearTimeout(timer)
+    }
   }, [])
 
   const handleModelLoad = () => {
     setIsLoading(false)
+  }
+
+  // Show placeholder if 3D not ready
+  if (!shouldRender3D) {
+    return (
+      <div className="w-64 h-64 md:w-96 md:h-96 flex items-center justify-center">
+        <div className="glass-morphism-bright p-8">
+          <div className="flex flex-col items-center space-y-4">
+            <div className="w-16 h-16 border-4 border-cyan-400/30 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-cyan-400/50 rounded"></div>
+            </div>
+            <p className="font-bold text-base tracking-wider uppercase text-white">
+              3D MODEL
+            </p>
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -108,33 +93,30 @@ export default function Computer3D() {
             <div className="flex flex-col items-center space-y-4">
               <div className="relative">
                 <div className="w-12 h-12 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
-                <div className="absolute inset-0 w-12 h-12 border-2 border-pink-400 border-b-transparent rounded-full animate-spin" style={{ animationDirection: 'reverse', animationDuration: '0.8s' }}></div>
               </div>
-              <p className="font-bold text-sm tracking-wider uppercase text-white">
+              <p className="font-bold text-base tracking-wider uppercase text-white">
                 LOADING 3D MODEL...
               </p>
-              <div className="w-full bg-white/10 rounded-full h-1 overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-cyan-400 to-pink-400 rounded-full animate-pulse"></div>
-              </div>
             </div>
           </div>
         </div>
       )}
       
       <Canvas
-        camera={{ position: [0, 0, 200], fov: 50 }}
+        camera={{ position: [0, 0, 150], fov: 45 }}
         style={{ background: 'transparent' }}
+        // Maximum performance optimizations
+        dpr={1} // Fixed DPR to reduce computation
+        performance={{ min: 0.1 }} // Very low performance threshold
+        frameloop="demand" // Only render when needed
+        gl={{ 
+          antialias: false, // Disable antialiasing for performance
+          alpha: true,
+          powerPreference: "high-performance"
+        }}
       >
-        <ambientLight intensity={1.2} />
-        <spotLight 
-          position={[10, 10, 10]} 
-          angle={0.15} 
-          penumbra={1}
-          intensity={10}
-          castShadow
-        />
-        <pointLight position={[-10, -10, -10]} intensity={1} />
-        <pointLight position={[5, -5, 5]} intensity={0.8} color="#ffffff" />
+        {/* Minimal lighting */}
+        <ambientLight intensity={1} />
         
         <Suspense fallback={null}>
           <ComputerModel onLoad={handleModelLoad} />
@@ -145,8 +127,7 @@ export default function Computer3D() {
             enableZoom={false}
             enablePan={false}
             autoRotate={false}
-            enableDamping={true}
-            dampingFactor={0.1}
+            enableDamping={false} // Disabled for performance
           />
         )}
       </Canvas>

@@ -22,7 +22,7 @@ export default async function ProjectsServer() {
           <PortfolioCard key={index}>
             <div className="flex justify-between items-start mb-4">
               <h3 className="text-xl font-bold tracking-wide text-white">{project.title}</h3>
-              <div className={`glass-morphism-bright px-4 py-2 text-sm font-bold border border-white/20 ${getStatusColor(project.status)}`}>
+              <div className={`glass-morphism-bright px-4 py-2 text-base font-bold border border-white/20 ${getStatusColor(project.status)}`}>
                 {project.status}
               </div>
             </div>
@@ -35,7 +35,7 @@ export default async function ProjectsServer() {
               <h4 className="font-bold mb-3 tracking-wide text-white">KEY FEATURES:</h4>
               <ul className="space-y-2">
                 {project.features.map((feature, i) => (
-                  <li key={i} className="text-sm font-medium text-gray-300">
+                  <li key={i} className="text-base font-medium text-gray-300">
                     → {feature}
                   </li>
                 ))}

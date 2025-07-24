@@ -71,23 +71,23 @@ export default function DraggableBanner() {
     >
       <div className="flex items-center justify-between h-full px-4">
         <div className="flex-1">
-          <div className="font-bold text-xs mb-1 tracking-wider w-full text-cyan-400">
+          <div className="font-bold text-sm mb-1 tracking-wider w-full text-cyan-400">
             ★ SPONSORED CONTENT ★
           </div>
-          <div className="font-bold text-sm tracking-wide text-white">
+          <div className="font-bold text-base tracking-wide text-white">
             HIRE ME NOW!
           </div>
         </div>
         <a 
           href="#contact" 
-          className="glass-morphism px-3 py-1 text-xs font-bold text-white border border-cyan-400/50 hover:bg-cyan-400/20 transition-colors cursor-pointer no-underline"
+          className="glass-morphism px-3 py-1 text-sm font-bold text-white border border-cyan-400/50 hover:bg-cyan-400/20 transition-colors cursor-pointer no-underline"
           onClick={(e) => e.stopPropagation()}
         >
           CLICK ME
         </a>
       </div>
       
-      <div className="absolute -top-1 -right-1 glass-morphism w-6 h-6 flex items-center justify-center text-xs font-bold hover:bg-white/20 cursor-pointer text-white border border-white/20">
+      <div className="absolute -top-1 -right-1 glass-morphism w-6 h-6 flex items-center justify-center text-sm font-bold hover:bg-white/20 cursor-pointer text-white border border-white/20">
         ×
       </div>
     </div>
