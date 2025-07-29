@@ -4,7 +4,7 @@ const nextConfig = {
   
   // Enable experimental features for better SSR
   experimental: {
-    serverComponentsExternalPackages: ['three', '@react-three/fiber'],
+    serverComponentsExternalPackages: ['three', '@react-three/fiber', '@react-three/drei'],
     optimizePackageImports: ['lucide-react'],
     // Enable automatic static optimization
     esmExternals: true,
