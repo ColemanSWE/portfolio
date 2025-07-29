@@ -147,6 +147,20 @@ export async function getPortfolioData(): Promise<PortfolioData> {
         github: "https://github.com/ColemanSWE/spotify-art-gallery",
         live: null,
         status: "DEVELOPMENT"
+      },
+      {
+        title: "TACHYON",
+        description: "HIGH-PERFORMANCE HTTP PROXY WRITTEN IN RUST FOR LEARNING SYSTEMS PROGRAMMING CONCEPTS",
+        technologies: ["RUST", "TOKIO", "HTTP/1.1", "HTTPS TUNNELING", "ASYNC I/O"],
+        features: [
+          "HTTP/1.1 FORWARD PROXY",
+          "HTTPS CONNECT TUNNELING",
+          "CONNECTION LIMITING & TIMEOUTS",
+          "CONFIGURABLE TOML SETTINGS"
+        ],
+        github: "https://github.com/ColemanSWE/tachyon",
+        live: null,
+        status: "DEVELOPMENT"
       }
     ],
     skills: {
