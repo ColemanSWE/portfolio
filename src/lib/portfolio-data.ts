@@ -112,7 +112,7 @@ export async function getPortfolioData(): Promise<PortfolioData> {
       {
         title: "PORTFOLIO WEBSITE",
         description: "MODERN PORTFOLIO WITH 3D ANIMATIONS AND SCROLL-TRIGGERED EFFECTS",
-        technologies: ["NEXT.JS", "TYPESCRIPT", "TAILWIND", "FRAMER MOTION"],
+        technologies: ["NEXT.JS", "TYPESCRIPT", "TAILWIND"],
         features: [
           "3D TEXT SCROLL ANIMATIONS",
           "RESPONSIVE DESIGN SYSTEM",

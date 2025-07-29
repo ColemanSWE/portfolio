@@ -2,35 +2,16 @@
 
 import Image from 'next/image'
 import Computer3D from './Computer3D'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
 import { PortfolioButton } from '../../components/ui/PortfolioButton'
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  })
-
-  const layer1Y = useTransform(scrollYProgress, [0, 0.5], [0, -80])
-  const layer2Y = useTransform(scrollYProgress, [0, 0.5], [0, -40])
-  const layer3Y = useTransform(scrollYProgress, [0, 0.5], [0, 40])
-  const layer1X = useTransform(scrollYProgress, [0, 0.5], [0, -20])
-  const layer2X = useTransform(scrollYProgress, [0, 0.5], [0, 10])
-  const layer3X = useTransform(scrollYProgress, [0, 0.5], [0, 20])
-  const layer1Rotate = useTransform(scrollYProgress, [0, 0.5], [0, -3])
-  const layer2Rotate = useTransform(scrollYProgress, [0, 0.5], [0, 1])
-  const layer3Rotate = useTransform(scrollYProgress, [0, 0.5], [0, 3])
-  
-  const redGlowOpacity = useTransform(scrollYProgress, [0, 0.2], [0.3, 1])
   
 
     return (
-    <section className="hero-section relative min-h-screen flex items-center" ref={containerRef}>
+    <section className="hero-section relative min-h-screen flex items-center">
              <div className="hidden md:block" style={{zIndex: 12, position: 'absolute', top: '10%', left: '50%'}}>
                    <pre style={{
-            fontSize: '14px', // Minimum legible size to fix warning
+            fontSize: '14px', 
             color: '#00ff00',
             whiteSpace: 'pre',
             textShadow: '0 0 5px rgba(0, 255, 0, 0.8)'
@@ -172,115 +153,30 @@ export default function Hero() {
           </div>
           
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            {/* 3D Layered Name Effect with modern gradient */}
-            <div className="relative mb-4">
-              {/* Background shadow layer */}
-              <motion.div
-                className="absolute inset-0 text-5xl md:text-7xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
+            <div className="mb-4">
+              <h1 
+                className="text-5xl md:text-7xl lg:text-9xl font-black tracking-wider text-white"
                 style={{
-                  y: layer3Y,
-                  x: layer3X,
-                  rotate: layer3Rotate,
-                  color: '#000000',
-                  filter: 'blur(2px)',
-                  opacity: 0.6,
-                  zIndex: 1,
-                  fontFamily: 'Corepix, monospace'
+                  textShadow: '0 0 40px rgba(255, 255, 255, 0.5)',
+                  fontFamily: 'Corepix, monospace',
+                  fontSize: 'clamp(3rem, 8vw, 9rem)'
                 }}
               >
                 COLEMAN
-              </motion.div>
-              
-              {/* Middle gradient layer */}
-              <motion.div
-                className="absolute inset-0 text-5xl md:text-7xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
-                style={{
-                  y: layer2Y,
-                  x: layer2X,
-                  rotate: layer2Rotate,
-                  background: 'linear-gradient(135deg, #ff0000 0%, #ff00ff 50%, #00ffff 100%)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  filter: `drop-shadow(0 0 20px rgba(255, 0, 255, 0.5))`,
-                  opacity: redGlowOpacity,
-                  zIndex: 2,
-                  fontFamily: 'Corepix, monospace'
-                }}
-              >
-                COLEMAN
-              </motion.div>
-              
-                             {/* Front white layer */}
-               <motion.h1
-                 className="relative text-5xl md:text-7xl lg:text-9xl font-black tracking-wider text-white z-10"
-                 style={{
-                   y: layer1Y,
-                   x: layer1X,
-                   rotate: layer1Rotate,
-                   textShadow: '0 0 40px rgba(255, 255, 255, 0.5)',
-                   zIndex: 10,
-                   fontFamily: 'Corepix, monospace',
-                   fontSize: 'clamp(3rem, 8vw, 9rem)' // Fix H1 font-size warning
-                 }}
-               >
-                 COLEMAN
-               </motion.h1>
+              </h1>
             </div>
 
-            <div className="relative mb-8">
-              {/* Background shadow layer */}
-              <motion.div
-                className="absolute inset-0 text-5xl md:text-7xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
+            <div className="mb-8">
+              <h1 
+                className="text-5xl md:text-7xl lg:text-9xl font-black tracking-wider text-white"
                 style={{
-                  y: layer3Y,
-                  x: layer3X,
-                  rotate: layer3Rotate,
-                  color: '#000000',
-                  filter: 'blur(2px)',
-                  opacity: 0.6,
-                  zIndex: 1,
-                  fontFamily: 'Corepix, monospace'
+                  textShadow: '0 0 40px rgba(255, 255, 255, 0.5)',
+                  fontFamily: 'Corepix, monospace',
+                  fontSize: 'clamp(3rem, 8vw, 9rem)'
                 }}
               >
                 ROSE
-              </motion.div>
-              
-              {/* Middle gradient layer */}
-              <motion.div
-                className="absolute inset-0 text-5xl md:text-7xl lg:text-9xl font-black tracking-wider select-none pointer-events-none"
-                style={{
-                  y: layer2Y,
-                  x: layer2X,
-                  rotate: layer2Rotate,
-                  background: 'linear-gradient(135deg, #ff0000 0%, #ff00ff 50%, #00ffff 100%)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  filter: `drop-shadow(0 0 20px rgba(255, 0, 255, 0.5))`,
-                  opacity: redGlowOpacity,
-                  zIndex: 2,
-                  fontFamily: 'Corepix, monospace'
-                }}
-              >
-                ROSE
-              </motion.div>
-              
-                             {/* Front white layer */}
-               <motion.h1
-                 className="relative text-5xl md:text-7xl lg:text-9xl font-black tracking-wider text-white z-10"
-                 style={{
-                   y: layer1Y,
-                   x: layer1X,
-                   rotate: layer1Rotate,
-                   textShadow: '0 0 40px rgba(255, 255, 255, 0.5)',
-                   zIndex: 10,
-                   fontFamily: 'Corepix, monospace',
-                   fontSize: 'clamp(3rem, 8vw, 9rem)' // Fix H1 font-size warning
-                 }}
-               >
-                 ROSE
-               </motion.h1>
+              </h1>
             </div>
             
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12">

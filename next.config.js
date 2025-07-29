@@ -92,14 +92,6 @@ const nextConfig = {
       },
     })
     
-    // In development, replace framer-motion with lightweight stubs
-    if (dev && !isServer) {
-      config.resolve.alias = {
-        ...config.resolve.alias,
-        'framer-motion': require.resolve('./src/lib/framer-motion-stub.js'),
-      }
-    }
-    
     // Optimize for performance
     if (!isServer) {
       config.optimization.splitChunks = {
