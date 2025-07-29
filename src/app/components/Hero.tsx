@@ -28,7 +28,7 @@ export default function Hero() {
 
     return (
     <section className="hero-section relative min-h-screen flex items-center" ref={containerRef}>
-             <div style={{zIndex: 12, position: 'absolute', top: '10%', left: '50%'}}>
+             <div className="hidden md:block" style={{zIndex: 12, position: 'absolute', top: '10%', left: '50%'}}>
                    <pre style={{
             fontSize: '14px', // Minimum legible size to fix warning
             color: '#00ff00',
