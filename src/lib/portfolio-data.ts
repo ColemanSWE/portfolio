@@ -136,19 +136,6 @@ export async function getPortfolioData(): Promise<PortfolioData> {
         status: "PRODUCTION"
       },
       {
-        title: "SPOTIFY 3D ART GALLERY",
-        description: "3D VIRTUAL GALLERY DISPLAYING USER'S TOP SPOTIFY ALBUMS AS TEXTURED ASSETS",
-        technologies: ["REACT", "THREE.JS", "NODE.JS", "SPOTIFY API"],
-        features: [
-          "SPOTIFY OAUTH INTEGRATION",
-          "3D ALBUM VISUALIZATION",
-          "ALBUM COVER TEXTURES"
-        ],
-        github: "https://github.com/ColemanSWE/spotify-art-gallery",
-        live: null,
-        status: "DEVELOPMENT"
-      },
-      {
         title: "TACHYON",
         description: "HIGH-PERFORMANCE HTTP PROXY WRITTEN IN RUST FOR LEARNING SYSTEMS PROGRAMMING CONCEPTS",
         technologies: ["RUST", "TOKIO", "HTTP/1.1", "HTTPS TUNNELING", "ASYNC I/O"],
