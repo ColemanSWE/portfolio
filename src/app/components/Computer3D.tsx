@@ -16,12 +16,10 @@ function ComputerModel({ onLoad }: { onLoad: () => void }) {
     }
   }, [scene, onLoad])
 
-  // Minimal animation - only rotate every 10th frame
-  let frameCount = 0
+  // Smooth rotation animation
   useFrame(() => {
-    frameCount++
-    if (frameCount % 10 === 0 && meshRef.current) {
-      meshRef.current.rotation.y += 0.002 // Very slow rotation
+    if (meshRef.current) {
+      meshRef.current.rotation.y += 0.01 // Smooth continuous rotation
     }
   })
 
@@ -105,10 +103,10 @@ export default function Computer3D() {
       <Canvas
         camera={{ position: [0, 0, 150], fov: 45 }}
         style={{ background: 'transparent' }}
-        // Maximum performance optimizations
+        // Performance optimizations
         dpr={1} // Fixed DPR to reduce computation
         performance={{ min: 0.1 }} // Very low performance threshold
-        frameloop="demand" // Only render when needed
+        frameloop="always" // Always render for continuous animation
         gl={{ 
           antialias: false, // Disable antialiasing for performance
           alpha: true,
