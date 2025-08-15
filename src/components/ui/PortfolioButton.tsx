@@ -37,17 +37,18 @@ export function PortfolioButton({
   const buttonClasses = `${baseClasses} ${variantClasses} ${sizeClasses} ${className}`
   
   const content = (
-    <>
-      {Icon && <Icon size={size === 'sm' ? 16 : size === 'lg' ? 24 : 20} />}
+    <span className="flex items-center justify-center gap-2">
+      {Icon && <Icon size={size === 'sm' ? 20 : size === 'lg' ? 28 : 24} />}
       {children}
-    </>
+    </span>
   )
   
   if (href) {
     return (
       <a
         href={href}
-        className={`${buttonClasses} ${Icon ? 'flex items-center gap-2' : ''}`}
+        className={buttonClasses}
+        style={{ display: 'inline-flex' }}
         target={target}
         rel={rel}
         onClick={onClick}
@@ -60,7 +61,8 @@ export function PortfolioButton({
   return (
     <button
       type={type}
-      className={`${buttonClasses} ${Icon ? 'flex items-center gap-2' : ''}`}
+      className={buttonClasses}
+      style={{ display: 'inline-flex' }}
       onClick={onClick}
     >
       {content}
