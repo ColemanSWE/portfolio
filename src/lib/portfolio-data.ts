@@ -1,51 +1,83 @@
 // Portfolio data that could be dynamically fetched
 export interface Experience {
-  title: string
-  company: string
-  location: string
-  duration: string
-  description: string[]
-  technologies: string[]
+  title: string;
+  company: string;
+  location: string;
+  duration: string;
+  description: string[];
+  technologies: string[];
 }
 
 export interface Project {
-  title: string
-  description: string
-  technologies: string[]
-  features: string[]
-  github: string
-  live: string | null
-  status: 'PRODUCTION' | 'BETA' | 'DEVELOPMENT'
+  title: string;
+  description: string;
+  technologies: string[];
+  features: string[];
+  github: string;
+  live: string | null;
+  status: "PRODUCTION" | "BETA" | "DEVELOPMENT";
 }
 
 export interface PortfolioData {
-  experiences: Experience[]
-  projects: Project[]
-  skills: Record<string, string[]>
+  experiences: Experience[];
+  projects: Project[];
+  skills: Record<string, string[]>;
   contact: {
-    email: string
-    github: string
-    linkedin: string
-    location: string
-  }
+    email: string;
+    github: string;
+    linkedin: string;
+    location: string;
+  };
 }
 
 export async function getPortfolioData(): Promise<PortfolioData> {
   // Remove artificial delay for better performance
-  
+
   return {
     experiences: [
+      {
+        title: "SOFTWARE ENGINEER",
+        company: "255 PIX STUDIO",
+        location: "HELSINKI",
+        duration: "[AUG 2025 - PRESENT]",
+        description: [
+          "LEADING TECHNICAL DEVELOPMENT FOR AFTER ENDINGS, A GROUNDBREAKING AI-DRIVEN NARRATIVE RPG",
+          "BUILDING FULL-STACK WEB APPLICATIONS WITH NEXT.JS, PYTHON/FASTAPI, AND SUPABASE",
+          "DEVELOPING AI ASSISTANTS AND GAME STATE LOGIC FOR INTERACTIVE STORYTELLING EXPERIENCES",
+          "IMPLEMENTING RESPONSIVE FRONTEND DESIGNS AND ROBUST BACKEND APIS FOR GAME PLATFORM",
+          "MANAGING DATABASE ARCHITECTURE WITH POSTGRESQL AND ASSET STORAGE WITH AMAZON S3",
+        ],
+        technologies: [
+          "NEXT.JS",
+          "REACT",
+          "TYPESCRIPT",
+          "PYTHON",
+          "FASTAPI",
+          "SUPABASE",
+          "POSTGRESQL",
+          "AMAZON S3",
+          "TAILWIND CSS",
+          "FRAMER MOTION",
+          "VERCEL",
+          "HEROKU",
+        ],
+      },
       {
         title: "SENIOR FRONTEND ENGINEER",
         company: "LIMBER AS",
         location: "HELSINKI",
-        duration: "[FEB 2025 - PRESENT]",
+        duration: "[FEB 2025 - AUG 2025]",
         description: [
           "LEADING DEVELOPMENT OF NEW FEATURES AND MAINTAINING CORE PLATFORM FUNCTIONALITY",
           "UTILIZING TYPESCRIPT, LIT.JS, AND MODERN BROWSER APIS FOR SCALABILITY AND PERFORMANCE",
-          "COLLABORATING CROSS-FUNCTIONALLY TO DESIGN DOM-INTENSIVE FEATURES WITH FOCUS ON MAINTAINABILITY"
+          "COLLABORATING CROSS-FUNCTIONALLY TO DESIGN DOM-INTENSIVE FEATURES WITH FOCUS ON MAINTAINABILITY",
         ],
-        technologies: ["TYPESCRIPT", "LIT.JS", "BROWSER APIS", "DOM MANIPULATION"]
+        technologies: [
+          "TYPESCRIPT",
+          "LIT.JS",
+          "BROWSER APIS",
+          "DOM MANIPULATION",
+        ],
       },
       {
         title: "FRONTEND DEVELOPER",
@@ -56,9 +88,19 @@ export async function getPortfolioData(): Promise<PortfolioData> {
           "DEVELOPED AND MAINTAINED UI COMPONENTS USING REACT, TYPESCRIPT, TAILWIND, AND ANT DESIGN",
           "IMPLEMENTED AND MANAGED CI/CD PIPELINES WITH GITHUB ACTIONS AND AWS",
           "CONDUCTED COMPREHENSIVE TESTING USING JEST, CYPRESS, AND REACT TESTING LIBRARY",
-          "CONTRIBUTED TO BACKEND DEVELOPMENT USING PYTHON"
+          "CONTRIBUTED TO BACKEND DEVELOPMENT USING PYTHON",
         ],
-        technologies: ["REACT", "TYPESCRIPT", "TAILWIND", "ANT DESIGN", "GITHUB ACTIONS", "AWS", "JEST", "CYPRESS", "PYTHON"]
+        technologies: [
+          "REACT",
+          "TYPESCRIPT",
+          "TAILWIND",
+          "ANT DESIGN",
+          "GITHUB ACTIONS",
+          "AWS",
+          "JEST",
+          "CYPRESS",
+          "PYTHON",
+        ],
       },
       {
         title: "SENIOR FULLSTACK DEVELOPER",
@@ -68,9 +110,15 @@ export async function getPortfolioData(): Promise<PortfolioData> {
         description: [
           "ENHANCED E-COMMERCE 3D-WEB SOFTWARE WITH FOCUS ON BACKEND DEVELOPMENT",
           "DEVELOPED 3D MODEL VIEWER AND UI COMPONENTS USING REACT, TYPESCRIPT, AND THREE.JS",
-          "ENSURED CODE QUALITY AND PERFORMANCE THROUGH RIGOROUS TESTING AND OPTIMIZATION"
+          "ENSURED CODE QUALITY AND PERFORMANCE THROUGH RIGOROUS TESTING AND OPTIMIZATION",
         ],
-        technologies: ["RUBY ON RAILS", "REACT", "TYPESCRIPT", "THREE.JS", "3D GRAPHICS"]
+        technologies: [
+          "RUBY ON RAILS",
+          "REACT",
+          "TYPESCRIPT",
+          "THREE.JS",
+          "3D GRAPHICS",
+        ],
       },
       {
         title: "SOFTWARE DEVELOPER",
@@ -79,9 +127,9 @@ export async function getPortfolioData(): Promise<PortfolioData> {
         duration: "[JAN 2022 - NOV 2022]",
         description: [
           "DEVELOPED FRONT-END SOLUTIONS FOR ENGEL & VÖLKERS REAL ESTATE PLATFORM",
-          "UTILIZED REACT, TYPESCRIPT, NEXT.JS, AND MATERIAL UI FOR MODERN WEB EXPERIENCES"
+          "UTILIZED REACT, TYPESCRIPT, NEXT.JS, AND MATERIAL UI FOR MODERN WEB EXPERIENCES",
         ],
-        technologies: ["REACT", "TYPESCRIPT", "NEXT.JS", "MATERIAL UI"]
+        technologies: ["REACT", "TYPESCRIPT", "NEXT.JS", "MATERIAL UI"],
       },
       {
         title: "SOFTWARE DEVELOPER",
@@ -91,9 +139,9 @@ export async function getPortfolioData(): Promise<PortfolioData> {
         description: [
           "BUILT AND REFINED REACT.JS COMPONENTS FOR IAMAI.SE PLATFORM",
           "CONVERTED WIREFRAMES TO USER INTERFACES AND IMPROVED FRONT-END INFRASTRUCTURE",
-          "ENHANCED ROUTING AND OVERALL APPLICATION ARCHITECTURE"
+          "ENHANCED ROUTING AND OVERALL APPLICATION ARCHITECTURE",
         ],
-        technologies: ["REACT", "REDUX", "JQUERY", "BOOTSTRAP"]
+        technologies: ["REACT", "REDUX", "JQUERY", "BOOTSTRAP"],
       },
       {
         title: "SOFTWARE DEVELOPER",
@@ -103,89 +151,133 @@ export async function getPortfolioData(): Promise<PortfolioData> {
         description: [
           "ENGAGED IN FULL-STACK DEVELOPMENT FROM INITIAL STACK DECISIONS TO PRODUCT LAUNCH",
           "UTILIZED MODERN WEB TECHNOLOGIES INCLUDING REACT, TYPESCRIPT, AND NEST.JS",
-          "INVOLVED IN ALL DEVELOPMENT STAGES INCLUDING MAINTENANCE AND OPTIMIZATION"
+          "INVOLVED IN ALL DEVELOPMENT STAGES INCLUDING MAINTENANCE AND OPTIMIZATION",
         ],
-        technologies: ["REACT", "TYPESCRIPT", "REDUX", "NEST.JS", "PYTHON", "CONTENTFUL CMS", "HTML5", "CSS3"]
-      }
+        technologies: [
+          "REACT",
+          "TYPESCRIPT",
+          "REDUX",
+          "NEST.JS",
+          "PYTHON",
+          "CONTENTFUL CMS",
+          "HTML5",
+          "CSS3",
+        ],
+      },
     ],
     projects: [
       {
         title: "PORTFOLIO WEBSITE",
-        description: "MODERN PORTFOLIO WITH 3D ANIMATIONS AND SCROLL-TRIGGERED EFFECTS",
+        description:
+          "MODERN PORTFOLIO WITH 3D ANIMATIONS AND SCROLL-TRIGGERED EFFECTS",
         technologies: ["NEXT.JS", "TYPESCRIPT", "TAILWIND"],
         features: [
           "3D TEXT SCROLL ANIMATIONS",
           "RESPONSIVE DESIGN SYSTEM",
-          "AUTOMATED CI/CD DEPLOYMENT"
+          "AUTOMATED CI/CD DEPLOYMENT",
         ],
         github: "https://github.com/ColemanSWE/portfolio",
         live: "https://colemanro.se",
-        status: "PRODUCTION"
+        status: "PRODUCTION",
       },
       {
         title: "HSL LIVE TRACKER",
-        description: "REAL-TIME HELSINKI PUBLIC TRANSPORT TRACKER WITH INTERACTIVE MAP",
+        description:
+          "REAL-TIME HELSINKI PUBLIC TRANSPORT TRACKER WITH INTERACTIVE MAP",
         technologies: ["TYPESCRIPT", "LEAFLET", "MQTT", "SCSS"],
         features: [
           "LIVE VEHICLE TRACKING VIA MQTT",
           "INTERACTIVE MAP VISUALIZATION",
-          "ROUTE & VEHICLE TYPE FILTERING"
+          "ROUTE & VEHICLE TYPE FILTERING",
         ],
         github: "https://github.com/ColemanSWE/hsl-live-tracker",
         live: "https://colemanswe.github.io/hsl-live-tracker/",
-        status: "PRODUCTION"
+        status: "PRODUCTION",
       },
       {
         title: "TACHYON",
-        description: "HIGH-PERFORMANCE HTTP PROXY WRITTEN IN RUST FOR LEARNING SYSTEMS PROGRAMMING CONCEPTS",
-        technologies: ["RUST", "TOKIO", "HTTP/1.1", "HTTPS TUNNELING", "ASYNC I/O"],
+        description:
+          "HIGH-PERFORMANCE HTTP PROXY WRITTEN IN RUST FOR LEARNING SYSTEMS PROGRAMMING CONCEPTS",
+        technologies: [
+          "RUST",
+          "TOKIO",
+          "HTTP/1.1",
+          "HTTPS TUNNELING",
+          "ASYNC I/O",
+        ],
         features: [
           "HTTP/1.1 FORWARD PROXY",
           "HTTPS CONNECT TUNNELING",
           "CONNECTION LIMITING & TIMEOUTS",
-          "CONFIGURABLE TOML SETTINGS"
+          "CONFIGURABLE TOML SETTINGS",
         ],
         github: "https://github.com/ColemanSWE/tachyon",
         live: null,
-        status: "DEVELOPMENT"
-      }
+        status: "DEVELOPMENT",
+      },
     ],
     skills: {
       FRONTEND: [
-        "REACT", "TYPESCRIPT", "JAVASCRIPT", "NEXT.JS", "REDUX", "HTML5", "CSS3", 
-        "TAILWIND", "MATERIAL UI", "ANT DESIGN", "BOOTSTRAP", "LIT.JS", "THREE.JS"
+        "REACT",
+        "TYPESCRIPT",
+        "JAVASCRIPT",
+        "NEXT.JS",
+        "REDUX",
+        "HTML5",
+        "CSS3",
+        "TAILWIND",
+        "MATERIAL UI",
+        "ANT DESIGN",
+        "BOOTSTRAP",
+        "LIT.JS",
+        "THREE.JS",
+        "FRAMER MOTION",
       ],
       BACKEND: [
-        "NODE.JS", "NEST.JS", "PYTHON", "RUBY ON RAILS", "GRAPHQL", "REST APIS"
+        "NODE.JS",
+        "NEST.JS",
+        "PYTHON",
+        "FASTAPI",
+        "RUBY ON RAILS",
+        "GRAPHQL",
+        "REST APIS",
+        "SUPABASE",
+        "POSTGRESQL",
       ],
-      TESTING: [
-        "JEST", "CYPRESS", "REACT TESTING LIBRARY"
-      ],
+      TESTING: ["JEST", "CYPRESS", "REACT TESTING LIBRARY"],
       TOOLS: [
-        "GIT", "GITHUB ACTIONS", "AWS", "CI/CD", "CONTENTFUL CMS", "BROWSER APIS"
-      ]
+        "GIT",
+        "GITHUB ACTIONS",
+        "AWS",
+        "AMAZON S3",
+        "CI/CD",
+        "CONTENTFUL CMS",
+        "BROWSER APIS",
+        "VERCEL",
+        "HEROKU",
+      ],
     },
     contact: {
       email: "info@colemanro.se",
       github: "https://github.com/colemanswe",
       linkedin: "https://linkedin.com/in/coleman-rose",
-      location: "HELSINKI, FINLAND 🇫🇮"
-    }
-  }
+      location: "HELSINKI, FINLAND 🇫🇮",
+    },
+  };
 }
 
 // Dynamic metadata generation
 export async function generatePortfolioMetadata(): Promise<{
-  title: string
-  description: string
-  keywords: string
+  title: string;
+  description: string;
+  keywords: string;
 }> {
-  const data = await getPortfolioData()
-  const techStack = Object.values(data.skills).flat().slice(0, 10).join(', ')
-  
+  const data = await getPortfolioData();
+  const techStack = Object.values(data.skills).flat().slice(0, 10).join(", ");
+
   return {
     title: `COLEMAN ROSE // SENIOR SOFTWARE ENGINEER`,
     description: `Senior Software Engineer with ${data.experiences.length}+ years experience specializing in ${techStack}. Available for full-stack development and system architecture.`,
-    keywords: `Coleman Rose, Senior Software Engineer, ${techStack}, Full Stack Developer, Helsinki, Finland`
-  }
-} 
+    keywords: `Coleman Rose, Senior Software Engineer, ${techStack}, Full Stack Developer, Helsinki, Finland`,
+  };
+}
