@@ -18,12 +18,12 @@ export default function About() {
           >
             <div className="space-y-6">
               <div className="text-xl font-bold tracking-wide text-white leading-relaxed">
-                SENIOR SOFTWARE ENGINEER WITH EXTENSIVE EXPERIENCE IN FULL-STACK DEVELOPMENT. 
+                ENGINEERING LEAD WITH EXTENSIVE EXPERIENCE IN FULL-STACK DEVELOPMENT AND AI WORKFLOWS. 
                 SPECIALIST IN REACT, TYPESCRIPT, AND NODE.JS ARCHITECTURES.
               </div>
               <div className="text-lg font-bold tracking-wide text-gray-300 leading-relaxed">
-                ARCHITECT OF SCALABLE SYSTEMS. BUILDER OF DIGITAL INFRASTRUCTURE. 
-                SOLVER OF COMPLEX PROBLEMS.
+                LEADER OF TECHNICAL TEAMS. ARCHITECT OF SCALABLE SYSTEMS. 
+                BUILDER OF INNOVATIVE SOLUTIONS.
               </div>
               <div className="flex flex-wrap gap-3 mt-6">
                 <div className="glass-morphism px-4 py-2 text-base font-bold text-cyan-400 border border-cyan-400/30">

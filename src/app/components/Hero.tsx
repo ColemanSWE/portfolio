@@ -181,7 +181,7 @@ export default function Hero() {
             
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-12">
               <div className="glass-morphism-bright px-8 py-4 font-bold text-lg tracking-widest text-white border border-white/20">
-                SENIOR SOFTWARE ENGINEER
+                ENGINEERING LEAD
               </div>
             </div>
 

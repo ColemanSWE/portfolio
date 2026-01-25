@@ -36,16 +36,16 @@ export async function getPortfolioData(): Promise<PortfolioData> {
   return {
     experiences: [
       {
-        title: "SOFTWARE ENGINEER",
+        title: "ENGINEERING LEAD",
         company: "255 PIX STUDIO",
         location: "HELSINKI",
         duration: "[AUG 2025 - PRESENT]",
         description: [
-          "LEADING TECHNICAL DEVELOPMENT FOR AFTER ENDINGS, A GROUNDBREAKING AI-DRIVEN NARRATIVE RPG",
-          "BUILDING FULL-STACK WEB APPLICATIONS WITH NEXT.JS, PYTHON/FASTAPI, AND SUPABASE",
-          "DEVELOPING AI ASSISTANTS AND GAME STATE LOGIC FOR INTERACTIVE STORYTELLING EXPERIENCES",
-          "IMPLEMENTING RESPONSIVE FRONTEND DESIGNS AND ROBUST BACKEND APIS FOR GAME PLATFORM",
-          "MANAGING DATABASE ARCHITECTURE WITH POSTGRESQL AND ASSET STORAGE WITH AMAZON S3",
+          "LEADING TECHNICAL DEVELOPMENT FOR EVERSCENE, A DESKTOP APPLICATION UNIFYING AI ANIMATION WORKFLOWS (UNREAL ENGINE, COMFYUI, AND OTHER TOOLS)",
+          "ARCHITECTING AND IMPLEMENTING FULL-STACK SOLUTIONS FOR AFTER ENDINGS, AN AI-DRIVEN NARRATIVE RPG",
+          "BUILDING CROSS-PLATFORM DESKTOP APPLICATIONS AND WEB PLATFORMS WITH MODERN TECH STACK",
+          "DEVELOPING AI ASSISTANTS, GAME STATE LOGIC, AND WORKFLOW AUTOMATION FOR CREATIVE TOOLS",
+          "MANAGING DATABASE ARCHITECTURE, API DESIGN, AND CLOUD INFRASTRUCTURE FOR PRODUCTION SYSTEMS",
         ],
         technologies: [
           "NEXT.JS",
@@ -60,6 +60,7 @@ export async function getPortfolioData(): Promise<PortfolioData> {
           "FRAMER MOTION",
           "VERCEL",
           "HEROKU",
+          "UNREAL ENGINE",
         ],
       },
       {
@@ -276,8 +277,8 @@ export async function generatePortfolioMetadata(): Promise<{
   const techStack = Object.values(data.skills).flat().slice(0, 10).join(", ");
 
   return {
-    title: `COLEMAN ROSE // SENIOR SOFTWARE ENGINEER`,
-    description: `Senior Software Engineer with ${data.experiences.length}+ years experience specializing in ${techStack}. Available for full-stack development and system architecture.`,
-    keywords: `Coleman Rose, Senior Software Engineer, ${techStack}, Full Stack Developer, Helsinki, Finland`,
+    title: `COLEMAN ROSE // ENGINEERING LEAD`,
+    description: `Engineering Lead with ${data.experiences.length}+ years experience specializing in ${techStack}. Leading technical development for AI animation workflows and full-stack systems.`,
+    keywords: `Coleman Rose, Engineering Lead, ${techStack}, Full Stack Developer, Helsinki, Finland, AI Animation, Technical Leadership`,
   };
 }
