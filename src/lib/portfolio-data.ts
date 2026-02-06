@@ -168,18 +168,27 @@ export async function getPortfolioData(): Promise<PortfolioData> {
     ],
     projects: [
       {
-        title: "PORTFOLIO WEBSITE",
+        title: "EROSION STUDIO",
         description:
-          "MODERN PORTFOLIO WITH 3D ANIMATIONS AND SCROLL-TRIGGERED EFFECTS",
-        technologies: ["NEXT.JS", "TYPESCRIPT", "TAILWIND"],
-        features: [
-          "3D TEXT SCROLL ANIMATIONS",
-          "RESPONSIVE DESIGN SYSTEM",
-          "AUTOMATED CI/CD DEPLOYMENT",
+          "DESKTOP PHOTO AND VIDEO EDITOR WITH 55+ GLITCH, COMPRESSION, AND DISTORTION SHADER EFFECTS",
+        technologies: [
+          "ELECTRON",
+          "REACT",
+          "TYPESCRIPT",
+          "THREE.JS",
+          "FFMPEG",
+          "WEBGL",
+          "ZUSTAND",
         ],
-        github: "https://github.com/ColemanSWE/portfolio",
-        live: "https://colemanro.se",
-        status: "PRODUCTION",
+        features: [
+          "PHOTO EDITOR WITH STACKABLE EFFECTS",
+          "TIMELINE-BASED VIDEO EDITING",
+          "55+ CUSTOM WEBGL SHADERS (GLITCH, DISTORTION, COLOR, RETRO, STYLE, FACE EFFECTS)",
+          "EXPORTS TO PNG, JPG, WEBP, GIF, MP4, WEBM",
+        ],
+        github: "https://github.com/ColemanSWE/erosion-studio",
+        live: null,
+        status: "DEVELOPMENT",
       },
       {
         title: "HSL LIVE TRACKER",
