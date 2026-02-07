@@ -170,7 +170,7 @@ export async function getPortfolioData(): Promise<PortfolioData> {
       {
         title: "EROSION STUDIO",
         description:
-          "DESKTOP PHOTO AND VIDEO EDITOR WITH 55+ GLITCH, COMPRESSION, AND DISTORTION SHADER EFFECTS",
+          "DESKTOP PHOTO AND VIDEO EDITOR WITH 55+ GLITCH, COMPRESSION, AND DISTORTION SHADER EFFECTS. THE GLITCH ART IMAGES IN THE HERO SECTION WERE CREATED WITH THIS TOOL",
         technologies: [
           "ELECTRON",
           "REACT",
