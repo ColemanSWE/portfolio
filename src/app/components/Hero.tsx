@@ -112,7 +112,7 @@ export default function Hero() {
           height={500}
           loading="lazy"
           className="hidden md:block z-5 absolute opacity-80 pointer-events-none"
-          style={{ left: "30%", top: "18%", zIndex: 10 }}
+          style={{ left: "5%", top: "15%", zIndex: 10 }}
         />
 
         <Image
@@ -123,6 +123,16 @@ export default function Hero() {
           loading="lazy"
           className="hidden xl:block z-5 absolute opacity-85 pointer-events-none"
           style={{ right: "8%", bottom: "10%", zIndex: 10 }}
+        />
+
+        <Image
+          src="/images/bah.gif"
+          alt="Glitch art portrait created with Erosion Studio"
+          width={500}
+          height={500}
+          loading="lazy"
+          className="hidden xl:block z-5 absolute opacity-85 pointer-events-none"
+          style={{ right: "60%", bottom: "10%", zIndex: 10 }}
         />
       </div>
       {/* Rainbow grid background */}
