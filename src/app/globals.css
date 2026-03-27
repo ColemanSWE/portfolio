@@ -258,8 +258,6 @@ body {
 }
 
 .dynamic-ticker {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 16px 0;
   white-space: nowrap;
   overflow: hidden;
   position: fixed;
@@ -267,28 +265,7 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.95);
-  backdrop-filter: blur(20px);
-}
-
-.dynamic-ticker-content {
-  display: inline-block;
-  white-space: nowrap;
-  position: relative;
-  z-index: 3;
-}
-
-/* Moving text with static rainbow background that doesn't move with text */
-.dynamic-ticker-text {
-  display: inline-block;
-  font-weight: 700;
-  letter-spacing: 3px;
-  font-size: 16px;
-  animation: ticker-scroll 25s linear infinite;
-  position: relative;
-  z-index: 3;
-  
-  /* Static rainbow gradient that stays in place */
+  isolation: isolate;
   background: linear-gradient(90deg, 
     var(--portfolio-cyan) 0%, 
     var(--portfolio-purple) 5%, 
@@ -311,21 +288,31 @@ body {
     var(--portfolio-green) 90%, 
     var(--portfolio-red) 95%, 
     var(--portfolio-cyan) 100%);
-  
-  /* Make the gradient much wider than the viewport so it appears static */
-  background-size: 300vw 100%;
-  
-  /* Fix the background position so it doesn't move with the text */
-  background-attachment: fixed;
-  background-position: 0 0;
-  
-  /* Clip the gradient to the text shape */
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  
-  /* Make text transparent so gradient shows through */
-  color: transparent;
+}
+
+.dynamic-ticker-content {
+  display: block;
+  white-space: nowrap;
+  padding: 16px 0;
+  background: #000;
+  mix-blend-mode: multiply;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dynamic-ticker-text {
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 3px;
+  font-size: 16px;
+  animation: ticker-scroll 25s linear infinite;
+  will-change: transform;
+  color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dynamic-ticker-text {
+    animation-play-state: paused;
+  }
 }
 
 .portfolio-grid {

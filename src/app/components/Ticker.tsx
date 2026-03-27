@@ -23,7 +23,7 @@ export default function Ticker() {
   return (
     <div className="dynamic-ticker">
       <div className="dynamic-ticker-content">
-        <span className="dynamic-ticker-text" data-text={fullTickerText}>
+        <span className="dynamic-ticker-text">
           {fullTickerText}
         </span>
       </div>
