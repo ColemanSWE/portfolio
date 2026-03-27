@@ -60,7 +60,7 @@ export default function Hero() {
           alt="I love programming animated gif"
           width={200}
           height={150}
-          loading="lazy"
+          loading="eager"
           className="hidden lg:block z-5 absolute opacity-80 pointer-events-none"
           style={{ right: "5%", top: "15%", zIndex: 10, maxWidth: "180px" }}
         />
@@ -70,7 +70,7 @@ export default function Hero() {
           alt="Esoteric gif"
           width={400}
           height={400}
-          loading="lazy"
+          loading="eager"
           className="hidden md:block z-5 absolute opacity-80 pointer-events-none"
           style={{ left: "38%", top: "40%", zIndex: 10 }}
         />
@@ -80,7 +80,7 @@ export default function Hero() {
           alt="Technology smiley gif"
           width={150}
           height={150}
-          loading="lazy"
+          loading="eager"
           className="hidden lg:block z-5  absolute opacity-80 pointer-events-none"
           style={{ right: "15%", bottom: "30%", zIndex: 10, maxWidth: "120px" }}
         />
@@ -90,7 +90,7 @@ export default function Hero() {
           alt="Computer animated gif"
           width={120}
           height={90}
-          loading="lazy"
+          loading="eager"
           className="hidden md:block z-5 absolute opacity-80 pointer-events-none"
           style={{ left: "10%", bottom: "35%", zIndex: 10, maxWidth: "100px" }}
         />
@@ -100,7 +100,7 @@ export default function Hero() {
           alt="Virus warning image"
           width={100}
           height={100}
-          loading="lazy"
+          loading="eager"
           className="hidden xl:block z-5 absolute opacity-80 pointer-events-none"
           style={{ left: "2%", bottom: "5%", zIndex: 10, maxWidth: "200px" }}
         />
@@ -110,7 +110,7 @@ export default function Hero() {
           alt="Glitch art portrait created with Erosion Studio"
           width={500}
           height={500}
-          loading="lazy"
+          loading="eager"
           className="hidden md:block z-5 absolute opacity-80 pointer-events-none"
           style={{ left: "5%", top: "15%", zIndex: 10 }}
         />
@@ -120,7 +120,7 @@ export default function Hero() {
           alt="Glitch art portrait created with Erosion Studio"
           width={500}
           height={500}
-          loading="lazy"
+          loading="eager"
           className="hidden xl:block z-5 absolute opacity-85 pointer-events-none"
           style={{ right: "8%", bottom: "10%", zIndex: 10 }}
         />
@@ -130,7 +130,7 @@ export default function Hero() {
           alt="Glitch art portrait created with Erosion Studio"
           width={500}
           height={500}
-          loading="lazy"
+          loading="eager"
           className="hidden xl:block z-5 absolute opacity-85 pointer-events-none"
           style={{ right: "60%", bottom: "10%", zIndex: 10 }}
         />

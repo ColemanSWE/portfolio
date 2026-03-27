@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import { generatePortfolioMetadata } from '../lib/portfolio-data'
+import PageLoader from './components/PageLoader'
 
 const jetbrainsMono = JetBrains_Mono({ 
   subsets: ['latin'],
@@ -62,6 +63,7 @@ export default function RootLayout({
         />
       </head>
       <body className={jetbrainsMono.className}>
+        <PageLoader />
         {children}
       </body>
     </html>
