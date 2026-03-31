@@ -1,7 +1,7 @@
 import { getPortfolioData } from '../../lib/portfolio-data'
 import { PortfolioCard, PortfolioGrid, Section } from '../../components/ui/PortfolioCard'
 import { PortfolioButton, TechTag } from '../../components/ui/PortfolioButton'
-import { ExternalLink, Github } from 'lucide-react'
+import { ExternalLink, Github, Lock } from 'lucide-react'
 
 export default async function ProjectsServer() {
   const { projects } = await getPortfolioData()
@@ -72,6 +72,12 @@ export default async function ProjectsServer() {
                 >
                   LIVE DEMO
                 </PortfolioButton>
+              )}
+              {!project.github && !project.live && (
+                <div className="flex items-center gap-2 glass-morphism px-3 py-1 text-sm font-bold text-red-400/70 border border-red-400/20 select-none cursor-default tracking-wider">
+                  <Lock size={13} />
+                  CLOSED SOURCE
+                </div>
               )}
             </div>
           </PortfolioCard>

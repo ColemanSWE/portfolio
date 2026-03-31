@@ -13,7 +13,7 @@ export interface Project {
   description: string;
   technologies: string[];
   features: string[];
-  github: string;
+  github: string | null;
   live: string | null;
   status: "PRODUCTION" | "BETA" | "DEVELOPMENT";
 }
@@ -186,7 +186,7 @@ export async function getPortfolioData(): Promise<PortfolioData> {
           "55+ CUSTOM WEBGL SHADERS (GLITCH, DISTORTION, COLOR, RETRO, STYLE, FACE EFFECTS)",
           "EXPORTS TO PNG, JPG, WEBP, GIF, MP4, WEBM",
         ],
-        github: "https://github.com/ColemanSWE/erosion-studio",
+        github: null,
         live: null,
         status: "DEVELOPMENT",
       },
