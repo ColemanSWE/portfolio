@@ -440,4 +440,19 @@ body {
   z-index: -1;
 }
 
-/* Removed unused .rainbow-grid-bg class */ 
+/* Removed unused .rainbow-grid-bg class */
+
+.ascii-art-section-static {
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+}
+
+.ascii-art-section-pre {
+  font-family: monospace;
+  font-size: min(0.37vw, 0.6vh);
+  color: #00ff00;
+  text-shadow: 0 0 4px rgba(0, 255, 0, 0.7);
+  white-space: pre;
+  line-height: 1.25;
+}

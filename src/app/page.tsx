@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react'
 import Hero from './components/Hero'
+import AsciiArtSection from './components/AsciiArtSection'
 import About from './components/About'
 import Skills from './components/Skills'
 import Contact from './components/Contact'
@@ -37,6 +38,7 @@ export default function Home() {
       
       <main>
         <Hero />
+        <AsciiArtSection />
         <About />
         
         <Suspense fallback={<SectionLoader />}>
