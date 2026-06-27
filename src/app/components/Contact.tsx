@@ -93,18 +93,10 @@ export default function Contact() {
                   className={`text-center scroll-reveal ${visibleItems[index + 1] ? "revealed" : ""}`}
                 >
                   <PortfolioCard className="!bg-transparent !backdrop-blur-none !border-0 !shadow-none !m-0">
-                    <div className="flex justify-center mb-6">
-                      <div className="glass-morphism-bright p-6 rounded-full">
-                        <IconComponent size={32} className="text-cyan-400" />
-                      </div>
-                    </div>
-                    <div className="font-bold mb-4 tracking-wide text-white text-lg">
-                      {contact.label}
-                    </div>
                     {contact.href ? (
                       <a
                         href={contact.href}
-                        className="text-gray-300 hover:text-cyan-400 transition-colors duration-300 break-all font-medium"
+                        className="flex flex-col items-center no-underline group/link"
                         target={
                           contact.href.startsWith("http") ? "_blank" : undefined
                         }
@@ -114,12 +106,32 @@ export default function Contact() {
                             : undefined
                         }
                       >
-                        {contact.value}
+                        <div className="flex justify-center mb-6">
+                          <div className="glass-morphism-bright p-6 rounded-full">
+                            <IconComponent size={32} className="text-cyan-400" />
+                          </div>
+                        </div>
+                        <div className="font-bold mb-4 tracking-wide text-white text-lg">
+                          {contact.label}
+                        </div>
+                        <span className="text-gray-300 group-hover/link:text-cyan-400 transition-colors duration-300 break-all font-medium">
+                          {contact.value}
+                        </span>
                       </a>
                     ) : (
-                      <div className="text-gray-300 break-all font-medium">
-                        {contact.value}
-                      </div>
+                      <>
+                        <div className="flex justify-center mb-6">
+                          <div className="glass-morphism-bright p-6 rounded-full">
+                            <IconComponent size={32} className="text-cyan-400" />
+                          </div>
+                        </div>
+                        <div className="font-bold mb-4 tracking-wide text-white text-lg">
+                          {contact.label}
+                        </div>
+                        <div className="text-gray-300 break-all font-medium">
+                          {contact.value}
+                        </div>
+                      </>
                     )}
                   </PortfolioCard>
                 </TiltCard>

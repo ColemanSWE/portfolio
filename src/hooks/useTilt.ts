@@ -21,7 +21,6 @@ export function useTilt<T extends HTMLElement>(options: TiltOptions = {}) {
     const element = elementRef.current;
     if (!element) return;
 
-    element.style.transformStyle = 'preserve-3d';
     element.style.transition = `transform ${speed}ms cubic-bezier(0.03, 0.98, 0.52, 0.99)`;
 
     const handleMouseMove = (e: globalThis.MouseEvent) => {
