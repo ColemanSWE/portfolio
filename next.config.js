@@ -1,13 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // App Router is now stable in Next.js 14, no experimental flag needed
-  
-  // Enable experimental features for better SSR
-  experimental: {
-    serverComponentsExternalPackages: ['three'],
-    // Enable automatic static optimization
-    esmExternals: true,
-  },
+  serverExternalPackages: ['three'],
   
   // Enable source maps in development
   productionBrowserSourceMaps: false,
@@ -35,9 +28,6 @@ const nextConfig = {
   
   // Static optimization
   trailingSlash: false,
-  
-  // Optimize bundle
-  swcMinify: true,
   
   // Headers for better caching
   async headers() {
@@ -70,54 +60,6 @@ const nextConfig = {
         ],
       },
     ]
-  },
-  
-  // Webpack optimizations
-  webpack: (config, { isServer, dev }) => {
-    // Enable source maps in development
-    if (dev && !isServer) {
-      config.devtool = 'eval-source-map'
-    }
-    
-    // Font optimization
-    config.module.rules.push({
-      test: /\.(woff|woff2|eot|ttf|otf)$/,
-      use: {
-        loader: 'file-loader',
-        options: {
-          publicPath: '/_next/static/fonts/',
-          outputPath: 'static/fonts/',
-        },
-      },
-    })
-    
-    // Optimize for performance
-    if (!isServer) {
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        cacheGroups: {
-          default: {
-            minChunks: 2,
-            priority: -20,
-            reuseExistingChunk: true,
-          },
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            priority: -10,
-            chunks: 'all',
-          },
-          three: {
-            test: /[\\/]node_modules[\\/]three[\\/]/,
-            name: 'three',
-            priority: 10,
-            chunks: 'all',
-          },
-        },
-      }
-    }
-    
-    return config
   },
 }
 
