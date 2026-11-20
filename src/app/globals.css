@@ -63,10 +63,10 @@ a:hover { color: var(--hot); }
 
 .statement, .marquee, #game, #lab, .column, footer { position: relative; z-index: 1; }
 
-/* the fixed WebGL layer that draws every image */
-#fx { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; display: block; }
+/* the canvas the WebGL engine adds inside each placeholder; it scrolls with the page */
+.fx-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
 
-/* placeholders: the fallback image shows until the WebGL layer takes over */
+/* placeholders: the fallback image shows until the WebGL engine takes over */
 .plane { position: relative; overflow: hidden; background: #000; }
 .plane > .fallback { object-fit: cover; }
 .fx-on > .fallback { visibility: hidden; }

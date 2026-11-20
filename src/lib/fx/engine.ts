@@ -3,8 +3,11 @@ import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 import { DISSOLVE_FRAG, DISSOLVE_VERT, FILM_FRAG, FILM_VERT, GLOBE_FRAG, GLOBE_VERT } from './shaders';
 
 /*
-  One fixed WebGL canvas draws every image on the page. Each placeholder element is matched by a plane
-  kept in sync with its bounding box. Images dissolve as they scroll in and out.
+  One off-screen WebGL renderer draws every image on the page. Each placeholder element gets its own 2D
+  canvas, and every frame the renderer draws that element's plane and copies the pixels into it. The
+  canvases live in the normal page flow, so they scroll natively with the page: no lag behind the
+  browser's compositor-driven scrolling on phones (a fixed overlay synced in JS visibly jitters there).
+  Images dissolve as they scroll in and out.
 
   Markup contract (all optional):
     [data-fx-plane="/url.jpg"]   an image plane; [data-fx-bg] sets the colour pixels dissolve into
@@ -16,17 +19,17 @@ import { DISSOLVE_FRAG, DISSOLVE_VERT, FILM_FRAG, FILM_VERT, GLOBE_FRAG, GLOBE_V
 
 type Uniforms = Record<string, THREE.IUniform>;
 type Kind = 'hero' | 'image' | 'scene';
-interface Plane { el: HTMLElement; mesh: THREE.Mesh; u: Uniforms; hover: number; target: number; kind: Kind; hoverable: boolean }
+interface Plane { el: HTMLElement; scene: THREE.Scene; u: Uniforms; cv: HTMLCanvasElement; ctx: CanvasRenderingContext2D; hover: number; target: number; kind: Kind; hoverable: boolean }
 interface Source { el: HTMLElement; render: (t: number, mx: number, my: number) => void }
 interface FilmOpts { bubble?: boolean; base?: number; scale?: number; wob?: number; mix?: number }
 
 const BLANK_PNG = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=';
 const STONE = 0x9a9996, CHAR = 0x1a1a1c, PAPER = 0xebeae6;
 
-export function startFx(canvas: HTMLCanvasElement): () => void {
+export function startFx(): () => void {
   let renderer: THREE.WebGLRenderer;
   try {
-    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
+    renderer = new THREE.WebGLRenderer({ canvas: document.createElement('canvas'), antialias: false });
   } catch {
     return () => {}; // no WebGL: the fallback images stay visible
   }
@@ -45,8 +48,7 @@ export function startFx(canvas: HTMLCanvasElement): () => void {
     cleanups.push(() => window.removeEventListener(type, fn));
   };
 
-  const scene = new THREE.Scene();
-  const cam = new THREE.OrthographicCamera(-1, 1, 1, -1, -10, 10);
+  const planeCam = new THREE.OrthographicCamera(-0.5, 0.5, 0.5, -0.5, -1, 1);
   const quad = new THREE.PlaneGeometry(1, 1);
   const planes: Plane[] = [];
   const sources: Source[] = [];
@@ -71,9 +73,14 @@ export function startFx(canvas: HTMLCanvasElement): () => void {
       uAspect: { value: 1 }, uImgAspect: { value: opts.imgAspect ?? 1 }, uCover: { value: opts.cover ? 1 : 0 },
       uMouse: { value: new THREE.Vector2(0.5, 0.5) }, uRes: { value: new THREE.Vector2(1, 1) }, uBg: { value: new THREE.Color(opts.bg) },
     };
-    const mesh = new THREE.Mesh(quad, new THREE.ShaderMaterial({ uniforms: u, vertexShader: DISSOLVE_VERT, fragmentShader: DISSOLVE_FRAG }));
-    scene.add(mesh);
-    const p: Plane = { el, mesh, u, hover: 0, target: 0, kind: opts.kind, hoverable: opts.hoverable ?? true };
+    const scene = new THREE.Scene();
+    scene.add(new THREE.Mesh(quad, new THREE.ShaderMaterial({ uniforms: u, vertexShader: DISSOLVE_VERT, fragmentShader: DISSOLVE_FRAG })));
+    const cv = document.createElement('canvas');
+    cv.className = 'fx-canvas';
+    cv.setAttribute('aria-hidden', 'true');
+    el.prepend(cv);
+    cleanups.push(() => cv.remove());
+    const p: Plane = { el, scene, u, cv, ctx: cv.getContext('2d')!, hover: 0, target: 0, kind: opts.kind, hoverable: opts.hoverable ?? true };
     if (p.hoverable) {
       const enter = () => (p.target = 1), leave = () => (p.target = 0);
       el.addEventListener('pointerenter', enter);
@@ -320,13 +327,17 @@ export function startFx(canvas: HTMLCanvasElement): () => void {
   }
 
   /* ---------------- frame loop ---------------- */
-  let W = 0, H = 0, mx = 0, my = 0;
+  let W = 0, H = 0, mx = 0, my = 0, RW = 0, RH = 0;
+  // the off-screen drawing buffer only ever grows, to fit the largest plane drawn so far
+  const ensureSize = (w: number, h: number) => {
+    if (w <= RW && h <= RH) return;
+    RW = Math.max(RW, w, W); RH = Math.max(RH, h, H);
+    renderer.setSize(RW, RH, false);
+  };
   const resize = () => {
     W = window.innerWidth; H = window.innerHeight;
-    renderer.setPixelRatio(dpr());
-    renderer.setSize(W, H, false);
-    cam.left = -W / 2; cam.right = W / 2; cam.top = H / 2; cam.bottom = -H / 2;
-    cam.updateProjectionMatrix();
+    if (renderer.getPixelRatio() !== dpr()) { renderer.setPixelRatio(dpr()); RW = RH = 0; }
+    ensureSize(W, H);
   };
   resize();
   listen('resize', resize);
@@ -342,13 +353,14 @@ export function startFx(canvas: HTMLCanvasElement): () => void {
       const r = s.el.getBoundingClientRect();
       if (r.bottom > 0 && r.top < H) s.render(t, mxN, myN);
     }
+    const d = renderer.getPixelRatio(), gl = renderer.domElement;
     for (const p of planes) {
       const r = p.el.getBoundingClientRect();
-      const visible = r.bottom > 0 && r.top < H && r.width > 0;
-      p.mesh.visible = visible;
-      if (!visible) continue;
-      p.mesh.position.set(r.left + r.width / 2 - W / 2, H / 2 - r.top - r.height / 2, 0);
-      p.mesh.scale.set(r.width, r.height, 1);
+      if (!(r.bottom > 0 && r.top < H && r.width > 0 && r.height > 0)) continue;
+      const w = Math.ceil(r.width), h = Math.ceil(r.height);
+      const cw = Math.floor(w * d), ch = Math.floor(h * d);
+      if (p.cv.width !== cw || p.cv.height !== ch) { p.cv.width = cw; p.cv.height = ch; }
+      ensureSize(w, h);
       // dissolve on the way out (top) and assemble on the way in (bottom)
       let s = 0, dir = 1;
       if (p.kind === 'hero') s = (Math.max(0, -r.top) / r.height) * 1.25;
@@ -362,8 +374,14 @@ export function startFx(canvas: HTMLCanvasElement): () => void {
       p.u.uAspect.value = r.width / r.height;
       (p.u.uRes.value as THREE.Vector2).set(r.width, r.height);
       (p.u.uMouse.value as THREE.Vector2).set(Math.min(Math.max((mx - r.left) / r.width, 0), 1), Math.min(Math.max(1 - (my - r.top) / r.height, 0), 1));
+      // draw this plane into the bottom-left corner of the buffer, then copy it into the element's canvas
+      renderer.setViewport(0, 0, w, h);
+      renderer.setScissor(0, 0, w, h);
+      renderer.setScissorTest(true);
+      renderer.render(p.scene, planeCam);
+      renderer.setScissorTest(false);
+      p.ctx.drawImage(gl, 0, gl.height - ch, cw, ch, 0, 0, cw, ch);
     }
-    renderer.render(scene, cam);
   };
   raf = requestAnimationFrame(frame);
 
