@@ -12,7 +12,7 @@ export function daysSinceStart(now: Date = new Date()): number {
 
 export const person = {
   name: 'Coleman Rose',
-  role: 'Engineering Lead',
+  role: 'Senior Software Engineer',
   location: 'Helsinki, Finland',
 };
 
@@ -41,7 +41,8 @@ export const jobs: Job[] = [
       "Build plugins and scripts for the VFX team's tools, including Nuke and DaVinci Resolve.",
       'Develop an automation system that combines production tracking with render-farm-style job scheduling.',
       'Set up 3D pre-production and AI image and video workflows in ComfyUI.',
-      'Led engineering on Everscene, a desktop app tying Unreal Engine, ComfyUI and other AI animation tools into one workflow, and After Endings, an AI-driven narrative RPG. Both were shelved.',
+      'Own engineering across a studio that moves between experiments quickly: prototype, test the idea, and ship or cut it fast.',
+      'Led engineering on Everscene, a desktop app wiring Unreal Engine, ComfyUI and other AI animation tools into one workflow, and After Endings, an AI-driven narrative RPG. Both were prototyped end to end, then cut by the studio.',
     ],
     tech: ['Python', 'Nuke', 'DaVinci Resolve', 'ComfyUI', 'TypeScript', 'React', 'Next.js', 'FastAPI', 'Supabase', 'Postgres', 'Unreal Engine'],
   },
@@ -188,9 +189,9 @@ export const testimonial = {
 export function generatePortfolioMetadata(): { title: string; description: string; keywords: string } {
   const years = yearsOfExperience();
   return {
-    title: 'Coleman Rose · Engineering Lead',
-    description: `Engineering lead in Helsinki with ${years} years of experience. VFX pipeline tools at 255 PIX Studio, Erosion Studio, and Absolution Engine, a claims-desk horror game in Godot.`,
+    title: 'Coleman Rose · Senior Software Engineer',
+    description: `Senior software engineer in Helsinki with ${years} years of experience. VFX pipeline tools and AI workflows at 255 PIX Studio, Erosion Studio, and Absolution Engine, a claims-desk horror game in Godot.`,
     keywords:
-      'Coleman Rose, Engineering Lead, Helsinki, Finland, VFX pipeline, Nuke, DaVinci Resolve, ComfyUI, Python, TypeScript, React, Next.js, Three.js, WebGL, shaders, Godot, Absolution Engine, Erosion Studio',
+      'Coleman Rose, Senior Software Engineer, Staff Engineer, Helsinki, Finland, VFX pipeline, Nuke, DaVinci Resolve, ComfyUI, Python, TypeScript, React, Next.js, Three.js, WebGL, shaders, Godot, Absolution Engine, Erosion Studio',
   };
 }

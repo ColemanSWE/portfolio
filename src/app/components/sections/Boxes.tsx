@@ -38,7 +38,7 @@ export default function Boxes() {
         <div className="in">
           <div>
             <h2>Say hello</h2>
-            <p>Open to full-time roles, contract work and anything involving shaders. Email gets the fastest reply.</p>
+            <p>Open to senior and staff-level engineering roles, contract work and anything involving shaders. Email gets the fastest reply.</p>
             <div className="mail">{contact.email}</div>
             <div className="row">
               <CopyEmail email={contact.email} />

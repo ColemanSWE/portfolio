@@ -5,13 +5,14 @@ export default function Statement() {
   return (
     <section className="statement gut" id="statement">
       <p>
-        I&apos;m an engineering lead in Helsinki. For {years} years I&apos;ve built interfaces, the systems behind
-        them, and <span className="split">tools that break images on purpose</span>.
+        I&apos;m a senior software engineer in Helsinki. For {years} years I&apos;ve built interfaces, the systems
+        behind them, and <span className="split">tools that break images on purpose</span>.
       </p>
       <p>
         At 255 PIX Studio I build the tools our VFX artists work in: plugins and scripts for Nuke and DaVinci
         Resolve, and an automation system that ties production tracking to render-farm-style job scheduling. Some
-        days it&apos;s 3D pre-production or ComfyUI pipelines instead.
+        days it&apos;s 3D pre-production or ComfyUI pipelines instead. I use AI coding tools across the whole loop,
+        from generating and explaining code to reviewing it, and I read and test what they write before it ships.
       </p>
       <p>
         After hours I&apos;m making <span className="split">Absolution Engine</span>, a desktop horror game, in
