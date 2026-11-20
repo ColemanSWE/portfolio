@@ -1,19 +1,12 @@
-import type { Metadata } from 'next'
-import { JetBrains_Mono } from 'next/font/google'
-import './globals.css'
-import { generatePortfolioMetadata } from '../lib/portfolio-data'
-import PageLoader from './components/PageLoader'
+import type { Metadata, Viewport } from 'next';
+import './globals.css';
+import { generatePortfolioMetadata } from '../lib/portfolio-data';
 
-const jetbrainsMono = JetBrains_Mono({ 
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  display: 'swap',
-  preload: true
-})
+export const revalidate = 86400;
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { title, description, keywords } = await generatePortfolioMetadata()
-  
+  const { title, description, keywords } = generatePortfolioMetadata();
+
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
     title,
@@ -29,43 +22,30 @@ export async function generateMetadata(): Promise<Metadata> {
       description,
       type: 'website',
       locale: 'en_US',
+      images: [{ url: '/textures/erosion-portrait.jpg', width: 1280, height: 720 }],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-    }
-  }
+    },
+  };
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#1a1a1c',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
-        {/* Preload critical fonts */}
-        <link
-          rel="preload"
-          href="/fonts/Corepix.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/Esoterica.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
+        <link rel="preload" href="/fonts/Corepix.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
       </head>
-      <body className={jetbrainsMono.className}>
-        <PageLoader />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
-  )
-} 
+  );
+}

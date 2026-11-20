@@ -1,56 +1,32 @@
-import { Suspense, lazy } from 'react'
-import Hero from './components/Hero'
-import About from './components/About'
-import Skills from './components/Skills'
-import Contact from './components/Contact'
+import TopBar from './components/sections/TopBar';
+import Hero from './components/sections/Hero';
+import Statement from './components/sections/Statement';
+import Marquee from './components/sections/Marquee';
+import GameFeature from './components/sections/GameFeature';
+import Lab from './components/sections/Lab';
+import Boxes from './components/sections/Boxes';
+import Footer from './components/sections/Footer';
+import FxLayer from './components/FxLayer';
+import HoloCursor from './components/HoloCursor';
 
-// Only lazy load truly heavy components that impact initial bundle
-const ExperienceServer = lazy(() => import('./components/ExperienceServer'))
-const ProjectsServer = lazy(() => import('./components/ProjectsServer'))
-
-// Keep utility components regular imports for better dev performance
-import Ticker from './components/Ticker'
-import DraggableBanner from './components/DraggableBanner'
-import Minimap from './components/Minimap'
-import CatAdBanner from './components/CatAdBanner'
-
-// Simplified loading component
-const SectionLoader = () => (
-  <div className="py-20 px-4 flex items-center justify-center">
-    <div className="w-8 h-8 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin"></div>
-  </div>
-)
+// Years of experience and the uptime counter are computed on the server; re-render daily.
+export const revalidate = 86400;
 
 export default function Home() {
   return (
     <>
-      <Ticker />
-      <div className="hidden lg:block">
-        <DraggableBanner />
-      </div>
-      <div className="hidden lg:block">
-        <CatAdBanner />
-      </div>
-      <div className="hidden lg:block">
-        <Minimap />
-      </div>
-      
+      <FxLayer />
+      <HoloCursor />
+      <TopBar />
       <main>
         <Hero />
-        <About />
-        
-        <Suspense fallback={<SectionLoader />}>
-          <ExperienceServer />
-        </Suspense>
-        
-        <Skills />
-        
-        <Suspense fallback={<SectionLoader />}>
-          <ProjectsServer />
-        </Suspense>
-        
-        <Contact />
+        <Statement />
+        <Marquee />
+        <GameFeature />
+        <Lab />
+        <Boxes />
       </main>
+      <Footer />
     </>
-  )
-} 
+  );
+}

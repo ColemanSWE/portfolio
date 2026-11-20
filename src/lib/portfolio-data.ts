@@ -1,293 +1,196 @@
-// Portfolio data that could be dynamically fetched
-export interface Experience {
-  title: string;
+// Everything the site says lives here. Sections read from these exports.
+
+export const CAREER_START = new Date(2019, 8, 1); // first dev job, Sep 2019
+
+const DAY = 864e5;
+export function yearsOfExperience(now: Date = new Date()): number {
+  return Math.floor((now.getTime() - CAREER_START.getTime()) / (365.25 * DAY));
+}
+export function daysSinceStart(now: Date = new Date()): number {
+  return Math.floor((now.getTime() - CAREER_START.getTime()) / DAY);
+}
+
+export const person = {
+  name: 'Coleman Rose',
+  role: 'Engineering Lead',
+  location: 'Helsinki, Finland',
+};
+
+export const contact = {
+  email: 'info@colemanro.se',
+  github: 'https://github.com/colemanswe',
+  linkedin: 'https://linkedin.com/in/coleman-rose',
+};
+
+export interface Job {
+  dates: string;
   company: string;
   location: string;
-  duration: string;
-  description: string[];
-  technologies: string[];
+  role: string;
+  bullets: string[];
+  tech: string[];
 }
 
-export interface Project {
-  title: string;
-  description: string;
-  technologies: string[];
-  features: string[];
-  github: string | null;
-  live: string | null;
-  status: "PRODUCTION" | "BETA" | "DEVELOPMENT";
-}
-
-export interface PortfolioData {
-  experiences: Experience[];
-  projects: Project[];
-  skills: Record<string, string[]>;
-  contact: {
-    email: string;
-    github: string;
-    linkedin: string;
-    location: string;
-  };
-}
-
-export async function getPortfolioData(): Promise<PortfolioData> {
-  // Remove artificial delay for better performance
-
-  return {
-    experiences: [
-      {
-        title: "ENGINEERING LEAD",
-        company: "255 PIX STUDIO",
-        location: "HELSINKI",
-        duration: "[AUG 2025 - PRESENT]",
-        description: [
-          "LEADING TECHNICAL DEVELOPMENT FOR EVERSCENE, A DESKTOP APPLICATION UNIFYING AI ANIMATION WORKFLOWS (UNREAL ENGINE, COMFYUI, AND OTHER TOOLS)",
-          "ARCHITECTING AND IMPLEMENTING FULL-STACK SOLUTIONS FOR AFTER ENDINGS, AN AI-DRIVEN NARRATIVE RPG",
-          "BUILDING CROSS-PLATFORM DESKTOP APPLICATIONS AND WEB PLATFORMS WITH MODERN TECH STACK",
-          "DEVELOPING AI ASSISTANTS, GAME STATE LOGIC, AND WORKFLOW AUTOMATION FOR CREATIVE TOOLS",
-          "MANAGING DATABASE ARCHITECTURE, API DESIGN, AND CLOUD INFRASTRUCTURE FOR PRODUCTION SYSTEMS",
-        ],
-        technologies: [
-          "NEXT.JS",
-          "REACT",
-          "TYPESCRIPT",
-          "PYTHON",
-          "FASTAPI",
-          "SUPABASE",
-          "POSTGRESQL",
-          "AMAZON S3",
-          "TAILWIND CSS",
-          "FRAMER MOTION",
-          "VERCEL",
-          "HEROKU",
-          "UNREAL ENGINE",
-        ],
-      },
-      {
-        title: "SENIOR FRONTEND ENGINEER",
-        company: "LIMBER AS",
-        location: "HELSINKI",
-        duration: "[FEB 2025 - AUG 2025]",
-        description: [
-          "LEADING DEVELOPMENT OF NEW FEATURES AND MAINTAINING CORE PLATFORM FUNCTIONALITY",
-          "UTILIZING TYPESCRIPT, LIT.JS, AND MODERN BROWSER APIS FOR SCALABILITY AND PERFORMANCE",
-          "COLLABORATING CROSS-FUNCTIONALLY TO DESIGN DOM-INTENSIVE FEATURES WITH FOCUS ON MAINTAINABILITY",
-        ],
-        technologies: [
-          "TYPESCRIPT",
-          "LIT.JS",
-          "BROWSER APIS",
-          "DOM MANIPULATION",
-        ],
-      },
-      {
-        title: "FRONTEND DEVELOPER",
-        company: "FIRETAIL.IO",
-        location: "HELSINKI",
-        duration: "[JUL 2023 - FEB 2025]",
-        description: [
-          "DEVELOPED AND MAINTAINED UI COMPONENTS USING REACT, TYPESCRIPT, TAILWIND, AND ANT DESIGN",
-          "IMPLEMENTED AND MANAGED CI/CD PIPELINES WITH GITHUB ACTIONS AND AWS",
-          "CONDUCTED COMPREHENSIVE TESTING USING JEST, CYPRESS, AND REACT TESTING LIBRARY",
-          "CONTRIBUTED TO BACKEND DEVELOPMENT USING PYTHON",
-        ],
-        technologies: [
-          "REACT",
-          "TYPESCRIPT",
-          "TAILWIND",
-          "ANT DESIGN",
-          "GITHUB ACTIONS",
-          "AWS",
-          "JEST",
-          "CYPRESS",
-          "PYTHON",
-        ],
-      },
-      {
-        title: "SENIOR FULLSTACK DEVELOPER",
-        company: "SAYDUCK",
-        location: "HELSINKI",
-        duration: "[JAN 2023 - JUL 2023]",
-        description: [
-          "ENHANCED E-COMMERCE 3D-WEB SOFTWARE WITH FOCUS ON BACKEND DEVELOPMENT",
-          "DEVELOPED 3D MODEL VIEWER AND UI COMPONENTS USING REACT, TYPESCRIPT, AND THREE.JS",
-          "ENSURED CODE QUALITY AND PERFORMANCE THROUGH RIGOROUS TESTING AND OPTIMIZATION",
-        ],
-        technologies: [
-          "RUBY ON RAILS",
-          "REACT",
-          "TYPESCRIPT",
-          "THREE.JS",
-          "3D GRAPHICS",
-        ],
-      },
-      {
-        title: "SOFTWARE DEVELOPER",
-        company: "IZZ.AI",
-        location: "MUNICH",
-        duration: "[JAN 2022 - NOV 2022]",
-        description: [
-          "DEVELOPED FRONT-END SOLUTIONS FOR ENGEL & VÖLKERS REAL ESTATE PLATFORM",
-          "UTILIZED REACT, TYPESCRIPT, NEXT.JS, AND MATERIAL UI FOR MODERN WEB EXPERIENCES",
-        ],
-        technologies: ["REACT", "TYPESCRIPT", "NEXT.JS", "MATERIAL UI"],
-      },
-      {
-        title: "SOFTWARE DEVELOPER",
-        company: "CORONATION",
-        location: "STOCKHOLM",
-        duration: "[FEB 2021 - JAN 2022]",
-        description: [
-          "BUILT AND REFINED REACT.JS COMPONENTS FOR IAMAI.SE PLATFORM",
-          "CONVERTED WIREFRAMES TO USER INTERFACES AND IMPROVED FRONT-END INFRASTRUCTURE",
-          "ENHANCED ROUTING AND OVERALL APPLICATION ARCHITECTURE",
-        ],
-        technologies: ["REACT", "REDUX", "JQUERY", "BOOTSTRAP"],
-      },
-      {
-        title: "SOFTWARE DEVELOPER",
-        company: "BEAMON PEOPLE (ALTEN SWEDEN)",
-        location: "STOCKHOLM",
-        duration: "[SEP 2019 - JAN 2021]",
-        description: [
-          "ENGAGED IN FULL-STACK DEVELOPMENT FROM INITIAL STACK DECISIONS TO PRODUCT LAUNCH",
-          "UTILIZED MODERN WEB TECHNOLOGIES INCLUDING REACT, TYPESCRIPT, AND NEST.JS",
-          "INVOLVED IN ALL DEVELOPMENT STAGES INCLUDING MAINTENANCE AND OPTIMIZATION",
-        ],
-        technologies: [
-          "REACT",
-          "TYPESCRIPT",
-          "REDUX",
-          "NEST.JS",
-          "PYTHON",
-          "CONTENTFUL CMS",
-          "HTML5",
-          "CSS3",
-        ],
-      },
+export const jobs: Job[] = [
+  {
+    dates: 'Aug 2025 – now',
+    company: '255 PIX Studio',
+    location: 'Helsinki',
+    role: 'Engineering Lead',
+    bullets: [
+      "Build plugins and scripts for the VFX team's tools, including Nuke and DaVinci Resolve.",
+      'Develop an automation system that combines production tracking with render-farm-style job scheduling.',
+      'Set up 3D pre-production and AI image and video workflows in ComfyUI.',
+      'Led engineering on Everscene, a desktop app tying Unreal Engine, ComfyUI and other AI animation tools into one workflow, and After Endings, an AI-driven narrative RPG. Both were shelved.',
     ],
-    projects: [
-      {
-        title: "EROSION STUDIO",
-        description:
-          "DESKTOP PHOTO AND VIDEO EDITOR WITH 55+ GLITCH, COMPRESSION, AND DISTORTION SHADER EFFECTS. THE GLITCH ART IMAGES IN THE HERO SECTION WERE CREATED WITH THIS TOOL",
-        technologies: [
-          "ELECTRON",
-          "REACT",
-          "TYPESCRIPT",
-          "THREE.JS",
-          "FFMPEG",
-          "WEBGL",
-          "ZUSTAND",
-        ],
-        features: [
-          "PHOTO EDITOR WITH STACKABLE EFFECTS",
-          "TIMELINE-BASED VIDEO EDITING",
-          "55+ CUSTOM WEBGL SHADERS (GLITCH, DISTORTION, COLOR, RETRO, STYLE, FACE EFFECTS)",
-          "EXPORTS TO PNG, JPG, WEBP, GIF, MP4, WEBM",
-        ],
-        github: null,
-        live: null,
-        status: "DEVELOPMENT",
-      },
-      {
-        title: "HSL LIVE TRACKER",
-        description:
-          "REAL-TIME HELSINKI PUBLIC TRANSPORT TRACKER WITH INTERACTIVE MAP",
-        technologies: ["TYPESCRIPT", "LEAFLET", "MQTT", "SCSS"],
-        features: [
-          "LIVE VEHICLE TRACKING VIA MQTT",
-          "INTERACTIVE MAP VISUALIZATION",
-          "ROUTE & VEHICLE TYPE FILTERING",
-        ],
-        github: "https://github.com/ColemanSWE/hsl-live-tracker",
-        live: "https://colemanswe.github.io/hsl-live-tracker/",
-        status: "PRODUCTION",
-      },
-      {
-        title: "TACHYON",
-        description:
-          "HIGH-PERFORMANCE HTTP PROXY WRITTEN IN RUST FOR LEARNING SYSTEMS PROGRAMMING CONCEPTS",
-        technologies: [
-          "RUST",
-          "TOKIO",
-          "HTTP/1.1",
-          "HTTPS TUNNELING",
-          "ASYNC I/O",
-        ],
-        features: [
-          "HTTP/1.1 FORWARD PROXY",
-          "HTTPS CONNECT TUNNELING",
-          "CONNECTION LIMITING & TIMEOUTS",
-          "CONFIGURABLE TOML SETTINGS",
-        ],
-        github: "https://github.com/ColemanSWE/tachyon",
-        live: null,
-        status: "DEVELOPMENT",
-      },
+    tech: ['Python', 'Nuke', 'DaVinci Resolve', 'ComfyUI', 'TypeScript', 'React', 'Next.js', 'FastAPI', 'Supabase', 'Postgres', 'Unreal Engine'],
+  },
+  {
+    dates: 'Feb – Aug 2025',
+    company: 'Limber AS',
+    location: 'Helsinki',
+    role: 'Senior Frontend Engineer',
+    bullets: [
+      'Led new feature work and kept the core platform healthy.',
+      'Built DOM-heavy features with TypeScript, Lit and modern browser APIs.',
     ],
-    skills: {
-      FRONTEND: [
-        "REACT",
-        "TYPESCRIPT",
-        "JAVASCRIPT",
-        "NEXT.JS",
-        "REDUX",
-        "HTML5",
-        "CSS3",
-        "TAILWIND",
-        "MATERIAL UI",
-        "ANT DESIGN",
-        "BOOTSTRAP",
-        "LIT.JS",
-        "THREE.JS",
-        "FRAMER MOTION",
-      ],
-      BACKEND: [
-        "NODE.JS",
-        "NEST.JS",
-        "PYTHON",
-        "FASTAPI",
-        "RUBY ON RAILS",
-        "GRAPHQL",
-        "REST APIS",
-        "SUPABASE",
-        "POSTGRESQL",
-      ],
-      TESTING: ["JEST", "CYPRESS", "REACT TESTING LIBRARY"],
-      TOOLS: [
-        "GIT",
-        "GITHUB ACTIONS",
-        "AWS",
-        "AMAZON S3",
-        "CI/CD",
-        "CONTENTFUL CMS",
-        "BROWSER APIS",
-        "VERCEL",
-        "HEROKU",
-      ],
-    },
-    contact: {
-      email: "info@colemanro.se",
-      github: "https://github.com/colemanswe",
-      linkedin: "https://linkedin.com/in/coleman-rose",
-      location: "HELSINKI, FINLAND 🇫🇮",
-    },
-  };
-}
+    tech: ['TypeScript', 'Lit', 'Browser APIs'],
+  },
+  {
+    dates: 'Jul 2023 – Feb 2025',
+    company: 'FireTail.io',
+    location: 'Helsinki',
+    role: 'Frontend Developer',
+    bullets: [
+      'Built and maintained UI in React, TypeScript, Tailwind and Ant Design.',
+      'Ran CI/CD on GitHub Actions and AWS.',
+      'Tested with Jest, Cypress and React Testing Library, and pitched in on the Python backend.',
+    ],
+    tech: ['React', 'TypeScript', 'Tailwind', 'AWS', 'Jest', 'Cypress', 'Python'],
+  },
+  {
+    dates: 'Jan – Jul 2023',
+    company: 'Sayduck',
+    location: 'Helsinki',
+    role: 'Senior Fullstack Developer',
+    bullets: [
+      'Worked on 3D e-commerce software, mostly on the backend.',
+      'Built a 3D model viewer and UI in React, TypeScript and Three.js.',
+    ],
+    tech: ['Ruby on Rails', 'React', 'Three.js'],
+  },
+  {
+    dates: 'Jan – Nov 2022',
+    company: 'izz.ai',
+    location: 'Munich',
+    role: 'Software Developer',
+    bullets: ['Built front-end features for the Engel & Völkers real estate platform.'],
+    tech: ['React', 'TypeScript', 'Next.js', 'Material UI'],
+  },
+  {
+    dates: 'Feb 2021 – Jan 2022',
+    company: 'Coronation',
+    location: 'Stockholm',
+    role: 'Software Developer',
+    bullets: [
+      'Built React components for iamai.se and turned wireframes into UI.',
+      'Reworked routing and the front-end architecture.',
+    ],
+    tech: ['React', 'Redux', 'jQuery', 'Bootstrap'],
+  },
+  {
+    dates: 'Sep 2019 – Jan 2021',
+    company: 'Beamon People (ALTEN)',
+    location: 'Stockholm',
+    role: 'Software Developer',
+    bullets: ['Full-stack work from picking the stack through launch and maintenance.'],
+    tech: ['React', 'TypeScript', 'NestJS', 'Python', 'Contentful'],
+  },
+];
 
-// Dynamic metadata generation
-export async function generatePortfolioMetadata(): Promise<{
-  title: string;
-  description: string;
-  keywords: string;
-}> {
-  const data = await getPortfolioData();
-  const techStack = Object.values(data.skills).flat().slice(0, 10).join(", ");
+export const game = {
+  title: 'Absolution Engine',
+  kicker: 'Now making · solo project',
+  genre: 'First-person claims-desk horror · Godot 4',
+  pitch:
+    "You work the claims desk for an insurer that sells absolution. Weigh each client's sins against the plan they bought, then seal the verdict: a luxury sim, or a life spent carrying someone else's guilt. The rulebook grows every shift.",
+  stats: [
+    { value: '94', label: 'custom shaders' },
+    { value: '4', label: 'luxury sims' },
+    { value: '1', label: 'developer' },
+  ],
+  tech: 'Godot 4 · GDScript · GLSL · Blender',
+  socials: [
+    { label: 'Instagram', href: 'https://www.instagram.com/absolutionengine/' },
+    { label: 'TikTok', href: 'https://www.tiktok.com/@absolutionengine' },
+    { label: 'YouTube', href: 'https://www.youtube.com/@AbsolutionEngine' },
+  ],
+  images: [
+    {
+      src: '/textures/absolution-loud-square.jpg',
+      alt: "Absolution Engine: the Plaza's loud look, a checkerboard square with chrome towers, a fountain and floating glass bubbles",
+    },
+    {
+      src: '/textures/absolution-loud-aerial.jpg',
+      alt: 'Absolution Engine: aerial view of the loud Plaza on its island, reflected in flat blue water',
+    },
+  ],
+};
 
+export const erosionStudio = {
+  num: '001',
+  title: 'Erosion Studio',
+  meta: 'Desktop app · in development',
+  body: 'A photo and video editor built around 55+ custom WebGL shaders. Effects stack like layers, video gets a timeline, and everything exports to PNG, GIF, MP4 or WebM. Both images above came out of it.',
+  chips: ['glitch', 'distortion', 'colour', 'retro', 'style', 'face'],
+  tech: 'Electron · React · Three.js · GLSL · FFmpeg · Zustand · closed source for now',
+  images: [
+    { src: '/textures/erosion-portrait.jpg', alt: 'Glitch portrait exported from Erosion Studio' },
+    { src: '/textures/erosion-regions.png', alt: 'Glitch landscape exported from Erosion Studio' },
+  ],
+};
+
+export const holoShader = {
+  num: '002',
+  title: 'Holographic shader',
+  meta: 'Shader study for this website · 2026',
+  body: [
+    "The holographic finish on this site is a thin-film interference shader, the same physics that colours soap bubbles and oil on water. The film's thickness drifts across each surface, and the colour you see depends on the angle you look from. Move your cursor to turn the knot.",
+    "The rest of the page runs through one WebGL layer: the header's 3D scene and every image are drawn as textures, and each pixel falls by its own noise value as you scroll.",
+  ],
+  tech: 'Three.js · GLSL · thin-film interference · one render layer for every image',
+};
+
+export const archive = [
+  {
+    title: 'HSL Live Tracker',
+    desc: 'Real-time Helsinki public transport map over MQTT',
+    tech: 'TypeScript',
+    href: 'https://colemanswe.github.io/hsl-live-tracker/',
+  },
+  {
+    title: 'Tachyon',
+    desc: 'HTTP/1.1 forward proxy, built to learn Rust',
+    tech: 'Rust · Tokio',
+    href: 'https://github.com/ColemanSWE/tachyon',
+  },
+];
+
+export const testimonial = {
+  quote: 'Pappa codes better than he gives belly rubs. He deserves treats... I mean, a job.',
+  by: 'Lulu, professional cat',
+  photos: [
+    { src: '/lulu/IMG_0790.jpg', alt: 'Lulu the cat' },
+    { src: '/lulu/IMG_1215.jpg', alt: 'Lulu the cat again' },
+  ],
+};
+
+export function generatePortfolioMetadata(): { title: string; description: string; keywords: string } {
+  const years = yearsOfExperience();
   return {
-    title: `COLEMAN ROSE // ENGINEERING LEAD`,
-    description: `Engineering Lead with ${data.experiences.length}+ years experience specializing in ${techStack}. Leading technical development for AI animation workflows and full-stack systems.`,
-    keywords: `Coleman Rose, Engineering Lead, ${techStack}, Full Stack Developer, Helsinki, Finland, AI Animation, Technical Leadership`,
+    title: 'Coleman Rose · Engineering Lead',
+    description: `Engineering lead in Helsinki with ${years} years of experience. VFX pipeline tools at 255 PIX Studio, Erosion Studio, and Absolution Engine, a claims-desk horror game in Godot.`,
+    keywords:
+      'Coleman Rose, Engineering Lead, Helsinki, Finland, VFX pipeline, Nuke, DaVinci Resolve, ComfyUI, Python, TypeScript, React, Next.js, Three.js, WebGL, shaders, Godot, Absolution Engine, Erosion Studio',
   };
 }
