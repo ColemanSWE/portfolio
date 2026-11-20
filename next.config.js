@@ -4,8 +4,7 @@ const nextConfig = {
   
   // Enable experimental features for better SSR
   experimental: {
-    serverComponentsExternalPackages: ['three', '@react-three/fiber', '@react-three/drei'],
-    optimizePackageImports: ['lucide-react'],
+    serverComponentsExternalPackages: ['three'],
     // Enable automatic static optimization
     esmExternals: true,
   },
@@ -109,7 +108,7 @@ const nextConfig = {
             chunks: 'all',
           },
           three: {
-            test: /[\\/]node_modules[\\/](three|@react-three)[\\/]/,
+            test: /[\\/]node_modules[\\/]three[\\/]/,
             name: 'three',
             priority: 10,
             chunks: 'all',
