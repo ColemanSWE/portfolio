@@ -32,7 +32,16 @@ export default function Lab() {
                 </span>
               ))}
             </div>
-            <div className="lbl dim">{erosionStudio.tech}</div>
+            <div className="lbl dim" style={{ marginBottom: 12 }}>
+              {erosionStudio.tech}
+            </div>
+            <div className="links">
+              {erosionStudio.links.map((l) => (
+                <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">
+                  {l.label} ↗
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </article>

@@ -141,10 +141,11 @@ export const game = {
 export const erosionStudio = {
   num: '001',
   title: 'Erosion Studio',
-  meta: 'Desktop app · in development',
+  meta: 'Desktop app · open source',
   body: 'A photo and video editor built around 55+ custom WebGL shaders. Effects stack like layers, video gets a timeline, and everything exports to PNG, GIF, MP4 or WebM. Both images above came out of it.',
   chips: ['glitch', 'distortion', 'colour', 'retro', 'style', 'face'],
-  tech: 'Electron · React · Three.js · GLSL · FFmpeg · Zustand · closed source for now',
+  tech: 'Electron · React · Three.js · GLSL · FFmpeg · Zustand · MIT licence',
+  links: [{ label: 'Source on GitHub', href: 'https://github.com/ColemanSWE/erosion-studio' }],
   images: [
     { src: '/textures/erosion-portrait.jpg', alt: 'Glitch portrait exported from Erosion Studio' },
     { src: '/textures/erosion-regions.png', alt: 'Glitch landscape exported from Erosion Studio' },
