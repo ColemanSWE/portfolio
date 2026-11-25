@@ -163,6 +163,36 @@ export const holoShader = {
   tech: 'Three.js · GLSL · thin-film interference · one render layer for every image',
 };
 
+const FORMALIN_RELEASES = 'https://github.com/ColemanSWE/formalin/releases/latest/download';
+
+export const formalin = {
+  num: '003',
+  title: 'Formalin',
+  meta: 'Audio plugin · VST3 + CLAP · 2026',
+  body: [
+    'A tape-effect plugin you play by hand. The window is a specimen tank: hold the glass orb and the tape slows to a stop under your grip, spin it to scrub backwards, let go and it rushes back to live.',
+    'Whatever the effect does to the sound happens to the picture too. Wow sways it, the reverb bleeds ink into the water, and a full stop fixes the specimen in clouded formalin.',
+  ],
+  chips: ['tape stop', 'wow & flutter', 'saturation', 'pitch', 'reverb', 'raymarched'],
+  tech: 'Rust · nih-plug · egui · OpenGL / GLSL · GPL-3.0',
+  downloads: [
+    { label: 'Windows', href: `${FORMALIN_RELEASES}/Formalin-windows.zip` },
+    { label: 'macOS', href: `${FORMALIN_RELEASES}/Formalin-macos.zip` },
+    { label: 'Linux', href: `${FORMALIN_RELEASES}/Formalin-linux.zip` },
+  ],
+  links: [{ label: 'Source on GitHub', href: 'https://github.com/ColemanSWE/formalin' }],
+  images: [
+    {
+      src: '/textures/formalin-held.jpg',
+      alt: "Formalin's window: a glass orb with a creature inside, held like a magnet, with particles pulled into field lines around it",
+    },
+    {
+      src: '/textures/formalin-hot.jpg',
+      alt: 'Formalin with the drive turned up: the orb flattened and red, boiling, with ink drifting through the water',
+    },
+  ],
+};
+
 export const archive = [
   {
     title: 'HSL Live Tracker',

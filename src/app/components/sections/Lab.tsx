@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { archive, erosionStudio, holoShader } from '../../../lib/portfolio-data';
+import { archive, erosionStudio, formalin, holoShader } from '../../../lib/portfolio-data';
 
 export default function Lab() {
   return (
@@ -64,6 +64,52 @@ export default function Lab() {
               <p key={p}>{p}</p>
             ))}
             <div className="lbl dim">{holoShader.tech}</div>
+          </div>
+        </div>
+      </article>
+
+      <article className="entry-x gut">
+        <div className="num lbl">{formalin.num}</div>
+        <div className="pair">
+          {formalin.images.map((img) => (
+            <div key={img.src} className="plane" data-fx-plane={img.src} role="img" aria-label={img.alt}>
+              <Image className="fallback" src={img.src} alt="" fill sizes="(max-width: 760px) 100vw, 580px" />
+            </div>
+          ))}
+        </div>
+        <div className="txt">
+          <div>
+            <h3>{formalin.title}</h3>
+            <div className="lbl dim">{formalin.meta}</div>
+          </div>
+          <div>
+            {formalin.body.map((p) => (
+              <p key={p}>{p}</p>
+            ))}
+            <div className="chips">
+              {formalin.chips.map((c) => (
+                <span key={c} className="chip">
+                  {c}
+                </span>
+              ))}
+            </div>
+            <div className="lbl dim" style={{ marginBottom: 12 }}>
+              {formalin.tech}
+            </div>
+            <div className="row" style={{ marginBottom: 14 }} aria-label={`Download ${formalin.title}`}>
+              {formalin.downloads.map((d) => (
+                <a key={d.href} className="btn" href={d.href}>
+                  {d.label} ↓
+                </a>
+              ))}
+            </div>
+            <div className="links">
+              {formalin.links.map((l) => (
+                <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer">
+                  {l.label} ↗
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </article>

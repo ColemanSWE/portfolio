@@ -72,7 +72,7 @@ a:hover { color: var(--hot); }
 .fx-on > .fallback { visibility: hidden; }
 
 /* holographic foil, driven by --mx/--my from HoloCursor */
-.holo-fill, .soon, .b88.h, .bar nav a:hover, .btn:hover {
+.holo-fill, .soon, .b88.h, .bar nav a:hover, .links a:hover, .btn:hover {
   background: var(--holo);
   background-size: 260% 260%;
   background-position: calc(var(--mx) * 100%) calc(var(--my) * 100%);
@@ -132,7 +132,11 @@ a:hover { color: var(--hot); }
 .stats b { display: block; font: normal 30px/1 var(--f-serif); color: var(--paper); font-variant-numeric: tabular-nums; }
 .stats span { font: 11px var(--f-ui); color: var(--dim); }
 .soon { display: inline-block; font: bold 10px var(--f-ui); letter-spacing: 0.14em; padding: 4px 9px; }
-.links { display: flex; gap: 16px; flex-wrap: wrap; }
+/* secondary links (source, socials): bracketed tags like the top nav */
+.links { display: flex; gap: 6px; flex-wrap: wrap; }
+.links a { font: 11px var(--f-ui); text-decoration: none; background: var(--ink); color: var(--paper); padding: 4px 8px; }
+.links a::before { content: '['; opacity: 0.5; }
+.links a::after { content: ']'; opacity: 0.5; }
 
 /* lab */
 .lab-head { padding-block: 14vh 4vh; max-width: 1180px; margin: 0 auto; }
